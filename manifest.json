@@ -1,0 +1,21 @@
+﻿{
+	"update_url":"http://clients2.google.com/service/update2/crx",
+	"name": "bestmaps",
+	"version": "1.1",
+	"manifest_version": 2,
+	"description": "Просмотр альтернативных карт на страницах Google Maps, Яндекс Карты и тд",
+	"homepage_url": "http://bestmaps.ru",
+	"page_action": {
+		"default_icon": "icon.png",
+		"default_title": "bestmaps.ru",
+		"default_popup": "popup.html"
+	},
+	"icons": {
+		"16":"icon16.png",
+		"48":"icon48.png",
+		"128": "icon128.png" },
+		"background": {
+		"scripts": ["bg.js"]
+	},
+	"permissions": [ "tabs", "http://*/*", "https://*/*" ]
+}
