@@ -54,11 +54,11 @@ chrome.tabs.query({
             var url_coord_data = url_parts[4].split(',');
             if(url_coord_data && url_coord_data.length >= 3){
                 coord[0] = url_coord_data[1];
-                coord[1] = url_coord_data[0];
+                coord[1] = url_coord_data[0].substr(1); // удаляем собаку в первом сегменте @
                 var zoom_type = url_coord_data[2].slice(-1);
                 switch (zoom_type){
                     case 'z':
-                        zoom = parseInt( url_coord_data[2].slice(0, -1) );
+                        zoom = parseInt( url_coord_data[2].slice(0, -1) ); // slice 0, -1 отрезает самый последний символ строки
                         break;
 
                     case 'm':
