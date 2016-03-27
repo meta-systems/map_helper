@@ -227,8 +227,8 @@ chrome.tabs.query({
         document.getElementById("wikimapia").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=b';
         document.getElementById("wikimapia_map").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=m';
 
-        document.getElementById("here").href='http://here.com/'+coord[1]+','+coord[0]+','+zoom+',0,0,hybrid.day';
-        document.getElementById("here_map").href='http://here.com/'+coord[1]+','+coord[0]+','+zoom+',0,0,normal.day';
+        document.getElementById("here").href='http://here.com/'+coord[1]+','+coord[0]+','+zoom+',satellite';
+        document.getElementById("here_map").href='http://here.com/'+coord[1]+','+coord[0]+','+zoom+',normal';
 
         document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
         document.getElementById("bing_map").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=r';
