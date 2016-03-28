@@ -109,38 +109,14 @@ chrome.tabs.query({
         var provider_string_0 = url.split( '.ru/map/' )[1]; // разбиваем урл на две части подстрокой '.ru/map/'
         var provider_string = provider_string_0.split('/'); // разбиваем правую часть урла слешом
 
-        console.log(provider_string);
-
         var length = provider_string.length;
         var param = '';
 
-        for (var i = 0; i < length; i++) {
+        zoom = provider_string[2];
 
-            param = provider_string[i].split('=')[0];
+        coord[1] = provider_string[3];
+        coord[0] = provider_string[4];
 
-            // zoom
-            if(param == 'z'){
-                zoom = provider_string[i].split('=')[1];
-            }
-
-            // map type
-            if(param == 't'){
-                var mt = provider_string[i].split('=')[1].split('%2C')[0];
-            }
-
-            // lat
-            if(param == 'lat'){ var lat = provider_string[i].split('=')[1]; }
-
-            // lon
-            if(param == 'lon'){ var lon = provider_string[i].split('=')[1]; }
-        }
-
-        coord[1] = lat;
-        coord[0] = lon;
-
-        if(mt == 'hybrid'){
-            // document.getElementById("bestmaps").className='hidden';
-        }
 
         // OSM
     } else if (host_clean == 'openstreetmap'){
