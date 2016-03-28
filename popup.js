@@ -106,8 +106,10 @@ chrome.tabs.query({
         // BESTMAPS
     } else if (host_clean == 'bestmaps'){
 
-        var provider_string_0 = url.split( '#' )[1];
-        var provider_string = provider_string_0.split('&');
+        var provider_string_0 = url.split( '.ru/map/' )[1]; // разбиваем урл на две части подстрокой '.ru/map/'
+        var provider_string = provider_string_0.split('/'); // разбиваем правую часть урла слешом
+
+        console.log(provider_string);
 
         var length = provider_string.length;
         var param = '';
@@ -239,16 +241,17 @@ chrome.tabs.query({
 
         // bestmaps
 
-        document.getElementById("bestmaps_y").href='http://bestmaps.ru/map?k=yandex#t=hybrid&' + 'lat='+coord[1]+'&lon='+coord[0]+'&z=' + zoom;
-        document.getElementById("bestmaps_y_map").href='http://bestmaps.ru/map?k=yandex#t=map&' + 'lat='+coord[1]+'&lon='+coord[0]+'&z=' + zoom;
+        document.getElementById("bestmaps_y").href='http://bestmaps.ru/map/yandex/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_y_map").href='http://bestmaps.ru/map/yandex/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
-        document.getElementById("bestmaps_g").href='http://bestmaps.ru/map?k=google#t=hybrid&' + 'lat='+coord[1]+'&lon='+coord[0]+'&z=' + zoom;
-        document.getElementById("bestmaps_g_map").href='http://bestmaps.ru/map?k=google#t=map&' + 'lat='+coord[1]+'&lon='+coord[0]+'&z=' + zoom;
+        document.getElementById("bestmaps_g").href='http://bestmaps.ru/map/google/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_g_map").href='http://bestmaps.ru/map/google/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
-        document.getElementById("bestmaps_ovi").href='http://bestmaps.ru/map?k=ovi#t=hybrid&' + 'lat='+coord[1]+'&lon='+coord[0]+'&z=' + zoom;
-        document.getElementById("bestmaps_ovi_map").href='http://bestmaps.ru/map?k=ovi#t=map&' + 'lat='+coord[1]+'&lon='+coord[0]+'&z=' + zoom;
+        document.getElementById("bestmaps_bing").href='http://bestmaps.ru/map/bing/aerial/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_here").href='http://bestmaps.ru/map/here/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
-        document.getElementById("bestmaps_2gis").href='http://bestmaps.ru/map?k=2gis#t=map&' + 'lat='+coord[1]+'&lon='+coord[0]+'&z=' + zoom;
+        document.getElementById("bestmaps_osm").href='http://bestmaps.ru/map/osm/Mapnik/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_2gis").href='http://bestmaps.ru/map/here/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
         // coord
         document.getElementById("lat").innerText = coord[1];
@@ -262,8 +265,7 @@ chrome.tabs.query({
     //chrome.tabs.create({url: '}, function(){});
 });
 
-function getCoordinatesFromMeters(meters)
-{
+function getCoordinatesFromMeters(meters) {
     if(meters < 533){
         return 17;
 
