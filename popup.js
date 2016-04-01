@@ -152,9 +152,30 @@ chrome.tabs.query({
 
 
         // WIKIMAPIA
-    } else if (host_clean == 'wikimapia'){
+    } else if (host_clean == 'wikimapia') {
 
-        var provider_string_0 = url.split( '#' )[1];
+        var wikicoordarray = url.match(/[0-9]{2}\.[0-9]{6}/ig);
+
+        coord[1] = wikicoordarray[0];
+        coord[0] = wikicoordarray[1];
+
+        var zoomwiki = url.match(/z=[0-9]{1,2}/ig);
+
+        zoom = zoomwiki[0].slice(2);
+
+        if (url.match(/&m=w/ig)) {
+            document.getElementById("wikimapia_map").className = 'hidden';
+        } else {
+            document.getElementById("wikimapia").className = 'hidden';
+
+    }
+
+    console.log(wikicoordarray);
+    console.log(zoom);
+
+    }
+
+       /* var provider_string_0 = url.split( '#' )[1];
         var provider_string = provider_string_0.split('&');
 
         var length = provider_string.length;
@@ -192,7 +213,7 @@ chrome.tabs.query({
         }
         coord[0] = lon;
         coord[1] = lat;
-    }
+    }*/
 
     if(zoom && coord && coord.length == 2){
         // original
