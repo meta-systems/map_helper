@@ -248,7 +248,7 @@ chrome.tabs.query({
         document.getElementById("bestmaps_here").href='http://bestmaps.ru/map/here/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
         document.getElementById("bestmaps_osm").href='http://bestmaps.ru/map/osm/Mapnik/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-        document.getElementById("bestmaps_2gis").href='http://bestmaps.ru/map/here/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_2gis").href='http://bestmaps.ru/map/2gis/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
         // coord
         document.getElementById("lat").innerText = coord[1];
@@ -257,7 +257,8 @@ chrome.tabs.query({
         // GE
         document.getElementById("earth_kml").href='http://bestmaps.ru/kml_generate/?lat='+coord[1]+'&lon='+coord[0];
     } else {
-        console.error('Coord not found');
+
+        //console.error('Coord not found');
     }
     //chrome.tabs.create({url: '}, function(){});
 });
