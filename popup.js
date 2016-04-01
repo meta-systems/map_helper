@@ -136,7 +136,7 @@ chrome.tabs.query({
         // HERE
     } else if (host_clean == 'here'){
 
-        var provider_string_0 = url.split( '/' )[3];
+        var provider_string_0 = url.split( '/?map=' )[1];
         var provider_string = provider_string_0.split(',');
 
         zoom = provider_string[2];
