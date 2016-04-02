@@ -11,8 +11,30 @@ chrome.tabs.query({
 
     var coord = new Array();
     var zoom;
+    console.log(window.location);
 
-    if(host_clean == 'yandex' && host_parts[host_parts.length-3] == 'maps'){
+    var coordarray = url.match(/-?[0-9]{0,3}\.[0-9]{6}/ig); //универсальная функция для поиска координат
+
+
+    if(/yandex|maps/.test(url)){   //ищем яндекс И мапс применяя метод test
+
+        coord[1] = coordarray[1];
+        coord[0] = coordarray[0];
+
+        var zoomya = url.match(/z=[0-9]{1,2}/ig);  //ищем z=XX
+
+        zoom = zoomya[0].slice(2); //  убираем z=
+
+        if (url.match(/l=sat/ig)) {        // ищем l=sat-это спутник
+            document.getElementById("yandex").className='hidden';
+        } else {
+            document.getElementById("yandex_map").className='hidden';
+
+        }
+
+
+ /*   if(host_clean == 'yandex' && host_parts[host_parts.length-3] == 'maps'){
+
 
         var provider_string_0 = url.split( '?' )[1];
         var provider_string = provider_string_0.split('&');
@@ -45,7 +67,7 @@ chrome.tabs.query({
         } else {
             document.getElementById("yandex_map").className='hidden';
         }
-
+*/
 
         // GOOGLE
     } else if (host_clean == 'google' && url_parts[3] == 'maps'){
@@ -133,8 +155,24 @@ chrome.tabs.query({
         document.getElementById("osm").className='hidden';
 
 
-        // HERE
-    } else if (host_clean == 'here'){
+        // Panaramio
+    }
+
+    else if(/panaramio|map/.test(url)) {
+
+        coord[0] = coordarray[1];
+        coord[1] = coordarray[0];
+
+        var zoompa = url.match(/z=[0-9]{1,2}/ig);
+
+        zoom = zoompa[0].slice(2); //
+
+
+        document.getElementById("panaramio").className = 'hidden';
+
+    } // HERE
+
+    else if (host_clean == 'here'){
 
         var provider_string_0 = url.split( '/?map=' )[1];
         var provider_string = provider_string_0.split(',');
@@ -152,12 +190,11 @@ chrome.tabs.query({
 
 
         // WIKIMAPIA
+
     } else if (host_clean == 'wikimapia') {
 
-        var wikicoordarray = url.match(/[0-9]{2}\.[0-9]{6}/ig);
-
-        coord[1] = wikicoordarray[0];
-        coord[0] = wikicoordarray[1];
+        coord[1] = coordarray[0];
+        coord[0] = coordarray[1];
 
         var zoomwiki = url.match(/z=[0-9]{1,2}/ig);
 
@@ -169,10 +206,7 @@ chrome.tabs.query({
             document.getElementById("wikimapia").className = 'hidden';
 
     }
-
-    console.log(wikicoordarray);
-    console.log(zoom);
-
+        console.log(coordarray);
     }
 
        /* var provider_string_0 = url.split( '#' )[1];
@@ -215,8 +249,9 @@ chrome.tabs.query({
         coord[1] = lat;
     }*/
 
-    if(zoom && coord && coord.length == 2){
+    if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 пораметра
         // original
+
         document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl';
         document.getElementById("yandex_map").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=map';
 
@@ -233,6 +268,7 @@ chrome.tabs.query({
         document.getElementById("bing_map").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=r';
 
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("panaramio").href='http://www.panoramio.com/map#lt='+coord[1]+'&ln='+coord[0]+'&z='+zoom+'&k=1&a=1&tab=1&pl=all';
         document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
         //document.getElementById("mail").href='http://maps.mail.ru/?z='+zoom+'&ll='+coord[0]+','+coord[1];
 

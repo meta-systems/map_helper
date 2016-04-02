@@ -6,9 +6,9 @@
     var host = url_parts[2]; // берем третий элемент этого массива - домен:     http://domain.ru/map
     var host_parts = host.split( '.' ); // разбиваем домен на состовные части точкой
     var host_clean = host_parts[host_parts.length-2]; // берем основной домен (yandex, google, bestmaps)
-
+    console.log(tab);
     if(
-        ['bestmaps', 'openstreetmap', 'here', 'wikimapia'].indexOf(host_clean) != -1 ||
+        ['bestmaps', 'openstreetmap', 'here', 'wikimapia'].indexOf(host_clean) ||
         (host_clean == 'google' && url_parts[3] == 'maps') ||
         (host_clean == 'yandex' && url_parts[3] == 'maps') ||
         (host_clean == 'bing' && url_parts[3] == 'maps')
@@ -25,5 +25,13 @@
  chrome.pageAction.setTitle({tabId: tab.id,title:"Альтернативные карты"});
  chrome.pageAction.show(tab.id);
  });
+
+ if(/bestmaps|openstreetmap|here|wikimapia/.test(url)||
+ /google|maps/.test(url)||
+ /yandex|maps/.test(url)||
+ /bing|mapspreview/.test(url)||
+ /panaramio|map/.test(url)
+ )
+
  */
 
