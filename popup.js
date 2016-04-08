@@ -11,10 +11,8 @@ chrome.tabs.query({
 
     var coord = new Array();
     var zoom;
-    console.log(window.location);
 
     var coordarray = url.match(/-?[0-9]{0,3}\.[0-9]{6}/ig); //универсальная функция для поиска координат
-
 
     if(/yandex|maps/.test(url)){   //ищем яндекс И мапс применяя метод test
 
@@ -96,8 +94,16 @@ chrome.tabs.query({
         document.getElementById("google").className='hidden';
 
         // BING
-    } else if(host_clean == 'bing' && url_parts[3] == 'maps'){
-        var provider_string_0 = url.split( '?' )[1];
+
+
+
+    } else if(/bing|maps||mapspreview/.test(url)) {
+
+        var link = document.getElementById("MapControl_MapControl");
+        console.log(link, document.getElementById("MapControl_MapControl"));
+        console.log(tabs);
+
+        /*  var provider_string_0 = url.split( '?' )[1];
         var provider_string = provider_string_0.split('&');
 
         var length = provider_string.length;
@@ -124,7 +130,7 @@ chrome.tabs.query({
         } else {
             document.getElementById("bing_map").className='hidden';
         }
-
+*/
         // BESTMAPS
     } else if (host_clean == 'bestmaps'){
 
@@ -206,7 +212,6 @@ chrome.tabs.query({
             document.getElementById("wikimapia").className = 'hidden';
 
     }
-        console.log(coordarray);
     }
 
        /* var provider_string_0 = url.split( '#' )[1];

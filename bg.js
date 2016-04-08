@@ -3,7 +3,7 @@
     chrome.pageAction.setTitle({tabId: tab.id,title:"Другие карты"});
 
     var url_parts = tab.url.split( '/' ); // разбиваем весь урл на массив с помощью слеша
-    var host = url_parts[2]; // берем третий элемент этого массива - домен:     http://domain.ru/map
+    var host = url_parts[2]; // берем 2 элемент этого массива - домен:     http://domain.ru/map
     var host_parts = host.split( '.' ); // разбиваем домен на состовные части точкой
     var host_clean = host_parts[host_parts.length-2]; // берем основной домен (yandex, google, bestmaps)
 
@@ -11,7 +11,9 @@
         ['bestmaps', 'openstreetmap', 'here', 'wikimapia'].indexOf(host_clean) != -1 ||
         (host_clean == 'google' && url_parts[3] == 'maps') ||
         (host_clean == 'yandex' && url_parts[3] == 'maps') ||
-        (host_clean == 'bing' && url_parts[3] == 'maps')
+        (host_clean == 'panoramio' && url_parts[3] == 'map')||
+        (host_clean == 'bing' && ['mapspreview|maps'].indexOf(url_parts[3]))
+
         //(host_clean == 'yandex' && host_parts[host_parts.length-3] == 'maps')
     ) {
         chrome.pageAction.show(tab.id);
