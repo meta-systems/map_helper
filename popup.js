@@ -11,8 +11,11 @@ chrome.tabs.query({
 
     var coord = new Array();
     var zoom;
+    console.log(url);
 
     var coordarray = url.match(/-?[0-9]{0,3}\.[0-9]{6}/ig); //универсальная функция для поиска координат
+
+    console.log(coordarray);
 
     if(/yandex|maps/.test(url)){   //ищем яндекс И мапс применяя метод test
 
@@ -100,8 +103,7 @@ chrome.tabs.query({
     } else if(/bing|maps||mapspreview/.test(url)) {
 
         var link = document.getElementById("MapControl_MapControl");
-        console.log(link, document.getElementById("MapControl_MapControl"));
-        console.log(tabs);
+        console.log(link);
 
         /*  var provider_string_0 = url.split( '?' )[1];
         var provider_string = provider_string_0.split('&');

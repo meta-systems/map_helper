@@ -1,5 +1,5 @@
 ﻿chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    chrome.pageAction.setIcon({tabId: tab.id,path:"icon.png"});
+    chrome.pageAction.setIcon({tabId: tab.id,path:"icon16.png"});
     chrome.pageAction.setTitle({tabId: tab.id,title:"Другие карты"});
 
     var url_parts = tab.url.split( '/' ); // разбиваем весь урл на массив с помощью слеша
@@ -16,8 +16,10 @@
 
         //(host_clean == 'yandex' && host_parts[host_parts.length-3] == 'maps')
     ) {
-        chrome.pageAction.show(tab.id);
     }
+    chrome.pageAction.show(tab.id);
+
+
 });
 
 /* 
