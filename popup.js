@@ -11,28 +11,22 @@ chrome.tabs.query({
 
     var coord = new Array();
     var zoom;
-    console.log(url);
 
     var coordarray = url.match(/-?[0-9]{0,3}\.[0-9]{6}/ig); //универсальная функция для поиска координат
 
     console.log(coordarray);
 
-    if(/yandex|maps/.test(url)){   //ищем яндекс И мапс применяя метод test
+    //YANDEX
 
-        coord[1] = coordarray[1];
+    if(/(yandex.*maps)/.test(url)){   //ищем яндекс И мапс применяя метод test
+
+        coord[1] = coordarray[1]; // не переварачиваем координаты. у яндекса широта-долгота наооборот будь он неладен...
         coord[0] = coordarray[0];
 
         var zoomya = url.match(/z=[0-9]{1,2}/ig);  //ищем z=XX
 
         zoom = zoomya[0].slice(2); //  убираем z=
-
-        if (url.match(/l=sat/ig)) {        // ищем l=sat-это спутник
-            document.getElementById("yandex").className='hidden';
-        } else {
-            document.getElementById("yandex_map").className='hidden';
-
-        }
-
+        console.log(zoom);
 
  /*   if(host_clean == 'yandex' && host_parts[host_parts.length-3] == 'maps'){
 
@@ -71,7 +65,59 @@ chrome.tabs.query({
 */
 
         // GOOGLE
-    } else if (host_clean == 'google' && url_parts[3] == 'maps'){
+    }
+    if(/(google.*maps)/.test(url)) {   //ищем гугл И мапс применяя метод test
+
+        coord[1] = coordarray[0];
+        coord[0] = coordarray[1];
+
+        if (zoommpercent = url.match(/[0-9]{0,2}\.[0-9]{2}z/ig)){ //если зум в процентах-это карта -- ищем 123456m
+
+            zoom = zoommpercent[0].slice(0, -4);
+
+        }
+
+       if (zoommeters = url.match(/([0-9]{2,8}m)/ig)){  //если зум в метрах-это спутинк -- ищем 123456m
+
+            var meters = zoommeters[0].slice(0, -1); //режем м
+
+            zoom = getzoom(meters);// функция для преобразования M -> Zoom (ну убирай в подвал)
+
+            function getzoom(meters) {
+
+                if (meters < 533) {
+                    return 17;
+
+                } else if (meters < 1066) {
+                    return 16;
+
+                } else if (meters < 2132) {
+                    return 15;
+
+                } else if (meters < 4267) {
+                    return 14;
+
+                } else if (meters < 8539) {
+                    return 13;
+
+                } else if (meters < 17074) {
+                    return 12;
+
+                } else if (meters < 34153) {
+                    return 11;
+
+                } else if (meters < 68230) {
+                    return 10;
+
+                } else {
+                    return 9;
+                }
+            }
+       }
+
+
+
+   /* else if (host_clean == 'google' && url_parts[3] == 'maps'){
 
         if(url_parts.length >= 5 && url_parts[4]){
             var url_coord_data = url_parts[4].split(',');
@@ -94,16 +140,21 @@ chrome.tabs.query({
                 }
             }
         }
-        document.getElementById("google").className='hidden';
 
+    if (url.match(/data/ig)) {        // ищем data-это спутник
+    document.getElementById("google").className = 'hidden';
+    } else {
+    document.getElementById("yandex_map").className = 'hidden';
+    }
+
+        document.getElementById("google").className='hidden';
+*/
         // BING
 
 
-
-    } else if(/bing|maps||mapspreview/.test(url)) {
+    } else if(/bing.*maps||mapspreview/.test(url)) {
 
         var link = document.getElementById("MapControl_MapControl");
-        console.log(link);
 
         /*  var provider_string_0 = url.split( '?' )[1];
         var provider_string = provider_string_0.split('&');
@@ -166,7 +217,8 @@ chrome.tabs.query({
         // Panaramio
     }
 
-    else if(/panaramio|map/.test(url)) {
+    else if(/(panaramio.*map)/.test(url)) {
+
 
         coord[0] = coordarray[1];
         coord[1] = coordarray[0];
@@ -306,35 +358,9 @@ chrome.tabs.query({
     //chrome.tabs.create({url: '}, function(){});
 });
 
-function getCoordinatesFromMeters(meters) {
-    if(meters < 533){
-        return 17;
 
-    } else if(meters < 1066){
-        return 16;
 
-    } else if(meters < 2132){
-        return 15;
 
-    } else if(meters < 4267){
-        return 14;
-
-    } else if(meters < 8539){
-        return 13;
-
-    } else if(meters < 17074){
-        return 12;
-
-    } else if(meters < 34153){
-        return 11;
-
-    } else if(meters < 68230){
-        return 10;
-
-    } else {
-        return 9;
-    }
-}
 /* 
  // Run when document's DOM is ready.
  document.addEventListener('DOMContentLoaded', function () {
