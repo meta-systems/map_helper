@@ -358,7 +358,22 @@ chrome.tabs.query({
     //chrome.tabs.create({url: '}, function(){});
 });
 
+function onWindowLoad() {
 
+    console.log('popup.js  onWindowLoad()');
+
+    chrome.tabs.executeScript(null, {
+        file: "content_script.js"
+    }, function() {
+        // If you try and inject into an extensions page or the webstore/NTP you'll get an error
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError.message);
+        }
+    });
+
+}
+
+window.onload = onWindowLoad;
 
 
 /* 
