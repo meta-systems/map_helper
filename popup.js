@@ -41,7 +41,8 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("lon").innerText = coord[0];
 
         // GE
-        document.getElementById("earth_kml").href='http://bestmaps.ru/kml_generate/?lat='+coord[1]+'&lon='+coord[0];
+        // FIXME: link for a new Bestmaps version will be changed
+        document.getElementById("earth_kml").href='http://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
 
         document.getElementsByClassName("coordLine")[0].classList.remove("hidden");
     }
