@@ -170,7 +170,7 @@ chrome.tabs.query({
         coord[1] = provider_string[1];
         coord[0] = provider_string[2];
 
-        document.getElementById("osm").className='hidden';
+        document.getElementById("osm").className='selected';
 
 
     } // HERE
@@ -186,9 +186,9 @@ chrome.tabs.query({
         coord[0] = provider_string[1];
 
         if(provider_string[5] == 'normal.day'){
-            document.getElementById("here_map").className='hidden';
+            document.getElementById("here_map").className='selected';
         } else {
-            document.getElementById("here").className='hidden';
+            document.getElementById("here").className='selected';
         }
 
 
@@ -204,9 +204,9 @@ chrome.tabs.query({
         zoom = zoomwiki[0].slice(2);
 
         if (url.match(/&m=w/ig)) {
-            document.getElementById("wikimapia_map").className = 'hidden';
+            document.getElementById("wikimapia_map").className = 'selected';
         } else {
-            document.getElementById("wikimapia").className = 'hidden';
+            document.getElementById("wikimapia").className = 'selected';
         }
     }
 
