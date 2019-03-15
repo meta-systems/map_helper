@@ -1,3 +1,61 @@
+var set_coordinates = function (coord, zoom) {
+    if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 пораметра
+        // original
+
+        document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl';
+        document.getElementById("yandex_map").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=map';
+
+        document.getElementById("google").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=h&z='+zoom;
+        document.getElementById("google_map").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=m&z='+zoom;
+
+        document.getElementById("wikimapia").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=b';
+        document.getElementById("wikimapia_map").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=m';
+
+        document.getElementById("here").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',satellite';
+        document.getElementById("here_map").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',normal';
+
+        document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
+        document.getElementById("bing_map").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=r';
+
+        document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
+        //document.getElementById("mail").href='http://maps.mail.ru/?z='+zoom+'&ll='+coord[0]+','+coord[1];
+
+        // bestmaps
+
+        document.getElementById("bestmaps_y").href='http://bestmaps.ru/map/yandex/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_y_map").href='http://bestmaps.ru/map/yandex/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+
+        document.getElementById("bestmaps_g").href='http://bestmaps.ru/map/google/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_g_map").href='http://bestmaps.ru/map/google/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+
+        document.getElementById("bestmaps_bing").href='http://bestmaps.ru/map/bing/aerial/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_here").href='http://bestmaps.ru/map/here/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+
+        document.getElementById("bestmaps_osm").href='http://bestmaps.ru/map/osm/Mapnik/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps_2gis").href='http://bestmaps.ru/map/2gis/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+
+        // coord
+        document.getElementById("lat").innerText = coord[1];
+        document.getElementById("lon").innerText = coord[0];
+
+        // GE
+        document.getElementById("earth_kml").href='http://bestmaps.ru/kml_generate/?lat='+coord[1]+'&lon='+coord[0];
+
+        document.getElementsByClassName("coordLine")[0].classList.remove("hidden");
+    }
+    else {
+        document.getElementsByClassName("coordLine")[0].classList.add("hidden");
+    }
+};
+
+//listen for call from content_script(browser scope)
+chrome.runtime.onMessage.addListener(function(request, sender) {
+    if(request.coords.lat && request.coords.lon) {
+        set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
+    }
+});
+
 chrome.tabs.query({
     'active': true,
     'lastFocusedWindow': true
@@ -149,63 +207,16 @@ chrome.tabs.query({
             document.getElementById("wikimapia_map").className = 'hidden';
         } else {
             document.getElementById("wikimapia").className = 'hidden';
-
+        }
     }
-    }
 
-    if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 пораметра
-        // original
-
-        document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl';
-        document.getElementById("yandex_map").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=map';
-
-        document.getElementById("google").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=h&z='+zoom;
-        document.getElementById("google_map").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=m&z='+zoom;
-
-        document.getElementById("wikimapia").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=b';
-        document.getElementById("wikimapia_map").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=m';
-
-        document.getElementById("here").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',satellite';
-        document.getElementById("here_map").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',normal';
-
-        document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
-        document.getElementById("bing_map").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=r';
-
-        document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
-        document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
-        //document.getElementById("mail").href='http://maps.mail.ru/?z='+zoom+'&ll='+coord[0]+','+coord[1];
-
-        // bestmaps
-
-        document.getElementById("bestmaps_y").href='http://bestmaps.ru/map/yandex/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-        document.getElementById("bestmaps_y_map").href='http://bestmaps.ru/map/yandex/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-
-        document.getElementById("bestmaps_g").href='http://bestmaps.ru/map/google/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-        document.getElementById("bestmaps_g_map").href='http://bestmaps.ru/map/google/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-
-        document.getElementById("bestmaps_bing").href='http://bestmaps.ru/map/bing/aerial/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-        document.getElementById("bestmaps_here").href='http://bestmaps.ru/map/here/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-
-        document.getElementById("bestmaps_osm").href='http://bestmaps.ru/map/osm/Mapnik/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-        document.getElementById("bestmaps_2gis").href='http://bestmaps.ru/map/2gis/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-
-        // coord
-        document.getElementById("lat").innerText = coord[1];
-        document.getElementById("lon").innerText = coord[0];
-
-        // GE
-        document.getElementById("earth_kml").href='http://bestmaps.ru/kml_generate/?lat='+coord[1]+'&lon='+coord[0];
-    } else {
-
-        document.getElementsByClassName("coordLine")[0].classList.add("hidden");
-
-    }
+    set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
 });
 
 function onWindowLoad() {
 
-    console.log('popup.js  onWindowLoad()');
+    //console.log('popup.js  onWindowLoad()');
 
     chrome.tabs.executeScript(null, {
         file: "content_script.js"
@@ -219,10 +230,3 @@ function onWindowLoad() {
 }
 
 window.onload = onWindowLoad;
-
-
-/* 
- // Run when document's DOM is ready.
- document.addEventListener('DOMContentLoaded', function () {
- });
- */

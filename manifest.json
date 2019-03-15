@@ -18,5 +18,11 @@
     "background": {
 		"scripts": ["bg.js"]
 	},
-	"permissions": [ "tabs", "http://*/*", "https://*/*" ]
+	"permissions": [ "tabs", "http://*/*", "https://*/*", "storage" ],
+	"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],
+			"js": ["content_script.js"]
+		}
+	],
 }
