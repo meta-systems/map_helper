@@ -115,22 +115,6 @@ chrome.tabs.query({
         document.getElementById("osm").className='hidden';
 
 
-        // Panaramio
-    }
-
-    else if(/(panaramio.*map)/.test(url)) {
-
-
-        coord[0] = coordarray[1];
-        coord[1] = coordarray[0];
-
-        var zoompa = url.match(/z=[0-9]{1,2}/ig);
-
-        zoom = zoompa[0].slice(2); //
-
-
-        document.getElementById("panaramio").className = 'hidden';
-
     } // HERE
 
     else if (host_clean == 'here'){
@@ -188,7 +172,6 @@ chrome.tabs.query({
         document.getElementById("bing_map").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=r';
 
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
-        document.getElementById("panaramio").href='http://www.panoramio.com/map#lt='+coord[1]+'&ln='+coord[0]+'&z='+zoom+'&k=1&a=1&tab=1&pl=all';
         document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
         //document.getElementById("mail").href='http://maps.mail.ru/?z='+zoom+'&ll='+coord[0]+','+coord[1];
 

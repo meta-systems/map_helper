@@ -33,8 +33,7 @@
  if(/bestmaps|openstreetmap|here|wikimapia/.test(url)||
  /google|maps/.test(url)||
  /yandex|maps/.test(url)||
- /bing|mapspreview/.test(url)||
- /panaramio|map/.test(url)
+ /bing|mapspreview/.test(url)
  )
 
  */
