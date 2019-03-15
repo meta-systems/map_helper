@@ -27,8 +27,8 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("bestmaps_y").href='http://bestmaps.ru/map/yandex/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("bestmaps_y_map").href='http://bestmaps.ru/map/yandex/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
-        document.getElementById("bestmaps_g").href='http://bestmaps.ru/map/google/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-        document.getElementById("bestmaps_g_map").href='http://bestmaps.ru/map/google/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        //document.getElementById("bestmaps_g").href='http://bestmaps.ru/map/google/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        //document.getElementById("bestmaps_g_map").href='http://bestmaps.ru/map/google/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
         document.getElementById("bestmaps_bing").href='http://bestmaps.ru/map/bing/aerial/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("bestmaps_here").href='http://bestmaps.ru/map/here/hybrid/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
