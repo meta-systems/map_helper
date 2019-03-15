@@ -54,7 +54,9 @@ var url;
 
 //listen for call from content_script(browser scope)
 chrome.runtime.onMessage.addListener(function(request, sender) {
-    if(request.coords.lat && request.coords.lon && /bing.*maps/.test(url)) {
+    var is_bing = /bing.*maps/.test(url);
+    var is_loadmap = /loadmap\.net/.test(url);
+    if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap)) {
         set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
     }
 });
