@@ -78,7 +78,6 @@ chrome.tabs.query({
     console.log(coordarray);
 
     //YANDEX
-
     if(/(yandex.*maps)/.test(url)){   //ищем яндекс И мапс применяя метод test
 
         coord[1] = coordarray[1]; // не переварачиваем координаты. у яндекса широта-долгота наооборот будь он неладен...
@@ -88,9 +87,10 @@ chrome.tabs.query({
 
         zoom = zoomya[0].slice(2); //  убираем z=
         console.log(zoom);
-        // GOOGLE
+
     }
-    if(/(google.*maps)/.test(url)) {   //ищем гугл И мапс применяя метод test
+    // GOOGLE
+    else if(/(google.*maps)/.test(url)) {   //ищем гугл И мапс применяя метод test
 
         coord[1] = coordarray[0];
         coord[0] = coordarray[1];
@@ -138,16 +138,15 @@ chrome.tabs.query({
                 }
             }
        }
-
-        // BING
-
-
-    } else if(/bing.*maps/.test(url)) { // /bing.*maps||mapspreview/
+    }
+    // BING
+    else if(/bing.*maps/.test(url)) { // /bing.*maps||mapspreview/
 
         var link = document.getElementById("MapControl_MapControl");
 
-        // BESTMAPS
-    } else if (host_clean == 'bestmaps'){
+    }
+    // BESTMAPS
+    else if (host_clean === 'bestmaps'){
 
         // разбиваем урл на две части подстрокой '.ru/map/'
         var map_parts = url.split('.ru/map/');
@@ -161,8 +160,9 @@ chrome.tabs.query({
             }
         }
 
-        // OSM
-    } else if (host_clean == 'openstreetmap'){
+    }
+    // OSM
+    else if (host_clean === 'openstreetmap'){
 
         var provider_string_0 = url.split( '#' )[1];
         var provider_string_00 = provider_string_0.split('=')[1];
@@ -175,10 +175,9 @@ chrome.tabs.query({
 
         document.getElementById("osm").className='selected';
 
-
-    } // HERE
-
-    else if (host_clean == 'here'){
+    }
+    // HERE
+    else if (host_clean === 'here'){
 
         var provider_string_0 = url.split( '/?map=' )[1];
         var provider_string = provider_string_0.split(',');
@@ -194,10 +193,9 @@ chrome.tabs.query({
             document.getElementById("here").className='selected';
         }
 
-
-        // WIKIMAPIA
-
-    } else if (host_clean == 'wikimapia') {
+    }
+    // WIKIMAPIA
+    else if (host_clean === 'wikimapia') {
 
         coord[1] = coordarray[0];
         coord[0] = coordarray[1];
@@ -211,6 +209,11 @@ chrome.tabs.query({
         } else {
             document.getElementById("wikimapia").className = 'selected';
         }
+    }
+    //Loadmap
+    else if (host_clean === 'loadmap') {
+
+        document.getElementById("topo").className = 'selected';
     }
 
     set_coordinates(coord, zoom);
