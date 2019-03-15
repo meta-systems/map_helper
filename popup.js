@@ -81,7 +81,7 @@ chrome.tabs.query({
         // BING
 
 
-    } else if(/bing.*maps||mapspreview/.test(url)) {
+    } else if(/bing.*maps/.test(url)) { // /bing.*maps||mapspreview/
 
         var link = document.getElementById("MapControl_MapControl");
 
