@@ -197,7 +197,8 @@ chrome.tabs.query({
         document.getElementById("earth_kml").href='http://bestmaps.ru/kml_generate/?lat='+coord[1]+'&lon='+coord[0];
     } else {
 
-        //console.error('Coord not found');
+        document.getElementsByClassName("coordLine")[0].classList.add("hidden");
+
     }
     //chrome.tabs.create({url: '}, function(){});
 });
