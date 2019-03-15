@@ -27,43 +27,6 @@ chrome.tabs.query({
 
         zoom = zoomya[0].slice(2); //  убираем z=
         console.log(zoom);
-
- /*   if(host_clean == 'yandex' && host_parts[host_parts.length-3] == 'maps'){
-
-
-        var provider_string_0 = url.split( '?' )[1];
-        var provider_string = provider_string_0.split('&');
-
-        var length = provider_string.length;
-        var param = '';
-
-        for (var i = 0; i < length; i++) {
-
-            param = provider_string[i].split('=')[0];
-
-            // map type
-            if(param == 'z'){
-                zoom = provider_string[i].split('=')[1];
-            }
-
-            if(param == 'l'){
-                var mt = provider_string[i].split('=')[1].split('%2C')[0];
-            }
-
-            // coord
-            if(param == 'll'){
-                coord = provider_string[i].split('=')[1].split('%2C'); // массив
-            }
-
-        }
-
-        if(mt == 'sat'){
-            document.getElementById("yandex").className='hidden';
-        } else {
-            document.getElementById("yandex_map").className='hidden';
-        }
-*/
-
         // GOOGLE
     }
     if(/(google.*maps)/.test(url)) {   //ищем гугл И мапс применяя метод test
@@ -115,40 +78,6 @@ chrome.tabs.query({
             }
        }
 
-
-
-   /* else if (host_clean == 'google' && url_parts[3] == 'maps'){
-
-        if(url_parts.length >= 5 && url_parts[4]){
-            var url_coord_data = url_parts[4].split(',');
-            if(url_coord_data && url_coord_data.length >= 3){
-                coord[0] = url_coord_data[1];
-                coord[1] = url_coord_data[0].substr(1); // удаляем собаку в первом сегменте @
-                var zoom_type = url_coord_data[2].slice(-1);
-                switch (zoom_type){
-                    case 'z':
-                        zoom = parseInt( url_coord_data[2].slice(0, -1) ); // slice 0, -1 отрезает самый последний символ строки
-                        break;
-
-                    case 'm':
-                        var meters = url_coord_data[2].slice(0, -1);
-                        zoom = getCoordinatesFromMeters(meters);
-                        break;
-
-                    default:
-                        throw new SyntaxError("Zoom type not found");
-                }
-            }
-        }
-
-    if (url.match(/data/ig)) {        // ищем data-это спутник
-    document.getElementById("google").className = 'hidden';
-    } else {
-    document.getElementById("yandex_map").className = 'hidden';
-    }
-
-        document.getElementById("google").className='hidden';
-*/
         // BING
 
 
@@ -156,34 +85,6 @@ chrome.tabs.query({
 
         var link = document.getElementById("MapControl_MapControl");
 
-        /*  var provider_string_0 = url.split( '?' )[1];
-        var provider_string = provider_string_0.split('&');
-
-        var length = provider_string.length;
-        var param = '';
-
-        for (var i = 0; i < length; i++) {
-            param = provider_string[i].split('=')[0];
-            // zoom
-            if(param == 'lvl'){
-                zoom = provider_string[i].split('=')[1];
-            }
-            // map type
-            if(param == 'sty'){
-                var mt = provider_string[i].split('=')[1].split('%2C')[0];
-            }
-            // coord
-            if(param == 'cp'){
-                coord = provider_string[i].split('=')[1].split('~'); // массив
-            }
-        }
-
-        if(mt == 'h'){
-            document.getElementById("bing").className='hidden';
-        } else {
-            document.getElementById("bing_map").className='hidden';
-        }
-*/
         // BESTMAPS
     } else if (host_clean == 'bestmaps'){
 
@@ -267,46 +168,6 @@ chrome.tabs.query({
 
     }
     }
-
-       /* var provider_string_0 = url.split( '#' )[1];
-        var provider_string = provider_string_0.split('&');
-
-        var length = provider_string.length;
-        var param = '';
-
-        for (var i = 0; i < length; i++) {
-
-            param = provider_string[i].split('=')[0];
-
-            // zoom
-            if(param == 'z'){
-                var zoom = provider_string[i].split('=')[1];
-            }
-
-            // lat
-            if(param == 'lat'){
-                var lat = provider_string[i].split('=')[1];
-            }
-
-            // lon
-            if(param == 'lon'){
-                var lon = provider_string[i].split('=')[1];
-            }
-
-
-            // map type
-            if(param == 'm'){
-                var mt = provider_string[i].split('=')[1].split('%2C')[0];
-                if(mt == 'b'){
-                    document.getElementById("wikimapia").className='hidden';
-                } else {
-                    document.getElementById("wikimapia_map").className='hidden';
-                }
-            }
-        }
-        coord[0] = lon;
-        coord[1] = lat;
-    }*/
 
     if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 пораметра
         // original
