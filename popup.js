@@ -49,9 +49,11 @@ var set_coordinates = function (coord, zoom) {
     }
 };
 
+var url;
+
 //listen for call from content_script(browser scope)
 chrome.runtime.onMessage.addListener(function(request, sender) {
-    if(request.coords.lat && request.coords.lon) {
+    if(request.coords.lat && request.coords.lon && /bing.*maps/.test(url)) {
         set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
     }
 });
@@ -61,7 +63,7 @@ chrome.tabs.query({
     'lastFocusedWindow': true
 }, function (tabs) {
 
-    var url = tabs[0].url;
+    url = tabs[0].url;
     var url_parts = url.split( '/' );
     var host = url_parts[2];
     var host_parts = host.split( '.' );
@@ -146,17 +148,17 @@ chrome.tabs.query({
         // BESTMAPS
     } else if (host_clean == 'bestmaps'){
 
-        var provider_string_0 = url.split( '.ru/map/' )[1]; // разбиваем урл на две части подстрокой '.ru/map/'
-        var provider_string = provider_string_0.split('/'); // разбиваем правую часть урла слешом
+        // разбиваем урл на две части подстрокой '.ru/map/'
+        var map_parts = url.split('.ru/map/');
+        if(map_parts.length > 1) {
+            var provider_string = map_parts[1].split('/'); // разбиваем правую часть урла слешом
+            if(provider_string.length > 4) {
+                zoom = provider_string[2];
 
-        var length = provider_string.length;
-        var param = '';
-
-        zoom = provider_string[2];
-
-        coord[1] = provider_string[3];
-        coord[0] = provider_string[4];
-
+                coord[1] = provider_string[3];
+                coord[0] = provider_string[4];
+            }
+        }
 
         // OSM
     } else if (host_clean == 'openstreetmap'){
