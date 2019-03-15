@@ -89,7 +89,13 @@ chrome.tabs.query({
         var zoomya = url.match(/z=[0-9]{1,2}/ig);  //ищем z=XX
 
         zoom = zoomya[0].slice(2); //  убираем z=
-        console.log(zoom);
+
+        if(/sat/.test(url)) {
+            document.getElementById("yandex").className='selected';
+        }
+        else {
+            document.getElementById("yandex_map").className='selected';
+        }
 
     }
     // GOOGLE
@@ -190,10 +196,10 @@ chrome.tabs.query({
         coord[1] = provider_string[0];
         coord[0] = provider_string[1];
 
-        if(provider_string[5] == 'normal.day'){
-            document.getElementById("here_map").className='selected';
-        } else {
+        if(/satellite/.test(url)){
             document.getElementById("here").className='selected';
+        } else {
+            document.getElementById("here_map").className='selected';
         }
 
     }
