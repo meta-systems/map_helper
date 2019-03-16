@@ -1,27 +1,23 @@
 <!doctype html>
 <html>
 <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>Bestmaps Chrome Popup</title>
     <style>
-        a:hover {
-            text-decoration:underline;
-        }
         a {
-            color:#227AA7;
+            color:#666;
             text-decoration:none;
         }
         body {
-            min-width: 157px;
+            min-width: 470px;
             overflow-x: hidden;
             font-family:arial;
             font-size:13px;
+            padding:25px 5px 25px 25px;
+            margin:0;
         }
         img {
-            margin: 5px;
-            border: 2px solid black;
+            margin: 0;
             vertical-align: middle;
-            width: 75px;
-            height: 75px;
         }
         .selected {
             color:#000;
@@ -45,9 +41,6 @@
         }
         td {
             padding:5px 5px;
-        }
-        .linksTable a {
-            padding:2px 4px;
         }
         td.coordTD {
             padding-left:8px;
@@ -76,67 +69,153 @@
         .bestmaps td {
             padding-top:30px;
         }
+
+        .providers img {
+            height:26px;
+            margin:0 auto 5px;
+            display:block;
+        }
+        .button {
+            border:1px solid #ddd;
+            padding:6px 10px;
+            border-radius:4px;
+            box-sizing: border-box;
+            height:35px;
+            display:inline-block;
+        }
+        .compare_btn_started {
+            padding:3px 7px;
+            border:4px solid #219653;
+            /*transition: border 2s;
+            transition: padding 2s;*/
+        }
+        .compare_start_btn {
+            margin:20px;
+        }
+
+        .providers {
+            margin-bottom:15px;
+        }
+        .providers a:hover {
+            background:#f8f8f8;
+            border-color:#cacaca;
+            text-decoration:none;
+        }
+        .providers a {
+            padding:6px 2px;
+            border-radius:4px;
+            border:1px solid #E0E0E0;
+            color:#555;
+            display:inline-block;
+            width:60px;
+            text-align:center;
+
+            box-sizing: border-box;
+            margin:0 13px 10px 0;
+            position:relative;
+        }
+        .providers_compare .compare_disabled {
+            opacity:0.5;
+            pointer-events: none;
+            display:none;
+        }
+        .providers_compare .compare_disabled img {
+            filter: grayscale(1);
+        }
+        .providers_compare a:hover {
+            padding:3px 0px;
+            border:4px solid #219653;
+            border:4px solid #77CD9C;
+        }
+        .providers_compare a:hover span {
+            background:#77CD9C;
+            width:19px;
+            height:19px;
+            border-radius:15px;
+            position:absolute;
+            top:-11px;
+            right:-11px;
+            font-size:17px;
+            line-height:19px;
+            color:white;
+            font-weight:bold;
+            text-align:center;
+            display:block;
+        }
+        .section_label {
+            margin-bottom:10px;
+        }
+        #providers_list {
+            min-width:430px;
+            margin-top:10px;
+        }
+        .providers span {
+            display:none;
+        }
+
     </style>
 </head>
 <body>
-<table class="linksTable">
-    <tr>
-    </tr>
-    <tr>
-        <td class="label">SAT</td>
-        <td><a title="Sattelite" href="https://www.google.ru/maps" class="" id="google" target="_blank">Google</a></td>
-        <td><a title="Sattelite" href="https://yandex.ru/maps/" class="" id="yandex" target="_blank">Yandex</a></td>
-        <td><a title="Sattelite" href="https://wego.here.com/" class="" id="here" target="_blank">Here</a></td>
-        <td><a title="Sattelite" href="http://wikimapia.org/" class="" id="wikimapia" target="_blank">Wikimapia</a></td>
-        <td><a title="Sattelite" href="http://bing.com/maps" class="" id="bing" target="_blank">Bing</a></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-    </tr>
-    <tr>
-        <td class="label">MAP</td>
-        <td><a title="Map" href="https://www.google.ru/maps" class="" id="google_map" target="_blank">Google</a></td>
-        <td><a title="Map" href="https://yandex.ru/maps/" class="" id="yandex_map" target="_blank">Yandex</a></td>
-        <td><a title="Map" href="https://wego.here.com/" class="" id="here_map" target="_blank">Here</a></td>
-        <td><a title="Map" href="http://wikimapia.org/" class="" id="wikimapia_map" target="_blank">Wikimapia</a></td>
-        <td><a title="Map" href="http://bing.com/maps" class="" id="bing_map" target="_blank">Bing</a></td>
-        <td><a title="Map" href="http://www.openstreetmap.org" class="" id="osm" target="_blank">OSM</a></td>
-        <td><a title="Map" href="http://loadmap.net/" class="" id="topo" target="_blank" title="topographics">Loadmap</a></td>
-        <td></td>
-    </tr>
 
-    <tr class="coordLine">
-        <td class="label">Coord.:</td>
-        <td colspan="5" class="coordTD">
-            <span id="lat" title="Широта" class="coord"></span>, &nbsp;
-            <span id="lon" title="Долгота" class="coord"></span>
-            <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a>
-        </td>
-    </tr>
+<div id="providers_list"> <!-- providers_compare -->
+
+    <div class="section_label">SATTELITE</div>
+
+    <div class="providers">
+        <a target="_blank" id="google" href="https://www.google.ru/maps" class="compare_disabled"><img src="google.svg"/>Google<span>+</span></a>
+        <a target="_blank" id="yandex" href="https://yandex.ru/maps/"><img src="yandex.svg"/>Yandex<span>+</span></a>
+        <a target="_blank" id="here"   href="https://wego.here.com/"><img src="here.svg"/>Here<span>+</span></a>
+        <a target="_blank" id="wiki"   href="http://wikimapia.org/"><img src="wiki.svg"/>Wiki<span>+</span></a>
+        <a target="_blank" id="bing"   href="https://bing.com/maps"><img src="bing.svg"/>Bing<span>+</span></a>
+        <a target="_blank" id="esri"   href="https://bestmaps.ru/map/osm/WorldImagery"><img src="esri.svg"/>ESRI<span>+</span></a>
+    </div>
+        
+    <div class="section_label">MAP</div>
+
+    <div class="providers">
+        <a target="_blank" id="google_map" href="https://www.google.ru/maps" class="compare_disabled"><img src="google.svg"/>Google<span>+</span></a>
+        <a target="_blank" id="yandex_map" href="https://yandex.ru/maps/"><img src="yandex.svg"/>Yandex<span>+</span></a>
+        <a target="_blank" id="osm"        href="https://www.openstreetmap.org" ><img src="osm.png"/>OSM<span>+</span></a>
+        <a target="_blank" id="topo"       href="http://loadmap.net/" class="compare_disabled">Loadmap</a>
+    </div>
+
+</div>
+
+<div class="coordLine">
+    <span class="label">Coord.:</span>
+    <span class="coordTD">
+        <span id="lat" title="Широта" class="coord"></span>, &nbsp;
+        <span id="lon" title="Долгота" class="coord"></span>
+        <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a>
+    </span>
+</div>
 
 
-    <tr class="bestmaps">
-        <td class="label">BM (sat)</td>
-        <!--<td><a title="Sattelite" href="http://bestmaps.ru/map/google" class="" id="bestmaps_g" target="_blank">Google</a></td>-->
-        <td><a title="Sattelite" href="http://bestmaps.ru/map/yandex" class="" id="bestmaps_y" target="_blank">Yandex</a></td>
-        <td><a title="Sattelite" href="http://bestmaps.ru/map/here" class="" id="bestmaps_here" target="_blank">Here</a></td>
-        <td><a title="Sattelite" href="http://bestmaps.ru/map/bing" class="" id="bestmaps_bing" target="_blank">Bing</a></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td class="label">BM (map)</td>
-        <!--<td><a href="http://bestmaps.ru/map/google/map" class="" id="bestmaps_g_map" target="_blank">Google</a></td>-->
-        <td><a href="http://bestmaps.ru/map/yandex/map" class="" id="bestmaps_y_map" target="_blank">Yandex</a></td>
-        <td><a href="http://bestmaps.ru/map/osm/Mapnik" class="" id="bestmaps_osm" target="_blank">OSM</a></td>
-        <td><a href="http://bestmaps.ru/map/2gis/map" class="" id="bestmaps_2gis" target="_blank">2GIS</a></td>
-        <td></td>
-        <td></td>
-    </tr>
+<a href="#" class="button compare_start_btn" id="compare_start_js">Compare</a>
 
-</table>
 <div class="copyright"><a href="http://bestmaps.ru/chrome_extension" title="New window" target="_blank">feedback</a></div>
+
+
+
+<!-- 
+
+https://en.mapy.cz/zakladni?x=28.3204167&y=57.8106319&z=14
+
+<a href="http://bing.com/maps" class="" id="bing_map" target="_blank">Bing</a>
+<a title="Map" href="https://wego.here.com/" class="" id="here_map" target="_blank">Here</a>
+<a title="Map" href="http://wikimapia.org/" class="" id="wikimapia_map" target="_blank">Wikimapia</a>
+
+BM (sat)
+<a href="http://bestmaps.ru/map/yandex" id="bestmaps_y" target="_blank">Yandex</a>
+<a href="http://bestmaps.ru/map/here" id="bestmaps_here" target="_blank">Here</a>
+<a href="http://bestmaps.ru/map/bing" id="bestmaps_bing" target="_blank">Bing</a>
+
+BM (map)
+<a href="http://bestmaps.ru/map/yandex/map" id="bestmaps_y_map" target="_blank">Yandex</a>
+<a href="http://bestmaps.ru/map/osm/Mapnik" id="bestmaps_osm" target="_blank">OSM</a>
+<a href="http://bestmaps.ru/map/2gis/map" id="bestmaps_2gis" target="_blank">2GIS</a>
+-->
+
 
 <script src="popup.js"></script>
 </body>
