@@ -77,11 +77,8 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 
     // Save settings
     document.querySelector('#edit').addEventListener('click', function(event) {
-        if(this.checked){
-            document.getElementById("body").classList.add("edit_mode");
-        } else {
-            document.getElementById("body").classList.remove("edit_mode");
-        }
+        document.getElementById("body").classList.toggle("edit_mode");
+        
     });
 
     var chbx_all = document.querySelectorAll('.chbx');
