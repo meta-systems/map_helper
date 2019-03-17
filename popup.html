@@ -21,7 +21,6 @@
         }
         .selected {
             color:#000;
-            pointer-events: none;
             cursor: default;
             text-decoration:none;
             background:#FFE68E;
@@ -48,14 +47,14 @@
         #earth_kml {
             margin-left:20px;
         }
-        .coordLine td {
-            padding-top:15px;
-        }
         .coord {
             font-size:16px;
         }
+        .copyright a:hover {
+            color:#555;
+        }
         .copyright a {
-            color:#888;
+            color:#aaa;
         }
         .copyright {
             color:#888;
@@ -75,24 +74,32 @@
             margin:0 auto 5px;
             display:block;
         }
-        .button {
+        .btn {
             border:1px solid #ddd;
             padding:6px 10px;
             border-radius:4px;
             box-sizing: border-box;
-            height:35px;
             display:inline-block;
+            height:35px;
+            line-height:23px;
         }
         .compare_btn_started {
             padding:3px 7px;
             border:4px solid #219653;
-            /*transition: border 2s;
-            transition: padding 2s;*/
+        }
+        .control_box {
+            overflow:hidden;
+        }
+        .coordLine {
+            float:left;
+        }
+        .compare_mode .coordLine {
+            display:none;
         }
         .compare_start_btn {
-            margin:20px;
+            margin-right:20px;
+            float:left;
         }
-
         .providers {
             margin-bottom:15px;
         }
@@ -114,20 +121,20 @@
             margin:0 13px 10px 0;
             position:relative;
         }
-        .providers_compare .compare_disabled {
+        .compare_mode .compare_disabled {
             opacity:0.5;
             pointer-events: none;
             display:none;
         }
-        .providers_compare .compare_disabled img {
+        .compare_mode .compare_disabled img {
             filter: grayscale(1);
         }
-        .providers_compare a:hover {
+        .compare_mode #providers_list a:hover {
             padding:3px 0px;
             border:4px solid #219653;
             border:4px solid #77CD9C;
         }
-        .providers_compare a:hover span {
+        .compare_mode #providers_list a:hover span {
             background:#77CD9C;
             width:19px;
             height:19px;
@@ -167,13 +174,13 @@
             display:none;
         }
 
-        #edit:checked + #providers_list a {
+        .edit_mode #providers_list a {
             margin-bottom:25px;
         }
-        #edit:checked + #providers_list .chbx {
+        .edit_mode .chbx {
             display:block;
         }
-        #edit:checked + #providers_list + .control_box .compare_start_btn {
+        .edit_mode .control_box {
             display:none;
         }
         .chbx {
@@ -182,30 +189,48 @@
             left:20px;
             display:none;
         }
-        #edit:checked + #providers_list .provider_hidden {
-            display:inline-block;
+        .edit_mode .provider_hidden {
+            display:inline-block !important;
+            border-color:white !important;
+            color:#aeaeae;
         }
         .providers .provider_hidden {
             display:none;
         }
-        .providers img {
-            filter: grayscale(1);
-            opacity:0.4;
+        .providers .provider_hidden img {
+            filter: grayscale(1) !important;
+            opacity:0.4 !important;
         }
-        .chbx:checked +img {
+        .edit_mode #providers_list img {
             filter: grayscale(0);
             opacity:1;
         }
+        .compare_mode .compare_help {
+            display:block;
+        }
+        .compare_help {
+            display:none;
+        }
+        .settings_save_btn {
+            display:none;
+        }
+        .edit_mode .settings_save_btn {
+            display:inline-block;
+        }
+        .btn_green {
+            background:#219653;
+            color:white;
+        }
     </style>
 </head>
-<body>
+<body id="body"><!-- compare_mode -->
 
 
 
 <label for="edit" class="settings_btn" id="settings" title="Settings"><img src="settings.svg"/></label>
 <input type="checkbox" class="settings_chbx" id="edit" />    
 
-<div id="providers_list"> <!-- providers_compare -->
+<div id="providers_list"> 
 
     <div class="section_label">SATTELITE</div>
 
@@ -237,8 +262,12 @@
 </div>
 
 
+<a href="#" class="btn btn_green settings_save_btn" id="settings_save_js">Save settings</a>
+
 <div class="control_box">
-    <a href="#" class="button compare_start_btn" id="compare_start_js">Compare</a>
+    
+    <a href="#" class="btn compare_start_btn" id="compare_start_js">Compare</a>
+    
     <div class="coordLine">
         <span class="label">Coord.:</span>
         <span class="coordTD">
@@ -247,12 +276,13 @@
             <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a>
         </span>
     </div>
+
+    <div class="compare_help">Choose 2 or 3 maps</div>
+
 </div>
     
 
-
-<div class="copyright"><a href="http://bestmaps.ru/chrome_extension" title="New window" target="_blank">feedback</a></div>
-
+<div class="copyright"><a href="http://bestmaps.ru/chrome_extension" title="New window" target="_blank">about</a></div>
 
 
 <!-- 

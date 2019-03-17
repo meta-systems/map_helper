@@ -64,19 +64,30 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     }
 
     document.getElementById("compare_start_js").addEventListener("click", function(){
-        // document.getElementById("providers_list").className += " providers_compare";
         this.classList.toggle("compare_btn_started");
-        document.getElementById("providers_list").classList.toggle("providers_compare");
+        document.getElementById("body").classList.toggle("compare_mode");
         
     });
 
 
+    // Save settings
+    document.querySelector('#settings_save_js').addEventListener('click', function(event) {
+        document.getElementById("body").classList.remove("edit_mode");
+    })
+
+    // Save settings
+    document.querySelector('#edit').addEventListener('click', function(event) {
+        if(this.checked){
+            document.getElementById("body").classList.add("edit_mode");
+        } else {
+            document.getElementById("body").classList.remove("edit_mode");
+        }
+    });
 
     var chbx_all = document.querySelectorAll('.chbx');
 
     for (var i = 0; i < chbx_all.length; i++) {
         chbx_all[i].addEventListener('click', function(event) {
-            // this.parentElement.className += " provider_hidden";
             this.parentElement.classList.toggle("provider_hidden");
             console.log(this);
         });
