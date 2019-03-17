@@ -64,11 +64,27 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     }
 
     document.getElementById("compare_start_js").addEventListener("click", function(){
-        this.className += " compare_btn_started";
-        document.getElementById("providers_list").className += " providers_compare";
+        // document.getElementById("providers_list").className += " providers_compare";
+        this.classList.toggle("compare_btn_started");
+        document.getElementById("providers_list").classList.toggle("providers_compare");
         
     });
 
+
+
+    var chbx_all = document.querySelectorAll('.chbx');
+
+    for (var i = 0; i < chbx_all.length; i++) {
+        chbx_all[i].addEventListener('click', function(event) {
+            // this.parentElement.className += " provider_hidden";
+            this.parentElement.classList.toggle("provider_hidden");
+            console.log(this);
+        });
+    }
+    
+//     .onclick = function(){
+//      alert('sfdf');
+// }
 
     // document.querySelector("a").addEventListener("click", function(e){
     //     alert('test');
@@ -93,7 +109,7 @@ chrome.tabs.query({
 
     var coordarray = url.match(/-?[0-9]{0,3}\.[0-9]{6}/ig); //универсальная функция для поиска координат
 
-    console.log(coordarray);
+    // console.log(coordarray);
 
     //YANDEX
     if(/(yandex.*maps)/.test(url)){   //ищем яндекс И мапс применяя метод test
