@@ -152,46 +152,104 @@
         .providers span {
             display:none;
         }
+        .settings_btn:hover {
+            opacity:0.7;
+        }
+        .settings_btn {
+            position:absolute;
+            top:20px;
+            right:20px;
+            width:20px;
+            opacity:0.3;
+            cursor:pointer;
+        }
+        .settings_chbx {
+            display:none;
+        }
 
+        #edit:checked + #providers_list a {
+            margin-bottom:25px;
+        }
+        #edit:checked + #providers_list .chbx {
+            display:block;
+        }
+        #edit:checked + #providers_list + .control_box .compare_start_btn {
+            display:none;
+        }
+        .chbx {
+            position:absolute;
+            bottom:-23px;
+            left:20px;
+            display:none;
+        }
+        #edit:checked + #providers_list .provider_hidden {
+            display:inline-block;
+        }
+        .providers .provider_hidden {
+            display:none;
+        }
+        .providers img {
+            filter: grayscale(1);
+            opacity:0.4;
+        }
+        .chbx:checked +img {
+            filter: grayscale(0);
+            opacity:1;
+        }
     </style>
 </head>
 <body>
+
+
+
+<label for="edit" class="settings_btn" id="settings" title="Settings"><img src="settings.svg"/></label>
+<input type="checkbox" class="settings_chbx" id="edit" />    
 
 <div id="providers_list"> <!-- providers_compare -->
 
     <div class="section_label">SATTELITE</div>
 
     <div class="providers">
-        <a target="_blank" id="google" href="https://www.google.ru/maps" class="compare_disabled"><img src="google.svg"/>Google<span>+</span></a>
-        <a target="_blank" id="yandex" href="https://yandex.ru/maps/"><img src="yandex.svg"/>Yandex<span>+</span></a>
-        <a target="_blank" id="here"   href="https://wego.here.com/"><img src="here.svg"/>Here<span>+</span></a>
-        <a target="_blank" id="wiki"   href="http://wikimapia.org/"><img src="wiki.svg"/>Wiki<span>+</span></a>
-        <a target="_blank" id="bing"   href="https://bing.com/maps"><img src="bing.svg"/>Bing<span>+</span></a>
-        <a target="_blank" id="esri"   href="https://bestmaps.ru/map/osm/WorldImagery"><img src="esri.svg"/>ESRI<span>+</span></a>
+        <a target="_blank" id="google" href="https://www.google.ru/maps" class="compare_disabled">
+            <input type="checkbox" class="chbx" checked id="" /> 
+            <img src="google.svg"/>Google
+            <span>+</span>
+        </a>
+        <a target="_blank" id="yandex" href="https://yandex.ru/maps/"><input type="checkbox" class="chbx" checked id=""/><img src="yandex.svg"/>Yandex<span>+</span></a>
+        <a target="_blank" id="here"   href="https://wego.here.com/"><input type="checkbox" class="chbx" checked id=""/><img src="here.svg"/>Here<span>+</span></a>
+        <a target="_blank" id="wiki"   href="http://wikimapia.org/"><input type="checkbox" class="chbx" checked id=""/><img src="wiki.svg"/>Wiki<span>+</span></a>
+        <a target="_blank" id="bing"   href="https://bing.com/maps"><input type="checkbox" class="chbx" checked id=""/><img src="bing.svg"/>Bing<span>+</span></a>
+        <a target="_blank" id="esri"   href="https://bestmaps.ru/map/osm/WorldImagery"><input type="checkbox" class="chbx" checked id="" /><img src="esri.svg"/>ESRI<span>+</span></a>
     </div>
         
     <div class="section_label">MAP</div>
 
     <div class="providers">
-        <a target="_blank" id="google_map" href="https://www.google.ru/maps" class="compare_disabled"><img src="google.svg"/>Google<span>+</span></a>
-        <a target="_blank" id="yandex_map" href="https://yandex.ru/maps/"><img src="yandex.svg"/>Yandex<span>+</span></a>
-        <a target="_blank" id="osm"        href="https://www.openstreetmap.org" ><img src="osm.png"/>OSM<span>+</span></a>
-        <a target="_blank" id="topo"       href="http://loadmap.net/" class="compare_disabled">Loadmap</a>
+        <a target="_blank" id="google_map" href="https://www.google.ru/maps" class="compare_disabled"><input type="checkbox" class="chbx" checked id=""/><img src="google.svg"/>Google<span>+</span></a>
+        <a target="_blank" id="yandex_map" href="https://yandex.ru/maps/"><input type="checkbox" class="chbx" checked id=""/><img src="yandex.svg"/>Yandex<span>+</span></a>
+        <a target="_blank" id="2gis" href="https://2gis.ru/"><input type="checkbox" class="chbx" checked id=""/><img src="2gis.svg"/>2GIS<span>+</span></a>
+        <a target="_blank" id="osm" href="https://www.openstreetmap.org" ><input type="checkbox" class="chbx" checked id=""/><img src="osm.png"/>OSM<span>+</span></a>
+        <a target="_blank" id="topo" href="http://loadmap.net/" class="compare_disabled"><input type="checkbox" class="chbx" checked id=""/><img src="loadmap.svg"/>Loadmap</a>
+        <a target="_blank" id="josm" class="provider_hidden" href="#" ><input type="checkbox" class="chbx" id=""/><img src="josm.svg"/>JOSM</a>
+        <a target="_blank" id="achavi" class="provider_hidden" href="#" ><input type="checkbox" class="chbx" id=""/><img src="achavi.svg"/>Achavi</a>
     </div>
 
 </div>
 
-<div class="coordLine">
-    <span class="label">Coord.:</span>
-    <span class="coordTD">
-        <span id="lat" title="Широта" class="coord"></span>, &nbsp;
-        <span id="lon" title="Долгота" class="coord"></span>
-        <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a>
-    </span>
+
+<div class="control_box">
+    <a href="#" class="button compare_start_btn" id="compare_start_js">Compare</a>
+    <div class="coordLine">
+        <span class="label">Coord.:</span>
+        <span class="coordTD">
+            <span id="lat" title="Широта" class="coord"></span>, &nbsp;
+            <span id="lon" title="Долгота" class="coord"></span>
+            <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a>
+        </span>
+    </div>
 </div>
+    
 
-
-<a href="#" class="button compare_start_btn" id="compare_start_js">Compare</a>
 
 <div class="copyright"><a href="http://bestmaps.ru/chrome_extension" title="New window" target="_blank">feedback</a></div>
 

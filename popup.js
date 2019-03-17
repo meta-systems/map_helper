@@ -18,6 +18,7 @@ var set_coordinates = function (coord, zoom) {
         // document.getElementById("bing_map").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=r';
 
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("josm").href='http://127.0.0.1:8111/load_and_zoom?left=-115.4347819&right=-115.42748&bottom=35.549581590&top=35.5529160';
         //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
         document.getElementById("topo").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
         //document.getElementById("mail").href='http://maps.mail.ru/?z='+zoom+'&ll='+coord[0]+','+coord[1];
@@ -68,10 +69,11 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
         
     });
 
-    document.querySelector("a").addEventListener("click", function(e){
-        alert('test');
-        e.preventDefault(); 
-    });
+
+    // document.querySelector("a").addEventListener("click", function(e){
+    //     alert('test');
+    //     e.preventDefault(); 
+    // });
 
 });
 
