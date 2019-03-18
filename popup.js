@@ -17,6 +17,8 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
         // document.getElementById("bing_map").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=r';
 
+        document.getElementById("2gis").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+zoom;
+
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("josm").href='http://127.0.0.1:8111/load_and_zoom?left=-115.4347819&right=-115.42748&bottom=35.549581590&top=35.5529160';
         //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
@@ -254,8 +256,18 @@ chrome.tabs.query({
     }
     //Loadmap
     else if (host_clean === 'loadmap') {
-
         document.getElementById("topo").className = 'selected';
+    }
+    //2gis
+    else if (host_clean === '2gis') {
+        document.getElementById("2gis").className = 'selected';
+
+        var matches = url.match(/m=([\d.]+)%2C([\d.]+)%2F([\d.]+)/);
+        if(matches !== null) {
+            zoom = matches[3];
+            coord[1] = matches[2];
+            coord[0] = matches[1];
+        }
     }
 
     set_coordinates(coord, zoom);
