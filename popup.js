@@ -285,6 +285,9 @@ function onWindowLoad() {
                 providerLink.onclick = function () {
                     if(document.getElementById('body').classList.contains('compare_mode')) {
                         providerLink.classList.toggle('compare_item');
+                        
+                        // document.querySelector('.preview_' + providerLink.getAttribute('id')).classList.add('preview_active');
+                        console.log('.preview_' + providerLink.getAttribute('id'));
                         return false;
                     }
                 };
