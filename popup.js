@@ -49,9 +49,11 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("earth_kml").href='http://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
 
         document.getElementsByClassName("coordLine")[0].classList.remove("hidden");
+        document.getElementById('compare_start_js').classList.remove("hidden");
     }
     else {
         document.getElementsByClassName("coordLine")[0].classList.add("hidden");
+        document.getElementById('compare_link_js').classList.add("hidden");
         return;
     }
 
