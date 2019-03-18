@@ -65,7 +65,7 @@ var set_coordinates = function (coord, zoom) {
             'wiki': 'osm/Wikimapia',
             'bing': 'bing/satellite',
             'esri': 'osm/WorldImagery',
-            //'mapbox': '',
+            'mapbox': 'osm/map',
             'yandex_map': 'yandex/map',
             '2gis': '2gis/map',
             'osm': 'osm/map'
@@ -324,6 +324,9 @@ function onWindowLoad() {
 
                         if(providerLink.classList.contains('compare_item')) {
                             providerLink.classList.remove('compare_item');
+                            if(preview) {
+                                preview.classList.remove('preview_active');
+                            }
                         }
                         else if(document.querySelectorAll('.compare_item').length < 3) {
                             providerLink.classList.add('compare_item');
