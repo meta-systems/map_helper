@@ -218,6 +218,11 @@ chrome.tabs.query({
 
         document.getElementById("osm").className='selected';
 
+        var matches = url.match(/changeset\/(\d+)/);
+        var achavi_url = 'http://nrenner.github.io/achavi/';
+        if(matches !== null) {
+            document.getElementById("achavi").href = achavi_url + '?changeset=' + matches[1];
+        }
     }
     // HERE
     else if (host_clean === 'here'){
