@@ -158,8 +158,12 @@
         .section_label {
             margin-bottom:10px;
         }
+
+        .compare_mode #providers_list {
+            width:400px;
+            float:left;
+        }
         #providers_list {
-            min-width:430px;
             margin-top:10px;
         }
         .providers span {
@@ -226,6 +230,9 @@
         .btn_green:hover {
             background:#147e41;
         }
+        .clear {
+            clear:both;
+        }
         .btn_green {
             background:#219653;
             color:white;
@@ -233,12 +240,32 @@
             height:30px;
             padding:4px 14px;
         }
+        .map_preview {
+            width:50%;
+            height:130px;
+            background-size:     cover;                      /* <------ */
+            background-repeat:   no-repeat;
+            background-position: center center;
+        }
+        .preview_mapnik {
+            background-image:url(img/map_mapnik.png);
+        }
+        .map_preview_link {
+            float:left;
+            padding:7px;
+            border:1px solid #E0E0E0;
+            border-radius:4px;
+        }
+        .map_preview_box {
+            width:150px;
+        }
     </style>
 </head>
-<body id="body"><!-- compare_mode -->
+<body id="body" class="compare_mode"><!-- compare_mode -->
 
 
 <img class="settings_btn" title="Settings" id="edit" src="img/settings.svg"/>
+
 
 <div id="providers_list"> 
 
@@ -273,6 +300,13 @@
 </div>
 
 
+<a href="#" class="map_preview_link">
+    <div class="map_preview_box">
+        <div class="map_preview preview_mapnik"></div>
+    </div>
+    Compare maps
+</a>
+<div class="clear"></div>
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js">Save settings</a>
 
 <div class="control_box">
