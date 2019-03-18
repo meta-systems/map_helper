@@ -41,8 +41,10 @@ var set_coordinates = function (coord, zoom) {
         // document.getElementById("bestmaps_2gis").href='http://bestmaps.ru/map/2gis/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
         // coord
-        document.getElementById("lat").innerText = coord[1];
-        document.getElementById("lon").innerText = coord[0];
+        // document.getElementById("lat").innerText = coord[1];
+        // document.getElementById("lon").innerText = coord[0];
+
+        document.getElementById("coord_input").value  = coord[1] + ', ' + coord[0];
 
         // GE
         // FIXME: link for a new Bestmaps version will be changed
@@ -281,7 +283,16 @@ chrome.tabs.query({
 
 function onWindowLoad() {
 
-    //console.log('popup.js  onWindowLoad()');
+    // copy title
+    document.getElementById("coord_copy").onclick = function() {
+
+        document.querySelector('#coord_input').select();
+        try {
+            let successful = document.execCommand('copy');
+        } catch(e) {}
+        document.querySelector('#coord_input').blur();
+        return false;
+    }
 
     var chbx_all = document.querySelectorAll('.chbx');
     chbx_all.forEach(function (chbx) {

@@ -35,28 +35,6 @@
         .edit_mode .section_hidden {
             display: block;
         }
-        .label {
-            line-height:1.1em;
-            font-size:12px;
-            color:#777;
-            white-space:nowrap;
-        }
-        td a {
-            display:inline-block;
-            border-radius:3px;
-        }
-        td {
-            padding:5px 5px;
-        }
-        td.coordTD {
-            padding-left:8px;
-        }
-        #earth_kml {
-            margin-left:20px;
-        }
-        .coord {
-            font-size:16px;
-        }
         .copyright a:hover {
             color:#555;
         }
@@ -90,9 +68,6 @@
             height:35px;
             line-height:23px;
         }
-        .control_box {
-            overflow:hidden;
-        }
         .coordLine {
             float:left;
         }
@@ -113,7 +88,7 @@
             background:#eee;
             padding:6px 8px;
             border-radius:4px;
-            margin-top:2px;
+            margin-top:22px;
             margin-right:20px;
             float:left;
             line-height:1em;
@@ -361,6 +336,32 @@
         .compare_exit_cap {
             display:none;
         }
+        .coord_inputP {
+            position:relative;
+        }
+        .coord_input:focus {
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+            outline:none;
+        }
+        .coord_input {
+            padding:7px 11px;
+            border-radius:4px;
+            border:1px solid #ccc;
+        }
+        .copy_btn {
+            height:18px;
+            position:absolute;
+            top:7px;
+            right:6px;
+            cursor:pointer;
+        }
+        .coord_label {
+            padding-bottom:5px; 
+            display:inline-block;
+        }
+        .copy_btn:active + input {
+            background:#FFE68E;
+        }
     </style>
 </head>
 <body id="body">
@@ -426,16 +427,20 @@
     <a href="#" class="compare_start_btn" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap">Compare mode</span><span class="compare_exit_cap">Exit compare mode</span></a>
     
     <div class="coordLine">
-        <span class="label">Map center coordinates:</span>
+        <span class="coord_label">Map center coordinates:</span>
         <span class="coordTD">
-            <span id="lat" title="Широта" class="coord"></span>, &nbsp;
-            <span id="lon" title="Долгота" class="coord"></span>
+            <!-- <span id="lat" title="Широта" class="coord"></span>, &nbsp;
+            <span id="lon" title="Долгота" class="coord"></span> -->
+            
+            <div class="coord_inputP"><img class="copy_btn" src="img/copy.svg" id="coord_copy" title="Copy"/><input type="text" class="coord_input" id="coord_input" /></div>
+            
+
             <!-- <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a> -->
         </span>
     </div>
 
     
-
+    <div class="clear"></div>
 </div>
     
 
