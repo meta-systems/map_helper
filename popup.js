@@ -66,12 +66,6 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
         set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
     }
 
-    document.getElementById("compare_start_js").addEventListener("click", function(){
-        this.classList.toggle("compare_btn_started");
-        document.getElementById("body").classList.toggle("compare_mode");
-        
-    });
-
 });
 
 chrome.tabs.query({
@@ -287,6 +281,13 @@ function onWindowLoad() {
                 if(!providerLink.classList.contains('provider_hidden')) {
                     section_shown = true;
                 }
+
+                providerLink.onclick = function () {
+                    if(document.getElementById('body').classList.contains('compare_mode')) {
+                        providerLink.classList.toggle('compare_item');
+                        return false;
+                    }
+                };
             });
             if(section_shown) {
                 section_label.classList.remove('section_hidden');
@@ -308,6 +309,20 @@ function onWindowLoad() {
     document.querySelector('#settings_save_js').addEventListener('click', function(event) {
         document.getElementById("body").classList.remove("edit_mode");
         check_section_labels();
+    });
+
+    // Compare mode
+    document.getElementById("compare_start_js").addEventListener("click", function(){
+        this.classList.toggle("compare_btn_started");
+        document.getElementById("body").classList.toggle("compare_mode");
+    });
+
+    // Compare link
+    document.getElementById("compare_link_js").addEventListener("click", function(){
+        var providers = document.querySelectorAll('.compare_item');
+        providers.forEach(function (provider) {
+            console.log(provider);
+        });
     });
 
     chrome.tabs.executeScript(null, {
