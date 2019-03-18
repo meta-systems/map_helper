@@ -135,6 +135,10 @@
         .compare_mode .compare_disabled img {
             filter: grayscale(1);
         }
+        .compare_item {
+            padding:3px 0px;
+            border:4px solid #219653 !important;
+        }
         .compare_mode #providers_list a:hover {
             padding:3px 0px;
             border:4px solid #219653;
@@ -160,7 +164,7 @@
         }
 
         .compare_mode #providers_list {
-            width:400px;
+            width:320px;
             float:left;
         }
         #providers_list {
@@ -247,9 +251,8 @@
             background-repeat:   no-repeat;
             background-position: center center;
         }
-        .preview_mapnik {
-            background-image:url(img/map_mapnik.png);
-        }
+        .preview_mapnik {background-image:url(img/map_mapnik.png);}
+        .preview_mapnik {background-image:url(img/map_2gis.png);}
         .map_preview_link {
             float:left;
             padding:7px;
@@ -267,7 +270,7 @@
         }
     </style>
 </head>
-<body id="body" class="compare_mode"><!-- compare_mode -->
+<body id="body" class=""><!-- compare_mode -->
 
 
 <img class="settings_btn" title="Settings" id="edit" src="img/settings.svg"/>
@@ -309,6 +312,7 @@
 <a href="#" class="map_preview_link">
     <div class="map_preview_box">
         <div class="map_preview preview_mapnik"></div>
+        <div class="map_preview preview_2gis"></div>
     </div>
     Compare maps
 </a>
