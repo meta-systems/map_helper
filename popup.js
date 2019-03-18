@@ -322,16 +322,25 @@ function onWindowLoad() {
 
                         var preview = document.querySelector('.preview_' + providerLink.id);
 
+                        // remove from compare
                         if(providerLink.classList.contains('compare_item')) {
                             providerLink.classList.remove('compare_item');
                             if(preview) {
                                 preview.classList.remove('preview_active');
                             }
+                            document.querySelector('#body').classList.remove('compare_full');
                         }
+
+                        // add to compare
                         else if(document.querySelectorAll('.compare_item').length < 3) {
                             providerLink.classList.add('compare_item');
+
                             if(preview) {
                                 preview.classList.add('preview_active');
+                            }
+
+                            if(document.querySelectorAll('.compare_item').length === 3){
+                                document.querySelector('#body').classList.add('compare_full');
                             }
                         }
                         return false;

@@ -222,6 +222,13 @@
         .providers .provider_hidden {
             display:none;
         }
+        .compare_full a:not(.compare_item){
+            pointer-events: none;
+        }
+        .compare_full a:not(.compare_item) img {
+            filter: grayscale(1) ;
+            opacity:0.4 ;
+        }
         .providers .provider_hidden img {
             filter: grayscale(1) !important;
             opacity:0.4 !important;
