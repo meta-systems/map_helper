@@ -320,12 +320,10 @@ function onWindowLoad() {
                 providerLink.onclick = function () {
                     if(document.getElementById('body').classList.contains('compare_mode')) {
 
-                        providerLink.classList.toggle('compare_item');
-                        
-                        // document.querySelector('.preview_' + providerLink.id).classList.add('preview_active');
-                        
-                        console.log('.preview_' + providerLink.getAttribute('id'));
-                        console.log('.preview_' + providerLink.id);
+                        var preview = document.querySelector('.preview_' + providerLink.id);
+                        if(preview) {
+                            preview.classList.add('preview_active');
+                        }
 
                         if(providerLink.classList.contains('compare_item')) {
                             providerLink.classList.remove('compare_item');
