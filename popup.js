@@ -317,6 +317,14 @@ function onWindowLoad() {
         document.getElementById("body").classList.toggle("compare_mode");
     });
 
+    // Compare link
+    document.getElementById("compare_link_js").addEventListener("click", function(){
+        var providers = document.querySelectorAll('.compare_item');
+        providers.forEach(function (provider) {
+            console.log(provider);
+        });
+    });
+
     chrome.tabs.executeScript(null, {
         file: "content_script.js"
     }, function() {
