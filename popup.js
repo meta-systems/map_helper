@@ -320,8 +320,10 @@ function onWindowLoad() {
 
                         providerLink.classList.toggle('compare_item');
                         
-                        // document.querySelector('.preview_' + providerLink.getAttribute('id')).classList.add('preview_active');
+                        // document.querySelector('.preview_' + providerLink.id).classList.add('preview_active');
+                        
                         console.log('.preview_' + providerLink.getAttribute('id'));
+                        console.log('.preview_' + providerLink.id);
 
                         if(providerLink.classList.contains('compare_item')) {
                             providerLink.classList.remove('compare_item');
