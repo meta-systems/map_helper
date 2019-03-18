@@ -321,15 +321,15 @@ function onWindowLoad() {
                     if(document.getElementById('body').classList.contains('compare_mode')) {
 
                         var preview = document.querySelector('.preview_' + providerLink.id);
-                        if(preview) {
-                            preview.classList.add('preview_active');
-                        }
 
                         if(providerLink.classList.contains('compare_item')) {
                             providerLink.classList.remove('compare_item');
                         }
                         else if(document.querySelectorAll('.compare_item').length < 3) {
                             providerLink.classList.add('compare_item');
+                            if(preview) {
+                                preview.classList.add('preview_active');
+                            }
                         }
                         return false;
                     }
