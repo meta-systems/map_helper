@@ -189,8 +189,7 @@ chrome.tabs.query({
     // BING
     else if(/bing.*maps/.test(url)) { // /bing.*maps||mapspreview/
 
-        var link = document.getElementById("MapControl_MapControl");
-
+        document.getElementById("bing").className='selected';
     }
     // BESTMAPS
     else if (host_clean === 'bestmaps'){
@@ -200,6 +199,10 @@ chrome.tabs.query({
             zoom = matches[1];
             coord[1] = matches[2];
             coord[0] = matches[3];
+        }
+
+        if(/map\/osm\/WorldImagery/.test(url)) {
+            document.getElementById("esri").className='selected';
         }
     }
     // OSM
@@ -245,11 +248,12 @@ chrome.tabs.query({
 
         zoom = zoomwiki[0].slice(2);
 
+        document.getElementById("wiki").className = 'selected';
+        /*
         if (url.match(/&m=w/ig)) {
             document.getElementById("wikimapia_map").className = 'selected';
-        } else {
-            document.getElementById("wikimapia").className = 'selected';
         }
+        */
     }
     //Loadmap
     else if (host_clean === 'loadmap') {
