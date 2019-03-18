@@ -159,35 +159,31 @@ chrome.tabs.query({
             zoom = getzoom(meters);// функция для преобразования M -> Zoom (ну убирай в подвал)
 
             function getzoom(meters) {
-
                 if (meters < 533) {
                     return 17;
-
                 } else if (meters < 1066) {
                     return 16;
-
                 } else if (meters < 2132) {
                     return 15;
-
                 } else if (meters < 4267) {
                     return 14;
-
                 } else if (meters < 8539) {
                     return 13;
-
                 } else if (meters < 17074) {
                     return 12;
-
                 } else if (meters < 34153) {
                     return 11;
-
                 } else if (meters < 68230) {
                     return 10;
-
                 } else {
                     return 9;
                 }
             }
+
+           document.getElementById("google").className='selected';
+       }
+       else {
+           document.getElementById("google_map").className='selected';
        }
     }
     // BING
