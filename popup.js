@@ -76,31 +76,13 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     // Save settings
     document.querySelector('#settings_save_js').addEventListener('click', function(event) {
         document.getElementById("body").classList.remove("edit_mode");
-    })
+    });
 
     // Save settings
     document.querySelector('#edit').addEventListener('click', function(event) {
         document.getElementById("body").classList.toggle("edit_mode");
         
     });
-
-    var chbx_all = document.querySelectorAll('.chbx');
-
-    for (var i = 0; i < chbx_all.length; i++) {
-        chbx_all[i].addEventListener('click', function(event) {
-            this.parentElement.classList.toggle("provider_hidden");
-            console.log(this);
-        });
-    }
-    
-//     .onclick = function(){
-//      alert('sfdf');
-// }
-
-    // document.querySelector("a").addEventListener("click", function(e){
-    //     alert('test');
-    //     e.preventDefault(); 
-    // });
 
 });
 
@@ -278,6 +260,32 @@ chrome.tabs.query({
 function onWindowLoad() {
 
     //console.log('popup.js  onWindowLoad()');
+
+    var chbx_all = document.querySelectorAll('.chbx');
+    chbx_all.forEach(function (chbx) {
+        var chbx_parent = chbx.parentElement;
+        var chbx_key = chbx_parent.id;
+        var show_val = localStorage.getItem(chbx_key);
+        if(show_val === 'true') {
+            chbx_parent.classList.remove("provider_hidden");
+            chbx.checked = true;
+        }
+        else if(show_val === 'false') {
+            chbx_parent.classList.add("provider_hidden");
+            chbx.checked = false;
+        }
+
+        chbx.addEventListener('click', function(event) {
+            if(chbx.checked) {
+                chbx_parent.classList.remove("provider_hidden");
+                localStorage.setItem(chbx_key, true);
+            }
+            else {
+                chbx_parent.classList.add("provider_hidden");
+                localStorage.setItem(chbx_key, false);
+            }
+        });
+    });
 
     chrome.tabs.executeScript(null, {
         file: "content_script.js"
