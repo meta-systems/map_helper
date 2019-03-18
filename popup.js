@@ -72,18 +72,6 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
         
     });
 
-
-    // Save settings
-    document.querySelector('#settings_save_js').addEventListener('click', function(event) {
-        document.getElementById("body").classList.remove("edit_mode");
-    });
-
-    // Save settings
-    document.querySelector('#edit').addEventListener('click', function(event) {
-        document.getElementById("body").classList.toggle("edit_mode");
-        
-    });
-
 });
 
 chrome.tabs.query({
@@ -285,6 +273,41 @@ function onWindowLoad() {
                 localStorage.setItem(chbx_key, false);
             }
         });
+    });
+
+    var check_section_labels = function () {
+        var section_labels = document.querySelectorAll('.section_label');
+        section_labels.forEach(function (section_label) {
+            var section_shown = false;
+            var providersEl = section_label.nextElementSibling;
+            providersEl.childNodes.forEach(function (providerLink) {
+                if(providerLink.tagName !== 'A') {
+                    return;
+                }
+                if(!providerLink.classList.contains('provider_hidden')) {
+                    section_shown = true;
+                }
+            });
+            if(section_shown) {
+                section_label.classList.remove('section_hidden');
+            }
+            else {
+                section_label.classList.add('section_hidden');
+            }
+        });
+    };
+    check_section_labels();
+
+    // Edit settings
+    document.querySelector('#edit').addEventListener('click', function(event) {
+        document.getElementById("body").classList.toggle("edit_mode");
+        check_section_labels();
+    });
+
+    // Save settings
+    document.querySelector('#settings_save_js').addEventListener('click', function(event) {
+        document.getElementById("body").classList.remove("edit_mode");
+        check_section_labels();
     });
 
     chrome.tabs.executeScript(null, {
