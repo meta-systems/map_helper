@@ -222,10 +222,10 @@
         .providers .provider_hidden {
             display:none;
         }
-        .compare_full a:not(.compare_item){
+        .compare_full #providers_list a:not(.compare_item){
             pointer-events: none;
         }
-        .compare_full a:not(.compare_item) img {
+        .compare_full #providers_list a:not(.compare_item) img {
             filter: grayscale(1) ;
             opacity:0.4 ;
         }
@@ -294,6 +294,7 @@
             border:1px solid #E0E0E0;
             border-radius:4px;
             text-align:center;
+            margin-top:34px;
         }
         .preview_active {
             display:block;
@@ -329,7 +330,7 @@
         <a target="_blank" id="here"   href="https://wego.here.com/"><input type="checkbox" class="chbx" checked /><img src="img/here.svg"/>Here<span>+</span></a>
         <a target="_blank" id="bing"   href="https://bing.com/maps"><input type="checkbox" class="chbx" checked /><img src="img/bing.svg"/>Bing<span>+</span></a>
         <a target="_blank" id="esri"   href="https://bestmaps.ru/map/osm/WorldImagery"><input type="checkbox" class="chbx" checked /><img src="img/esri.svg"/>ESRI<span>+</span></a>
-        <a target="_blank" id="mapbox" href="https://bestmaps.ru/map/osm/MapboxSat"><input type="checkbox" class="chbx" checked /><img src="img/mapbox.svg"/>Mapbox<span>+</span></a>
+        <!-- <a target="_blank" id="mapbox" href="https://bestmaps.ru/map/osm/MapboxSat"><input type="checkbox" class="chbx" checked /><img src="img/mapbox.svg"/>Mapbox<span>+</span></a> -->
     </div>
         
     <div class="section_label">MAP</div>
