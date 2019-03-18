@@ -196,18 +196,12 @@ chrome.tabs.query({
     // BESTMAPS
     else if (host_clean === 'bestmaps'){
 
-        // разбиваем урл на две части подстрокой '.ru/map/'
-        var map_parts = url.split('.ru/map/');
-        if(map_parts.length > 1) {
-            var provider_string = map_parts[1].split('/'); // разбиваем правую часть урла слешом
-            if(provider_string.length > 4) {
-                zoom = provider_string[2];
-
-                coord[1] = provider_string[3];
-                coord[0] = provider_string[4];
-            }
+        var matches = url.match(/\/(\d+)\/([\d.]+)\/([\d.]+)/);
+        if(matches !== null) {
+            zoom = matches[1];
+            coord[1] = matches[2];
+            coord[0] = matches[3];
         }
-
     }
     // OSM
     else if (host_clean === 'openstreetmap'){
