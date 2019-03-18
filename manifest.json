@@ -24,6 +24,5 @@
 			"matches": ["http://*/*", "https://*/*"],
 			"js": ["content_script.js"]
 		}
-	],
-	"web_accessible_resources": ["google.svg","yandex.svg","osm.png","wikimapia.svg","esri.svg","loadmap.svg"]
+	]
 }
