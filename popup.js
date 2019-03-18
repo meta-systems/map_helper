@@ -317,7 +317,12 @@ function onWindowLoad() {
 
                 providerLink.onclick = function () {
                     if(document.getElementById('body').classList.contains('compare_mode')) {
-                        providerLink.classList.toggle('compare_item');
+                        if(providerLink.classList.contains('compare_item')) {
+                            providerLink.classList.remove('compare_item');
+                        }
+                        else if(document.querySelectorAll('.compare_item').length < 3) {
+                            providerLink.classList.add('compare_item');
+                        }
                         return false;
                     }
                 };
