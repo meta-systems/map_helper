@@ -52,7 +52,40 @@ var set_coordinates = function (coord, zoom) {
     }
     else {
         document.getElementsByClassName("coordLine")[0].classList.add("hidden");
+        return;
     }
+
+    // Compare link
+    document.getElementById("compare_link_js").addEventListener("click", function(){
+        var bm_aliases = {
+            'yandex': 'yandex/hybrid',
+            'here': 'here/sat',
+            'wiki': 'osm/Wikimapia',
+            'bing': 'bing/satellite',
+            'esri': 'osm/WorldImagery',
+            //'mapbox': '',
+            'yandex_map': 'yandex/map',
+            '2gis': '2gis/map',
+            'osm': 'osm/map'
+        };
+        var bm_url = 'https://bestmaps.ru/map/';
+        var providers = document.querySelectorAll('.compare_item');
+        providers.forEach(function (provider, index) {
+            if(index > 2) {
+                return;
+            }
+            if(index > 0) {
+                bm_url = bm_url + '/map'+(index+1)+'/';
+            }
+            if(provider.id in bm_aliases) {
+                bm_url = bm_url + bm_aliases[provider.id];
+            }
+        });
+        bm_url = bm_url + '/'+zoom+'/'+coord[1]+'/'+coord[0];
+
+        console.log(bm_url);
+        var win = window.open(bm_url, '_blank');
+    });
 };
 
 var url;
@@ -317,13 +350,6 @@ function onWindowLoad() {
         document.getElementById("body").classList.toggle("compare_mode");
     });
 
-    // Compare link
-    document.getElementById("compare_link_js").addEventListener("click", function(){
-        var providers = document.querySelectorAll('.compare_item');
-        providers.forEach(function (provider) {
-            console.log(provider);
-        });
-    });
 
     chrome.tabs.executeScript(null, {
         file: "content_script.js"
