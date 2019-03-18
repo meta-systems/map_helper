@@ -136,8 +136,19 @@
             filter: grayscale(1);
         }
         .compare_item {
-            padding:3px 0px;
+            padding:3px 0px !important;
             border:4px solid #219653 !important;
+        }
+        .compare_item span {
+            width:22px !important;
+            height:22px !important;
+            border-radius:15px;
+            position:absolute;
+            top:-12px !important;
+            right:-12px !important;
+            display:block !important;
+            font-size:0 !important;
+            background: #219653 url(img/ok.svg) no-repeat center center !important;
         }
         .compare_mode #providers_list a:hover {
             padding:3px 0px;
@@ -247,12 +258,12 @@
         .map_preview {
             width:50%;
             height:130px;
-            background-size:     cover;                      /* <------ */
+            background-size:     cover;
             background-repeat:   no-repeat;
             background-position: center center;
         }
         .preview_mapnik {background-image:url(img/map_mapnik.png);}
-        .preview_mapnik {background-image:url(img/map_2gis.png);}
+        .preview_2gis {background-image:url(img/map_2gis.png);}
         .map_preview_link {
             float:left;
             padding:7px;
@@ -261,6 +272,7 @@
         }
         .map_preview_box {
             width:150px;
+            display:flex;
         }
         .compare_link_btn {
             display: none;
