@@ -194,21 +194,21 @@ chrome.tabs.query({
     // OSM
     else if (host_clean === 'openstreetmap'){
 
-        var provider_string_0 = url.split( '#' )[1];
-        var provider_string_00 = provider_string_0.split('=')[1];
-        var provider_string = provider_string_00.split('/');
-
-        zoom = provider_string[0];
-
-        coord[1] = provider_string[1];
-        coord[0] = provider_string[2];
+        var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+        }
 
         document.getElementById("osm").className='selected';
 
-        var matches = url.match(/changeset\/(\d+)/);
+        var chang_matches = url.match(/changeset\/(\d+)/);
         var achavi_url = 'http://nrenner.github.io/achavi/';
-        if(matches !== null) {
-            document.getElementById("achavi").href = achavi_url + '?changeset=' + matches[1];
+        if(chang_matches !== null) {
+            document.getElementById("achavi").href = achavi_url + '?changeset=' + chang_matches[1];
+            document.getElementById("achavi").classList.remove("provider_hidden");
+            document.getElementById("achavi").classList.add("provider_special");
         }
     }
     // HERE
@@ -259,6 +259,17 @@ chrome.tabs.query({
             coord[0] = matches[1];
         }
     }
+    //achavi
+    else if (host_clean === 'github') {
+        var matches = url.match(/changeset=(\d+)/);
+        var osm_url = 'https://www.openstreetmap.org/changeset/';
+        if(matches !== null) {
+            document.getElementById("achavi").href = osm_url + matches[1];
+            //document.getElementById("achavi").className='selected';
+            document.getElementById("achavi").classList.remove("provider_hidden");
+            document.getElementById("achavi").classList.add("provider_special");
+        }
+    }
 
     set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
@@ -287,7 +298,10 @@ function onWindowLoad() {
             chbx.checked = true;
         }
         else if(show_val === 'false') {
-            chbx_parent.classList.add("provider_hidden");
+            // provider is special for this page, so show it anyway
+            if(!chbx_parent.classList.contains('provider_special')) {
+                chbx_parent.classList.add("provider_hidden");
+            }
             chbx.checked = false;
         }
 
