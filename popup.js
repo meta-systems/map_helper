@@ -26,6 +26,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
         document.getElementById("topo").href='https://opentopomap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("mapy").href='https://mapy.cz/?x='+coord[0]+'&y='+coord[1]+'&z='+zoom;
 
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
@@ -290,6 +291,17 @@ chrome.tabs.query({
             coord[0] = lng_matches[1];
         }
         document.getElementById("sputnik").className='selected';
+    }
+    else if(/mapy\.cz/.test(url)) {
+        var lat_matches = url.match(/y=([\d.]+)/);
+        var lng_matches = url.match(/x=([\d.]+)/);
+        var zoom_matches = url.match(/z=([\d.]+)/);
+        if(lat_matches && lng_matches && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = lat_matches[1];
+            coord[0] = lng_matches[1];
+        }
+        document.getElementById("mapy").className='selected';
     }
 
     set_coordinates(coord, zoom);
