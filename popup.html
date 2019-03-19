@@ -103,10 +103,6 @@
             font-size:0 !important;
             background: #219653 url(img/ok.svg) no-repeat center center !important;
         }
-        .compare_mode #providers_list a:hover {
-            /*padding:3px 0px;*/
-            /*border:4px solid #77CD9C;*/
-        }
         .compare_mode #providers_list a:hover span {
             background:#77CD9C;
             width:19px;
@@ -132,9 +128,6 @@
         }
         .providers span {
             display:none;
-        }
-        .edit_mode #providers_list a {
-            /*margin-bottom:25px;*/
         }
         .edit_mode .control_box {
             display:none;
@@ -167,22 +160,6 @@
         .edit_mode #providers_list img {
             filter: grayscale(0);
             opacity:1;
-        }
-        .compare_mode .compare_help {
-            display:block;
-            font-size:20px;
-            height:110px;
-            padding-top:51px;
-            color:#8d8d8d;
-            line-height:1.4em;
-        }
-        .compare_1 .compare_help,
-        .compare_2 .compare_help,
-        .compare_3 .compare_help {
-            display:none;
-        }
-        .compare_help {
-            display:none;
         }
         .settings_save_btn {
             display:none;
@@ -346,12 +323,42 @@
             position:absolute;
             bottom:20px;
         }
+        .compare_mode .compare_help {
+            display:block;
+            font-size:20px;
+            height:110px;
+            padding-top:51px;
+            color:#8d8d8d;
+            line-height:1.4em;
+        }
+        .compare_1 .compare_help,
+        .compare_2 .compare_help,
+        .compare_3 .compare_help {
+            display:none;
+        }
+        .settings_help,
+        .compare_help {
+            display:none;
+        }
+        .edit_mode .settings_help {
+            font-size:20px;
+            color:#8d8d8d;
+            display:block;
+            background:#eee;
+            padding:20px 30px;
+            display:inline-block;
+            border-radius:4px;
+            margin-bottom:30px;
+        }
     </style>
 </head>
 <body id="body">
 
+<a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap" data-message="compare">Compare</span></a>
 <img id="edit" title="Settings" src="img/settings.svg"/>
 <a id="about" title="About" href="http://bestmaps.ru/chrome_extension" target="_blank"><img src="img/info.svg"/></a>
+
+<div class="settings_help" data-message="settings_help">Please select the maps you want to display</div>
 
 <div id="providers_list"> 
 
@@ -418,8 +425,6 @@
 <div class="clear"></div>
 
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
-
-<a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap" data-message="compare">Compare</span></a>
 
 <div class="control_box">
     
