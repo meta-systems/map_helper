@@ -398,17 +398,12 @@ function onWindowLoad() {
     document.querySelector('#edit').addEventListener('click', function(event) {
         document.getElementById("body").classList.toggle("edit_mode");
         document.getElementById("body").classList.remove("compare_mode");
-
-        document.querySelector("#compare_start_js").classList.remove('menu_active');
-        this.classList.toggle("menu_active");
-
         check_section_labels();
     });
 
     // Save settings
     document.querySelector('#settings_save_js').addEventListener('click', function(event) {
         document.getElementById("body").classList.remove("edit_mode");
-        document.querySelector("#edit").classList.remove('menu_active');
         check_section_labels();
     });
 

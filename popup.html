@@ -12,7 +12,7 @@
             overflow-x: hidden;
             font-family:arial;
             font-size:13px;
-            padding:0 5px 25px 25px;
+            padding:30px 5px 25px 25px;
             margin:0;
         }
         img {
@@ -316,7 +316,6 @@
         .menu_item img {
             margin-right:3px;
             height:15px;
-            display:none;
         }
         .menu_item:hover {
             background:#ddd;
@@ -336,17 +335,34 @@
         .menu_active {
             background:#FFE68E !important;
         }
+
+        #about:hover,
+        #edit:hover {
+            opacity:0.8;
+        }
+        #edit {
+            right:60px;
+        }
+        #about img {
+            width:100%;
+        }
+        #about {
+            right:20px;
+        }
+        #about,
+        #edit {
+            cursor:pointer;
+            width:20px;
+            opacity:0.4;
+            position:absolute;
+            bottom:20px;
+        }
     </style>
 </head>
 <body id="body">
 
-
-<div class="menu">
-    <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap">Compare</span></a>
-    <a href="#" class="menu_item" id="edit"><img src="img/settings.svg"/> <span>Settings</span></a>
-    <a href="#" class="menu_item" id="about"><span>About</span></a>  <!-- http://bestmaps.ru/chrome_extension -->
-
-</div>
+<img id="edit" title="Settings" src="img/settings.svg"/>
+<a id="about" title="About" href="http://bestmaps.ru/chrome_extension" target="_blank"><img src="img/info.svg"/></a>
 
 <div id="providers_list"> 
 
@@ -399,7 +415,10 @@
     <div class="compare_btn_caption">Compare maps</div>
 </a>
 <div class="clear"></div>
+
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js">Save settings</a>
+
+<a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap">Compare</span></a>
 
 <div class="control_box">
     
