@@ -312,7 +312,13 @@ function onWindowLoad() {
             localStorage.setItem(chbx_key, true);
         }
         else {
+
+            // при удалении слоев сбрасываем информацию из режима сравнения
             chbx_parent.classList.add("provider_hidden");
+            chbx_parent.classList.remove("compare_item");
+            document.querySelector('#body').classList.remove('compare_1');
+            document.querySelector('#body').classList.remove('compare_2');
+            document.querySelector('#body').classList.remove('compare_3');
             localStorage.setItem(chbx_key, false);
         }
     };
