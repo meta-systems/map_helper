@@ -366,7 +366,7 @@
 
 <div id="providers_list"> 
 
-    <div class="section_label" data-message="sattelite">SATTELITE</div>
+    <div class="section_label" data-message="sattelite">Sattelite</div>
 
     <div class="providers">
         <a target="_blank" id="google" href="https://www.google.ru/maps" class="compare_disabled">
@@ -390,14 +390,18 @@
         <a target="_blank" id="2gis" href="https://2gis.ru/"><input type="checkbox" class="chbx" checked /><img src="img/2gis.svg"/>2GIS<span>+</span></a>
         <a target="_blank" id="wiki"   href="http://wikimapia.org/" class=""><input type="checkbox" class="chbx" checked /><img src="img/wiki.svg"/>Wiki<span>+</span></a>
         <a target="_blank" id="topo" href="http://loadmap.net/" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/loadmap.svg"/>Loadmap</a>
-        <a target="_blank" id="josm" class="provider_hidden compare_disabled" href="#" ><input type="checkbox" class="chbx" /><img src="img/josm.svg"/>JOSM</a>
-        <a target="_blank" id="achavi" class="provider_hidden compare_disabled" href="http://nrenner.github.io/achavi/" ><input type="checkbox" class="chbx" /><img src="img/achavi.svg"/>Achavi</a>
     </div>
 
     <div class="section_label">OSM</div>
     <div class="providers">
-        <a target="_blank" id="chepetsk" href="http://xn--e1aaps0bc.net/" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/chepetsk.svg"/><div data-message="chepetsk"></div><span>+</span></a>
-        <a target="_blank" id="sputnik" href="http://maps.sputnik.ru/"><input type="checkbox" class="chbx" checked /><img src="img/sputnik.svg"/><div data-message="sputnik">Спутник</div><span>+</span></a>
+        <a target="_blank" id="chepetsk" class="provider_hidden compare_disabled" href="http://xn--e1aaps0bc.net/"><input type="checkbox" class="chbx" checked /><img src="img/chepetsk.svg"/><div data-message="chepetsk"></div><span>+</span></a>
+        <a target="_blank" id="sputnik" class="provider_hidden" href="http://maps.sputnik.ru/"><input type="checkbox" class="chbx" checked /><img src="img/sputnik.svg"/><div data-message="sputnik">Sputnik</div><span>+</span></a>
+        <a target="_blank" id="topo"    class="provider_hidden" href="https://opentopomap.org/" ><input type="checkbox" class="chbx" /><img src="img/osm_topo.png"/>Topo</a>
+        <a target="_blank" id="osm_by"  class="provider_hidden compare_disabled" href="http://openstreetmap.by/" ><input type="checkbox" class="chbx" /><img src="img/osm_by.png"/>OSM BY</a>
+        <a target="_blank" id="josm"    class="provider_hidden compare_disabled" href="#" ><input type="checkbox" class="chbx" /><img src="img/josm.svg"/>JOSM</a>
+        <a target="_blank" id="achavi"  class="provider_hidden compare_disabled" href="http://nrenner.github.io/achavi/" ><input type="checkbox" class="chbx" /><img src="img/achavi.svg"/>Achavi</a>
+        <a target="_blank" id="mapy"    class="provider_hidden" href="http://nrenner.github.io/achavi/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapy</a>
+        <!-- <a target="_blank" id="mapq"    class="provider_hidden" href="https://www.mapquest.com/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapquest</a> -->
         
 
     </div>
@@ -448,9 +452,6 @@
 </div>
     
 <!-- 
-
-уникальный рендер
-    https://en.mapy.cz/zakladni?x=28.3204167&y=57.8106319&z=14
 
 крутая карта, но нет координат в урле (только европа, удобна для гор)
     https://www.wanderreitkarte.de/
