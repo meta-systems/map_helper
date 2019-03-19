@@ -288,6 +288,19 @@ function onWindowLoad() {
         return false;
     }
 
+    var setting_checkbox_handler = function (chbx) {
+        var chbx_parent = chbx.parentElement;
+        var chbx_key = chbx_parent.id;
+        if(chbx.checked) {
+            chbx_parent.classList.remove("provider_hidden");
+            localStorage.setItem(chbx_key, true);
+        }
+        else {
+            chbx_parent.classList.add("provider_hidden");
+            localStorage.setItem(chbx_key, false);
+        }
+    };
+
     var chbx_all = document.querySelectorAll('.chbx');
     chbx_all.forEach(function (chbx) {
         var chbx_parent = chbx.parentElement;
@@ -306,14 +319,7 @@ function onWindowLoad() {
         }
 
         chbx.addEventListener('click', function(event) {
-            if(chbx.checked) {
-                chbx_parent.classList.remove("provider_hidden");
-                localStorage.setItem(chbx_key, true);
-            }
-            else {
-                chbx_parent.classList.add("provider_hidden");
-                localStorage.setItem(chbx_key, false);
-            }
+            setting_checkbox_handler(chbx);
         });
     });
 
@@ -330,7 +336,7 @@ function onWindowLoad() {
                     section_shown = true;
                 }
 
-                providerLink.onclick = function () {
+                providerLink.onclick = function (event) {
                     if(document.getElementById('body').classList.contains('compare_mode')) {
 
                         var preview = document.querySelector('.preview_' + providerLink.id);
@@ -370,6 +376,13 @@ function onWindowLoad() {
                                 document.querySelector('#body').classList.add('compare_'+document.querySelectorAll('.compare_item').length);
                             }
                         }
+                        return false;
+                    }
+
+                    if(document.getElementById('body').classList.contains('edit_mode') && event.target.tagName !== 'INPUT') {
+                        var chbx = providerLink.firstElementChild;
+                        chbx.checked = !chbx.checked;
+                        setting_checkbox_handler(chbx);
                         return false;
                     }
                 };
