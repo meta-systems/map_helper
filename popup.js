@@ -20,7 +20,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("josm").href='http://127.0.0.1:8111/load_and_zoom?left=-115.4347819&right=-115.42748&bottom=35.549581590&top=35.5529160';
         //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
-        document.getElementById("topo").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
+        document.getElementById("loadmap").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
 
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
@@ -246,7 +246,7 @@ chrome.tabs.query({
     }
     //Loadmap
     else if (host_clean === 'loadmap') {
-        document.getElementById("topo").className = 'selected';
+        document.getElementById("loadmap").className = 'selected';
     }
     //2gis
     else if (host_clean === '2gis') {
