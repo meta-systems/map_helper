@@ -63,7 +63,9 @@ var set_coordinates = function (coord, zoom) {
             'mapbox': 'osm/map',
             'yandex_map': 'yandex/map',
             '2gis': '2gis/map',
-            'osm': 'osm/map'
+            'osm': 'osm/map',
+            'topo': 'osm/opentopomap',
+            'sputnik': 'osm/sputnik'
         };
         var bm_url = 'https://bestmaps.ru/map/';
         var providers = document.querySelectorAll('.compare_item');
