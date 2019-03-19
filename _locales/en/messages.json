@@ -16,5 +16,8 @@
   },
   "chepetsk": {
     "message": "Chepetsk"
+  },
+  "coordinates": {
+    "message": "Map center coordinates:"
   }
 }

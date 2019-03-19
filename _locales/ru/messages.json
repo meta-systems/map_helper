@@ -22,5 +22,8 @@
   },
   "yandex": {
     "message": "Яндекс"
+  },
+  "coordinates": {
+    "message": "Координаты карты:"
   }
 }
