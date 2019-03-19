@@ -280,6 +280,17 @@ chrome.tabs.query({
     else if (host_clean === 'xn--e1aaps0bc') {
         document.getElementById("chepetsk").className='selected';
     }
+    else if(/maps\.sputnik\.ru/.test(url)) {
+        var lat_matches = url.match(/lat=([\d.]+)/);
+        var lng_matches = url.match(/lng=([\d.]+)/);
+        var zoom_matches = url.match(/zoom=([\d.]+)/);
+        if(lat_matches && lng_matches && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = lat_matches[1];
+            coord[0] = lng_matches[1];
+        }
+        document.getElementById("sputnik").className='selected';
+    }
 
     set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
