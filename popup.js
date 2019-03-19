@@ -89,7 +89,8 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 
     var is_bing = /bing.*maps/.test(url);
     var is_loadmap = /loadmap\.net/.test(url);
-    if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap)) {
+    var is_chepetsk = /xn--e1aaps0bc\.net/.test(url);
+    if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap || is_chepetsk)) {
         set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
     }
 
@@ -274,6 +275,10 @@ chrome.tabs.query({
             document.getElementById("achavi").classList.remove("provider_hidden");
             document.getElementById("achavi").classList.add("provider_special");
         }
+    }
+    //chepetsk
+    else if (host_clean === 'xn--e1aaps0bc') {
+        document.getElementById("chepetsk").className='selected';
     }
 
     set_coordinates(coord, zoom);
