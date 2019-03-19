@@ -290,7 +290,10 @@ function onWindowLoad() {
     var lang = chrome.i18n.getUILanguage();
     document.querySelectorAll('[data-message]').forEach(function (lang_el) {
         var attr_val = lang_el.getAttribute('data-message');
-        lang_el.innerText = chrome.i18n.getMessage(attr_val);
+        var message = chrome.i18n.getMessage(attr_val);
+        if(message) {
+            lang_el.innerText = message;
+        }
     });
 
     // copy title
