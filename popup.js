@@ -277,6 +277,13 @@ chrome.tabs.query({
 
 function onWindowLoad() {
 
+    var lang = chrome.i18n.getUILanguage();
+    console.log(chrome.i18n.getMessage('sattelite'));
+    document.querySelectorAll('[data-message]').forEach(function (lang_el) {
+        var attr_val = lang_el.getAttribute('data-message');
+        lang_el.innerText = chrome.i18n.getMessage(attr_val);
+    });
+
     // copy title
     document.getElementById("coord_copy").onclick = function() {
 

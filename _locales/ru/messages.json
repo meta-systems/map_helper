@@ -1,0 +1,17 @@
+{
+  "sattelite": {
+    "message": "СПУТНИК"
+  },
+  "map": {
+    "message": "КАРТА"
+  },
+  "settings": {
+    "message": "Настройки"
+  },
+  "compare": {
+    "message": "Сравнить"
+  },
+  "about": {
+    "message": "О программе"
+  }
+}

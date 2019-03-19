@@ -342,15 +342,15 @@
 
 
 <div class="menu">
-    <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap">Compare</span></a>
-    <a href="#" class="menu_item" id="edit"><img src="img/settings.svg"/> <span>Settings</span></a>
-    <a href="#" class="menu_item" id="about"><span>About</span></a>  <!-- http://bestmaps.ru/chrome_extension -->
+    <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap" data-message="compare"></span></a>
+    <a href="#" class="menu_item" id="edit"><img src="img/settings.svg"/> <span data-message="settings"></span></a>
+    <a href="#" class="menu_item" id="about"><span data-message="about"></span></a>  <!-- http://bestmaps.ru/chrome_extension -->
 
 </div>
 
 <div id="providers_list"> 
 
-    <div class="section_label">SATTELITE</div>
+    <div class="section_label" data-message="sattelite"></div>
 
     <div class="providers">
         <a target="_blank" id="google" href="https://www.google.ru/maps" class="compare_disabled">
@@ -365,7 +365,7 @@
         <!-- <a target="_blank" id="mapbox" href="https://bestmaps.ru/map/osm/MapboxSat"><input type="checkbox" class="chbx" checked /><img src="img/mapbox.svg"/>Mapbox<span>+</span></a> -->
     </div>
         
-    <div class="section_label">MAP</div>
+    <div class="section_label" data-message="map"></div>
 
     <div class="providers">
         <a target="_blank" id="google_map" href="https://www.google.ru/maps" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/google.svg"/>Google<span>+</span></a>

@@ -1,0 +1,17 @@
+{
+  "sattelite": {
+    "message": "SATTELITE"
+  },
+  "map": {
+    "message": "MAP"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "compare": {
+    "message": "Compare"
+  },
+  "about": {
+    "message": "About"
+  }
+}
