@@ -1,9 +1,12 @@
 {
   "sattelite": {
-    "message": "СПУТНИК"
+    "message": "Спутник"
+  },
+  "sputnik": {
+    "message": "Спутник"
   },
   "map": {
-    "message": "КАРТА"
+    "message": "Карта"
   },
   "settings": {
     "message": "Настройки"
@@ -16,5 +19,8 @@
   },
   "chepetsk": {
     "message": "Чепецк"
+  },
+  "yandex": {
+    "message": "Яндекс"
   }
 }
