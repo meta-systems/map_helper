@@ -31,6 +31,7 @@ var set_coordinates = function (coord, zoom) {
 
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
         // coord
         // document.getElementById("lat").innerText = coord[1];
@@ -197,6 +198,9 @@ chrome.tabs.query({
 
         if(/map\/osm\/WorldImagery/.test(url)) {
             document.getElementById("esri").className='selected';
+        }
+        else if(/map/.test(url)) {
+            document.getElementById("bestmaps").className='selected';
         }
     }
     else if(/openstreetmap\.by/.test(url)) {
