@@ -394,6 +394,7 @@ function onWindowLoad() {
     // Save settings
     document.querySelector('#settings_save_js').addEventListener('click', function(event) {
         document.getElementById("body").classList.remove("edit_mode");
+        document.querySelector("#edit").classList.remove('menu_active');
         check_section_labels();
     });
 
