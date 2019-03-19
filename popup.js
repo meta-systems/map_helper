@@ -198,6 +198,16 @@ chrome.tabs.query({
             document.getElementById("esri").className='selected';
         }
     }
+    else if(/openstreetmap\.by/.test(url)) {
+        var map_matches = url.match(/#([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+        }
+
+        document.getElementById("osm_by").className='selected';
+    }
     // OSM
     else if (host_clean === 'openstreetmap'){
 
