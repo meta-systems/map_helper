@@ -14,6 +14,9 @@
   "compare": {
     "message": "Сравнить"
   },
+  "compare_help": {
+    "message": "Выберите 2 или 3 карты"
+  },
   "about": {
     "message": "О программе"
   },
