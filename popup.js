@@ -27,6 +27,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("topo").href='https://opentopomap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("mapy").href='https://mapy.cz/?x='+coord[0]+'&y='+coord[1]+'&z='+zoom;
+        document.getElementById("osm_ru").href='http://openstreetmap.ru/#map='+zoom+'/'+coord[1]+'/'+coord[0];
 
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
@@ -218,14 +219,19 @@ chrome.tabs.query({
             coord[0] = map_matches[3];
         }
 
-        document.getElementById("osm").className='selected';
+        if(/openstreetmap\.ru/.test(url)) {
+            document.getElementById("osm_ru").className = 'selected';
+        }
+        else {
+            document.getElementById("osm").className = 'selected';
 
-        var chang_matches = url.match(/changeset\/(\d+)/);
-        var achavi_url = 'http://nrenner.github.io/achavi/';
-        if(chang_matches !== null) {
-            document.getElementById("achavi").href = achavi_url + '?changeset=' + chang_matches[1];
-            document.getElementById("achavi").classList.remove("provider_hidden");
-            document.getElementById("achavi").classList.add("provider_special");
+            var chang_matches = url.match(/changeset\/(\d+)/);
+            var achavi_url = 'http://nrenner.github.io/achavi/';
+            if(chang_matches !== null) {
+                document.getElementById("achavi").href = achavi_url + '?changeset=' + chang_matches[1];
+                document.getElementById("achavi").classList.remove("provider_hidden");
+                document.getElementById("achavi").classList.add("provider_special");
+            }
         }
     }
     // HERE
