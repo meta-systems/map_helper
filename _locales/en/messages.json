@@ -1,26 +1,3 @@
 {
-  "sattelite": {
-    "message": "Sattelite"
-  },
-  "map": {
-    "message": "Map"
-  },
-  "settings": {
-    "message": "Settings"
-  },
-  "compare": {
-    "message": "Compare"
-  },
-  "compare_help": {
-    "message": "Please select 2 or 3 maps"
-  },
-  "about": {
-    "message": "About"
-  },
-  "chepetsk": {
-    "message": "Chepetsk"
-  },
-  "coordinates": {
-    "message": "Map center coordinates:"
-  }
+  
 }
