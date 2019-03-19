@@ -11,6 +11,9 @@
   "settings": {
     "message": "Настройки"
   },
+  "save_settings": {
+    "message": "Сохранить Настройки"
+  },
   "compare": {
     "message": "Сравнить"
   },
