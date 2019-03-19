@@ -303,6 +303,15 @@ chrome.tabs.query({
         }
         document.getElementById("mapy").className='selected';
     }
+    else if (host_clean === 'opentopomap') {
+        var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+        }
+        document.getElementById("topo").className='selected';
+    }
 
     set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
