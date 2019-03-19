@@ -22,6 +22,11 @@ var set_coordinates = function (coord, zoom) {
         //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
         document.getElementById("loadmap").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
 
+        document.getElementById("chepetsk").href='http://xn--e1aaps0bc.net/?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
+        document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
+        document.getElementById("topo").href='https://opentopomap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
+
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
 
