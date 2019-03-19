@@ -35,21 +35,6 @@
         .edit_mode .section_hidden {
             display: block;
         }
-        .copyright a:hover {
-            color:#555;
-        }
-        .copyright a {
-            color:#aaa;
-        }
-        .copyright {
-            color:#888;
-            margin-top:15px;
-            margin-bottom:15px;
-            padding-left:10px;
-            position:absolute;
-            right:20px;
-            bottom:0;
-        }
         .bestmaps td {
             padding-top:30px;
         }
@@ -73,26 +58,6 @@
         }
         .compare_mode .coordLine {
             display:none;
-        }
-        .compare_start_btn img {
-            margin-right:3px;
-        }
-        .compare_start_btn:hover {
-            background:#ddd;
-        }
-        .compare_start_btn span {
-            vertical-align: middle;
-        }
-        .compare_start_btn {
-            display:inline-block;
-            background:#eee;
-            padding:6px 8px;
-            border-radius:4px;
-            margin-top:22px;
-            margin-right:20px;
-            float:left;
-            line-height:1em;
-            color:black;
         }
         .providers {
             margin-bottom:15px;
@@ -168,21 +133,6 @@
         .providers span {
             display:none;
         }
-        .settings_btn:hover {
-            opacity:0.7;
-        }
-        .compare_mode .settings_btn {
-            display:none;
-        }
-        .settings_btn {
-            position:absolute;
-            top:20px;
-            right:20px;
-            width:20px;
-            opacity:0.3;
-            cursor:pointer;
-        }
-
         .edit_mode #providers_list a {
             margin-bottom:25px;
         }
@@ -326,16 +276,6 @@
             color: #888;
             margin-top: 6px;
         }
-
-        .compare_mode .compare_start_cap {
-            display:none;
-        }
-        .compare_mode .compare_exit_cap {
-            display:inline;
-        }
-        .compare_exit_cap {
-            display:none;
-        }
         .coord_inputP {
             position:relative;
         }
@@ -362,12 +302,45 @@
         .copy_btn:active + input {
             background:#FFE68E;
         }
+        
+        .menu {
+            overflow:hidden;
+            margin-bottom:30px;
+        }
+        .menu_item img {
+            margin-right:3px;
+            height:15px;
+        }
+        .menu_item:hover {
+            background:#ddd;
+        }
+        .menu_item span {
+            vertical-align: middle;
+        }
+        .menu_item {
+            display:inline-block;
+            background:#f4f4f4;
+            padding:6px 11px;
+            border-radius:4px;
+            margin-right:20px;
+            float:left;
+            line-height:1em;
+            color:black;
+        }
+        .menu_active {
+            background:#FFE68E !important;
+        }
     </style>
 </head>
 <body id="body">
 
-<img class="settings_btn" title="Settings" id="edit" src="img/settings.svg"/>
 
+<div class="menu">
+    <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap">Compare</span></a>
+    <a href="#" class="menu_item" id="edit"><img src="img/settings.svg"/> <span>Settings</span></a>
+    <a href="#" class="menu_item" id="about"><span>About</span></a>  <!-- http://bestmaps.ru/chrome_extension -->
+
+</div>
 
 <div id="providers_list"> 
 
@@ -424,8 +397,6 @@
 
 <div class="control_box">
     
-    <a href="#" class="compare_start_btn" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap">Compare mode</span><span class="compare_exit_cap">Exit compare mode</span></a>
-    
     <div class="coordLine">
         <span class="coord_label">Map center coordinates:</span>
         <span class="coordTD">
@@ -443,10 +414,6 @@
     <div class="clear"></div>
 </div>
     
-
-<div class="copyright"><a href="http://bestmaps.ru/chrome_extension" title="New window" target="_blank">about</a></div>
-
-
 <!-- 
 
 уникальный рендер

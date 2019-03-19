@@ -370,9 +370,24 @@ function onWindowLoad() {
     };
     check_section_labels();
 
+
+    // Compare mode
+    document.getElementById("compare_start_js").addEventListener("click", function(){
+        document.getElementById("body").classList.toggle("compare_mode");
+        document.getElementById("body").classList.remove("edit_mode");
+
+        document.querySelector("#edit").classList.remove('menu_active');
+        this.classList.toggle("menu_active");
+    });
+
     // Edit settings
     document.querySelector('#edit').addEventListener('click', function(event) {
         document.getElementById("body").classList.toggle("edit_mode");
+        document.getElementById("body").classList.remove("compare_mode");
+
+        document.querySelector("#compare_start_js").classList.remove('menu_active');
+        this.classList.toggle("menu_active");
+
         check_section_labels();
     });
 
@@ -382,11 +397,6 @@ function onWindowLoad() {
         check_section_labels();
     });
 
-    // Compare mode
-    document.getElementById("compare_start_js").addEventListener("click", function(){
-        // this.classList.toggle("compare_btn_started");
-        document.getElementById("body").classList.toggle("compare_mode");
-    });
 
 
     chrome.tabs.executeScript(null, {
