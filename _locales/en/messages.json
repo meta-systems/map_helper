@@ -11,6 +11,9 @@
   "compare": {
     "message": "Compare"
   },
+  "compare_help": {
+    "message": "Please select 2 or 3 maps"
+  },
   "about": {
     "message": "About"
   },
