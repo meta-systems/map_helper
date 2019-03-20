@@ -43,5 +43,8 @@
   },
   "josm_missing": {
     "message": "JOSM не запущен!"
+  },
+  "cancel": {
+    "message": "Отмена"
   }
 }

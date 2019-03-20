@@ -229,7 +229,8 @@ chrome.tabs.query({
             document.getElementById("esri").className='selected';
         }
         else if(/map/.test(url)) {
-            document.getElementById("bestmaps").className='selected';
+            // document.getElementById("bestmaps").className='selected'; // ломает классы
+            document.querySelector("#bestmaps").classList.add('selected'); // не работает
         }
     }
     else if(/openstreetmap\.by/.test(url)) {
@@ -530,13 +531,18 @@ function onWindowLoad() {
     check_section_labels();
 
 
+    // Compare cancel
+    document.getElementById("compare_cancel_js").addEventListener("click", function(){
+        document.getElementById("body").classList.remove("compare_mode");
+    });
+
     // Compare mode
     document.getElementById("compare_start_js").addEventListener("click", function(){
         document.getElementById("body").classList.toggle("compare_mode");
         document.getElementById("body").classList.remove("edit_mode");
 
-        document.querySelector("#edit").classList.remove('menu_active');
-        this.classList.toggle("menu_active");
+        // document.querySelector("#edit").classList.remove('menu_active');
+        // this.classList.toggle("menu_active");
         check_section_labels();
     });
 

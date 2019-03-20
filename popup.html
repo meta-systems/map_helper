@@ -125,6 +125,9 @@
         .providers span {
             display:none;
         }
+        .control_box {
+            margin-top:20px;
+        }
         .edit_mode .control_box {
             display:none;
         }
@@ -158,13 +161,15 @@
             filter: grayscale(0);
             opacity:1;
         }
-        .settings_save_btn {
+        a.settings_save_btn {
             display:none;
         }
         .edit_mode .settings_save_btn {
             display:inline-block;
         }
-
+        .edit_mode #compare_start_js {
+            display:none;
+        }
         .clear {
             clear:both;
         }
@@ -318,14 +323,6 @@
         a.provider_special {
             display:inline-block;
         }
-        .link_with_icon {
-            display:inline-block;
-        }
-        .link_with_icon img {
-            height:13px;
-            margin-right:4px;
-            margin-top:-2px;
-        }
         .coord_box {
             display:inline-block;
             margin:0 10px;
@@ -334,18 +331,27 @@
             display:none;
         }
 
+        .link_with_icon:hover {
+            text-decoration: underline;
+        }
+        .link_with_icon {
+            display:inline-block;
+        }
+        .link_with_icon img {
+            height:13px;
+            margin-right:4px;
+            margin-top:-2px;
+        }
+        .btn:hover {
 
-
+        }
         .btn {
-            background:#f4f4f4;
+            background:#e2e2e2;
             padding:6px 10px;
             border-radius:4px;
             box-sizing: border-box;
             display:inline-block;
-            height:35px;
-            line-height:23px;
-
-            height:30px;
+            line-height:20px;
             padding:4px 14px;
         }
         .btn_green:hover {
@@ -356,13 +362,14 @@
             color:white;
         }
 
-        .menu_item img {
+        .btn img {
             margin-right:3px;
             height:15px;
         }
         .menu_item:hover {
             background:#ddd;
         }
+        .btn span,
         .menu_item span {
             vertical-align: middle;
         }
@@ -378,6 +385,20 @@
         .menu_active {
             background:#FFE68E !important;
         }
+        .btn_light {
+            background:none;
+        }
+        .compare_mode #compare_start_js {
+            display:none;
+        }
+        .compare_mode #compare_proceed_js,
+        .compare_mode .compare_mode_cancel_btn {
+            display:inline-block;
+        }
+        #compare_proceed_js,
+        .compare_mode_cancel_btn {
+            display:none;
+        }
 
     </style>
 </head>
@@ -391,7 +412,6 @@
 <div id="providers_list"> 
 
     <div class="section_label" data-message="sattelite">Sattelite</div>
-
     <div class="providers">
         <a target="_blank" id="google" href="https://www.google.ru/maps" class="compare_disabled">
             <input type="checkbox" class="chbx" checked data-id="google" />
@@ -406,7 +426,6 @@
     </div>
         
     <div class="section_label" data-message="map">Map</div>
-
     <div class="providers">
         <a target="_blank" id="google_map" href="https://www.google.ru/maps" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/google.svg"/>Google<span>+</span></a>
         <a target="_blank" id="yandex_map" href="https://yandex.ru/maps/"><input type="checkbox" class="chbx" checked /><img src="img/yandex.svg"/><div data-message="yandex">Yandex</div><span>+</span></a>
@@ -429,8 +448,6 @@
         <a target="_blank" id="bestmaps" class="provider_hidden compare_disabled" href="https://bestmaps.ru/map" ><input type="checkbox" class="chbx" /><img src="img/bestmaps.svg"/>BestMaps<span>+</span></a>
         <a target="_blank" id="flickr" class="provider_hidden compare_disabled" href="https://loc.alize.us/" ><input type="checkbox" class="chbx" /><img src="img/flickr.svg"/>flickr<span>+</span></a>
         <!-- <a target="_blank" id="mapq"    class="provider_hidden" href="https://www.mapquest.com/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapquest</a> -->
-        
-
     </div>
 
 </div>
@@ -456,9 +473,11 @@
 <div class="clear"></div>
 
 
-<a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap" data-message="compare">Compare</span></a>
+<!-- <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a> -->
+<a href="#" class="btn" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a>
+<a href="#" class="btn btn_green" id="compare_proceed_js"><img src="img/compare.svg"/> <span data-message="compare">Compare proceed</span></a>
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
-<a href="#" class="btn" id="" data-message="save_settings"><img src="img/compare.svg"/> Save settings</a>
+<a href="#" class="btn btn_light compare_mode_cancel_btn" id="compare_cancel_js" > <span data-message="cancel">Cancel</span></a>
 
 <div class="control_box">
     
@@ -476,7 +495,7 @@
 
 
         <a id="earth_kml" class="link_with_icon coordinates_el" target="_blank" href="#" title="For_Google_Earth"><img src="img/gearth.svg"/>Google Earth .KML</a>
-        <a id="achavi"  class="btn link_with_icon provider_special_hidden" href="http://nrenner.github.io/achavi/" target="_blank"><img src="img/achavi.svg"/>Achavi</a>
+        <a id="achavi"  class="link_with_icon provider_special_hidden" href="http://nrenner.github.io/achavi/" target="_blank"><img src="img/achavi.svg"/>Achavi</a>
 
 
     </div>
