@@ -14,6 +14,7 @@
             || /bing.*maps/.test(url)
             || /maps\.sputnik\.ru/.test(url)
             || /mapy\.cz/.test(url)
+            || /loc\.alize\.us/.test(url)
     ) {
         chrome.pageAction.setIcon({tabId: tab.id, path: "icon16.png"});
     }

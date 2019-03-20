@@ -29,6 +29,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("mapy").href='https://mapy.cz/?x='+coord[0]+'&y='+coord[1]+'&z='+zoom;
         document.getElementById("osm_ru").href='http://openstreetmap.ru/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("navitel").href='http://maps.navitel.su/api/map.html?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
+        document.getElementById("flickr").href='https://loc.alize.us/#/geo:'+coord[1]+','+coord[0]+','+zoom+',/';
 
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
@@ -338,6 +339,15 @@ chrome.tabs.query({
     }
     else if(/maps\.navitel\.su/.test(url)) {
         document.getElementById("navitel").className='selected';
+    }
+    else if(/loc\.alize\.us/.test(url)) {
+        document.getElementById("flickr").className='selected';
+        var map_matches = url.match(/geo:([\d.]+),([\d.]+),(\d+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[3];
+            coord[1] = map_matches[1];
+            coord[0] = map_matches[2];
+        }
     }
 
     set_coordinates(coord, zoom);
