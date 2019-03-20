@@ -8,7 +8,7 @@
   "map": {
     "message": "Карта"
   },
-  "settings": {
+  "Settings": {
     "message": "Настройки"
   },
   "save_settings": {
@@ -23,8 +23,14 @@
   "settings_help": {
     "message": "Выберите карты, которые хотите отобразить"
   },
-  "about": {
+  "About": {
     "message": "О программе"
+  },
+  "Copy": {
+    "message": "Копировать"
+  },
+  "For_Google_Earth": {
+    "message": "Для Google Earth"
   },
   "chepetsk": {
     "message": "Чепецк"
@@ -34,5 +40,8 @@
   },
   "coordinates": {
     "message": "Координаты карты:"
+  },
+  "josm_missing": {
+    "message": "JOSM не запущен!"
   }
 }

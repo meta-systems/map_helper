@@ -47,7 +47,16 @@ var set_coordinates = function (coord, zoom) {
                 'top=' + (jlat + multiplier),
                 'bottom=' + (jlat - multiplier)
             ];
-            document.getElementById("josm").href = 'http://127.0.0.1:8111/load_and_zoom?' + jsom_params.join('&');
+            document.getElementById("josm").href='http://127.0.0.1:8111/load_and_zoom?' + jsom_params.join('&');
+            document.getElementById("josm").addEventListener('click', function(e){
+                fetch(this.href)
+                    .then(function(response) {
+                        window.close();
+                    })
+                    .catch(function(err) {
+                        alert(chrome.i18n.getMessage('josm_missing'));
+                    });
+            });
         }
 
         // coord
@@ -371,12 +380,20 @@ chrome.tabs.query({
 
 function onWindowLoad() {
 
+    // i18n
     var lang = chrome.i18n.getUILanguage();
     document.querySelectorAll('[data-message]').forEach(function (lang_el) {
         var attr_val = lang_el.getAttribute('data-message');
         var message = chrome.i18n.getMessage(attr_val);
         if(message) {
             lang_el.innerText = message;
+        }
+    });
+    document.querySelectorAll('[title]').forEach(function (lang_el) {
+        var attr_val = lang_el.getAttribute('title');
+        var message = chrome.i18n.getMessage(attr_val);
+        if(message) {
+            lang_el.setAttribute('title', message);
         }
     });
 
@@ -494,6 +511,10 @@ function onWindowLoad() {
                         var chbx = providerLink.firstElementChild;
                         chbx.checked = !chbx.checked;
                         setting_checkbox_handler(chbx);
+                        return false;
+                    }
+
+                    if(providerLink.id === 'josm') {
                         return false;
                     }
                 };
