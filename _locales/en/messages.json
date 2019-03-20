@@ -1,5 +1,8 @@
 {
   "josm_missing": {
     "message": "JOSM is not running!"
+  },
+  "For_Google_Earth": {
+    "message": "For Google Earth"
   }
 }
