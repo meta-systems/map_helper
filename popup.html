@@ -297,9 +297,6 @@
             margin-right:20px;
             line-height:1em;
             color:black;
-            position:absolute;
-            bottom:20px;
-            right:80px;
         }
         .menu_active {
             background:#FFE68E !important;
@@ -359,14 +356,22 @@
         .providers .provider_special_hidden {
             display:none;
         }
+        .link_with_icon {
+            display:inline-block;
+        }
         .link_with_icon img {
             height:13px;
+            margin-right:4px;
+            margin-top:-2px;
+        }
+        .coord_box {
+            display:inline-block;
+            margin:0 10px;
         }
     </style>
 </head>
 <body id="body">
 
-<a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap" data-message="compare">Compare</span></a>
 <img id="edit" title="Settings" src="img/settings.svg"/>
 <a id="about" title="About" href="http://bestmaps.ru/chrome_extension" target="_blank"><img src="img/info.svg"/></a>
 
@@ -440,21 +445,25 @@
 </a>
 <div class="clear"></div>
 
+
+<a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap" data-message="compare">Compare</span></a>
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
 
 <div class="control_box">
     
-    <div class="coordLine">
-        <span class="coord_label" data-message="coordinates">Map center coordinates:</span>
-        <span class="coordTD">
-            <!-- <span id="lat" title="Широта" class="coord"></span>, &nbsp;
-            <span id="lon" title="Долгота" class="coord"></span> -->
-            
-            <div class="coord_inputP"><img class="copy_btn" src="img/copy.svg" id="coord_copy" title="Copy"/><input type="text" class="coord_input" id="coord_input" /></div>
-            
+    <div class="toolsBox coordLine">
 
-            <a href="#" class="link_with_icon" target="_blank" id="earth_kml" title="For Google Earth"><img src="img/gearth.svg"/>KML file</a>
-        </span>
+        <div class="coord_box">
+            <span class="coord_label" data-message="coordinates">Map center coordinates:</span>
+            <span class="coordTD">
+                <!-- <span id="lat" title="Широта" class="coord"></span>, &nbsp;
+                <span id="lon" title="Долгота" class="coord"></span> -->
+                
+                <div class="coord_inputP"><img class="copy_btn" src="img/copy.svg" id="coord_copy" title="Copy"/><input type="text" class="coord_input" id="coord_input" /></div>
+            </span>
+        </div>
+
+        <a href="#" class="link_with_icon" target="_blank" id="earth_kml" title="For Google Earth"><img src="img/gearth.svg"/>Google Earth .KML</a>
     </div>
 
     
