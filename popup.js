@@ -18,7 +18,6 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("2gis").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+zoom;
 
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
-        document.getElementById("josm").href='http://127.0.0.1:8111/load_and_zoom?left=-115.4347819&right=-115.42748&bottom=35.549581590&top=35.5529160';
         //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
         document.getElementById("loadmap").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
 
@@ -34,6 +33,22 @@ var set_coordinates = function (coord, zoom) {
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+
+        var jlat = parseFloat(coord[1]),
+            jlon = parseFloat(coord[0]);
+        if(!isNaN(jlat) && !isNaN(jlon)) {
+            var power = zoom < 18 ? 18 - zoom : 0;
+            var multiplier = zoom < 15
+                ? 0.03 // zoom0-14: max area for a city
+                : 0.002 * Math.pow(2, power);
+            var jsom_params = [
+                'left=' + (jlon - multiplier * 3),
+                'right=' + (jlon + multiplier * 3),
+                'top=' + (jlat + multiplier),
+                'bottom=' + (jlat - multiplier)
+            ];
+            document.getElementById("josm").href = 'http://127.0.0.1:8111/load_and_zoom?' + jsom_params.join('&');
+        }
 
         // coord
         // document.getElementById("lat").innerText = coord[1];
