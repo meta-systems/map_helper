@@ -28,6 +28,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("mapy").href='https://mapy.cz/?x='+coord[0]+'&y='+coord[1]+'&z='+zoom;
         document.getElementById("osm_ru").href='http://openstreetmap.ru/#map='+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("navitel").href='http://maps.navitel.su/api/map.html?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
 
         // bestmaps
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
@@ -95,7 +96,8 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     var is_bing = /bing.*maps/.test(url);
     var is_loadmap = /loadmap\.net/.test(url);
     var is_chepetsk = /xn--e1aaps0bc\.net/.test(url);
-    if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap || is_chepetsk)) {
+    var is_navitel = /maps\.navitel\.su/.test(url);
+    if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap || is_chepetsk || is_navitel)) {
         set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
     }
 

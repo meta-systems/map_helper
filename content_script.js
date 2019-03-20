@@ -3,11 +3,30 @@ function content_helper() {
 
     var lat, lon, zoom;
 
+    var parseLink = function (linkParent) {
+        var olLink = linkParent.firstElementChild.href;
+        var q_str = olLink.split('?')[1];
+
+        q_str.split('&').forEach(function (value) {
+            var pair = value.split('=');
+            if(pair[0] === 'zoom') {
+                zoom = pair[1];
+            }
+            else if(pair[0] === 'lat') {
+                lat = pair[1];
+            }
+            else if(pair[0] === 'lon') {
+                lon = pair[1];
+            }
+        });
+    };
+
     /*
      * Loadmap: getting coords from GoogleAPI logo
      */
     var gmEl = document.getElementsByClassName("gm-style");
     var openLayersEl = document.getElementsByClassName("olControlPermalink");
+    var navitelPermalink = document.getElementById("permalink");
     if(gmEl.length) {
         var gmLink = gmEl[0].children[2].children[0];
         var gmUrl = gmLink.href;
@@ -29,21 +48,10 @@ function content_helper() {
      * Chepetsk OpenLayers permalink
      */
     else if(openLayersEl.length) {
-        var olLink = openLayersEl[0].firstElementChild.href;
-        var q_str = olLink.split('?')[1];
-
-        q_str.split('&').forEach(function (value) {
-            var pair = value.split('=');
-            if(pair[0] === 'zoom') {
-                zoom = pair[1];
-            }
-            else if(pair[0] === 'lat') {
-                lat = pair[1];
-            }
-            else if(pair[0] === 'lon') {
-                lon = pair[1];
-            }
-        });
+        parseLink(openLayersEl[0]);
+    }
+    else if(navitelPermalink) {
+        parseLink(navitelPermalink);
     }
     /*
      * Bing: getting coords from LocalStorage
