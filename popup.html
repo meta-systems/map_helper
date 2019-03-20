@@ -350,6 +350,12 @@
             border-radius:4px;
             margin-bottom:30px;
         }
+        .providers a.provider_special {
+            display:inline-block;
+        }
+        .providers .provider_special_hidden {
+            display:none;
+        }
     </style>
 </head>
 <body id="body">
@@ -397,7 +403,7 @@
         <a target="_blank" id="osm_ru"  class="provider_hidden compare_disabled" href="http://openstreetmap.ru/" ><input type="checkbox" class="chbx" /><img src="img/osm_ru.png"/>OSM RU</a>
         <a target="_blank" id="osm_by"  class="provider_hidden compare_disabled" href="http://openstreetmap.by/" ><input type="checkbox" class="chbx" /><img src="img/osm_by.png"/>OSM BY</a>
         <a target="_blank" id="josm"    class="provider_hidden compare_disabled" href="#" ><input type="checkbox" class="chbx" /><img src="img/josm.svg"/>JOSM</a>
-        <a target="_blank" id="achavi"  class="provider_hidden compare_disabled" href="http://nrenner.github.io/achavi/" ><input type="checkbox" class="chbx" /><img src="img/achavi.svg"/>Achavi</a>
+        <a target="_blank" id="achavi"  class="provider_hidden compare_disabled provider_special_hidden" href="http://nrenner.github.io/achavi/" ><input type="checkbox" class="chbx" /><img src="img/achavi.svg"/>Achavi</a>
         <a target="_blank" id="mapy"    class="provider_hidden compare_disabled" href="https://mapy.cz/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapy<span>+</span></a>
         <a target="_blank" id="bestmaps" class="provider_hidden compare_disabled" href="https://bestmaps.ru/map" ><input type="checkbox" class="chbx" /><img src="img/bestmaps.svg"/>BestMaps<span>+</span></a>
         <a target="_blank" id="flickr" class="provider_hidden compare_disabled" href="https://loc.alize.us/" ><input type="checkbox" class="chbx" /><img src="img/flickr.svg"/>flickr<span>+</span></a>
@@ -441,7 +447,7 @@
             <div class="coord_inputP"><img class="copy_btn" src="img/copy.svg" id="coord_copy" title="Copy"/><input type="text" class="coord_input" id="coord_input" /></div>
             
 
-            <!-- <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a> -->
+            <a href="#" class="" target="_blank" id="earth_kml" title="For Google Earth">KML file</a>
         </span>
     </div>
 

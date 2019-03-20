@@ -43,7 +43,7 @@ var set_coordinates = function (coord, zoom) {
 
         // GE
         // FIXME: link for a new Bestmaps version will be changed
-        // document.getElementById("earth_kml").href='http://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
+        document.getElementById("earth_kml").href='http://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
 
         document.getElementsByClassName("coordLine")[0].classList.remove("hidden");
         document.getElementById('compare_start_js').classList.remove("hidden");
