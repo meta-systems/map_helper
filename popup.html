@@ -26,7 +26,10 @@
             background:#FFE68E !important;
             border-color:#FFE68E !important;
         }
-        .hidden {
+        .hidden,
+        a.hidden,
+        div.hidden,
+        span.hidden {
             display: none;
         }
         .section_hidden {
@@ -43,15 +46,6 @@
             height:26px;
             margin:0 auto 5px;
             display:block;
-        }
-        .btn {
-            border:1px solid #ddd;
-            padding:6px 10px;
-            border-radius:4px;
-            box-sizing: border-box;
-            display:inline-block;
-            height:35px;
-            line-height:23px;
         }
         .coordLine {
             float:left;
@@ -170,18 +164,9 @@
         .edit_mode .settings_save_btn {
             display:inline-block;
         }
-        .btn_green:hover {
-            background:#147e41;
-        }
+
         .clear {
             clear:both;
-        }
-        .btn_green {
-            background:#219653;
-            color:white;
-            border:none;
-            height:30px;
-            padding:4px 14px;
         }
         .map_preview {
             width:50%;
@@ -279,29 +264,6 @@
         .copy_btn:active + input {
             background:#FFE68E;
         }
-        .menu_item img {
-            margin-right:3px;
-            height:15px;
-        }
-        .menu_item:hover {
-            background:#ddd;
-        }
-        .menu_item span {
-            vertical-align: middle;
-        }
-        .menu_item {
-            display:inline-block;
-            background:#f4f4f4;
-            padding:6px 11px;
-            border-radius:4px;
-            margin-right:20px;
-            line-height:1em;
-            color:black;
-        }
-        .menu_active {
-            background:#FFE68E !important;
-        }
-
         #about:hover,
         #edit:hover {
             opacity:0.8;
@@ -350,11 +312,11 @@
             border-radius:4px;
             margin-bottom:30px;
         }
-        .providers a.provider_special {
-            display:inline-block;
-        }
-        .providers .provider_special_hidden {
+        .provider_special_hidden {
             display:none;
+        }
+        a.provider_special {
+            display:inline-block;
         }
         .link_with_icon {
             display:inline-block;
@@ -368,6 +330,55 @@
             display:inline-block;
             margin:0 10px;
         }
+        .coordinates_hidden .coordinates_el {
+            display:none;
+        }
+
+
+
+        .btn {
+            background:#f4f4f4;
+            padding:6px 10px;
+            border-radius:4px;
+            box-sizing: border-box;
+            display:inline-block;
+            height:35px;
+            line-height:23px;
+
+            height:30px;
+            padding:4px 14px;
+        }
+        .btn_green:hover {
+            background:#147e41;
+        }
+        .btn_green {
+            background:#219653;
+            color:white;
+        }
+
+        .menu_item img {
+            margin-right:3px;
+            height:15px;
+        }
+        .menu_item:hover {
+            background:#ddd;
+        }
+        .menu_item span {
+            vertical-align: middle;
+        }
+        .menu_item {
+            display:inline-block;
+            background:#f4f4f4;
+            padding:6px 11px;
+            border-radius:4px;
+            margin-right:20px;
+            line-height:1em;
+            color:black;
+        }
+        .menu_active {
+            background:#FFE68E !important;
+        }
+
     </style>
 </head>
 <body id="body">
@@ -414,7 +425,6 @@
         <a target="_blank" id="osm_ru"  class="provider_hidden compare_disabled" href="http://openstreetmap.ru/" ><input type="checkbox" class="chbx" /><img src="img/osm_ru.png"/>OSM RU</a>
         <a target="_blank" id="osm_by"  class="provider_hidden compare_disabled" href="http://openstreetmap.by/" ><input type="checkbox" class="chbx" /><img src="img/osm_by.png"/>OSM BY</a>
         <a target="_blank" id="josm"    class="provider_hidden compare_disabled" href="#" ><input type="checkbox" class="chbx" /><img src="img/josm.svg"/>JOSM</a>
-        <a target="_blank" id="achavi"  class="provider_hidden compare_disabled provider_special_hidden" href="http://nrenner.github.io/achavi/" ><input type="checkbox" class="chbx" /><img src="img/achavi.svg"/>Achavi</a>
         <a target="_blank" id="mapy"    class="provider_hidden compare_disabled" href="https://mapy.cz/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapy<span>+</span></a>
         <a target="_blank" id="bestmaps" class="provider_hidden compare_disabled" href="https://bestmaps.ru/map" ><input type="checkbox" class="chbx" /><img src="img/bestmaps.svg"/>BestMaps<span>+</span></a>
         <a target="_blank" id="flickr" class="provider_hidden compare_disabled" href="https://loc.alize.us/" ><input type="checkbox" class="chbx" /><img src="img/flickr.svg"/>flickr<span>+</span></a>
@@ -448,12 +458,13 @@
 
 <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span class="compare_start_cap" data-message="compare">Compare</span></a>
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
+<a href="#" class="btn" id="" data-message="save_settings"><img src="img/compare.svg"/> Save settings</a>
 
 <div class="control_box">
     
     <div class="toolsBox coordLine">
 
-        <div class="coord_box">
+        <div class="coord_box coordinates_el">
             <span class="coord_label" data-message="coordinates">Map center coordinates:</span>
             <span class="coordTD">
                 <!-- <span id="lat" title="Широта" class="coord"></span>, &nbsp;
@@ -463,7 +474,8 @@
             </span>
         </div>
 
-        <a href="#" class="link_with_icon" target="_blank" id="earth_kml" title="For Google Earth"><img src="img/gearth.svg"/>Google Earth .KML</a>
+        <a id="earth_kml" class="link_with_icon coordinates_el" target="_blank" href="#"><img src="img/gearth.svg"/>Google Earth .KML</a>
+        <a id="achavi"  class="btn link_with_icon provider_special_hidden" href="http://nrenner.github.io/achavi/" target="_blank"><img src="img/achavi.svg"/>Achavi</a>
     </div>
 
     

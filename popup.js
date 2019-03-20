@@ -1,5 +1,5 @@
 var set_coordinates = function (coord, zoom) {
-    if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 пораметра
+    if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 параметра
         // original
 
         document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl';
@@ -60,11 +60,11 @@ var set_coordinates = function (coord, zoom) {
         // FIXME: link for a new Bestmaps version will be changed
         document.getElementById("earth_kml").href='http://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
 
-        document.getElementsByClassName("coordLine")[0].classList.remove("hidden");
+        document.getElementById("body").classList.remove("coordinates_hidden");
         document.getElementById('compare_start_js').classList.remove("hidden");
     }
     else {
-        document.getElementsByClassName("coordLine")[0].classList.add("hidden");
+        document.getElementById("body").classList.add("coordinates_hidden");
         document.getElementById('compare_link_js').classList.add("hidden");
         return;
     }
