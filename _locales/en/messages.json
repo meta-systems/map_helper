@@ -1,3 +1,5 @@
 {
-  
+  "josm_missing": {
+    "message": "JOSM is not running!"
+  }
 }

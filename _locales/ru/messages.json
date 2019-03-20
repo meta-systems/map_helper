@@ -34,5 +34,8 @@
   },
   "coordinates": {
     "message": "Координаты карты:"
+  },
+  "josm_missing": {
+    "message": "JOSM не запущен!"
   }
 }
