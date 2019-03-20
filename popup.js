@@ -334,6 +334,9 @@ chrome.tabs.query({
         }
         document.getElementById("topo").className='selected';
     }
+    else if(/maps\.navitel\.su/.test(url)) {
+        document.getElementById("navitel").className='selected';
+    }
 
     set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
