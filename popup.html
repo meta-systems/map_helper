@@ -224,13 +224,20 @@
             display:block;
         }
         .map_preview_box {
+            display:none;
+        }
+        .compare_2 .map_preview_box,
+        .compare_3 .map_preview_box {
             display:flex;
         }
+
+
         .compare_mode .compare_preview_link {
             display: inline-block;
         }
         .compare_2 .compare_btn_caption,
-        .compare_3 .compare_btn_caption {
+        .compare_3 .compare_btn_caption
+        {
             display:block;
         }
         a:hover .compare_btn_caption {
@@ -298,7 +305,6 @@
             color:#8d8d8d;
             line-height:1.4em;
         }
-        .compare_1 .compare_help,
         .compare_2 .compare_help,
         .compare_3 .compare_help {
             display:none;
@@ -336,6 +342,7 @@
         }
         .link_with_icon {
             display:inline-block;
+            margin-right:10px;
         }
         .link_with_icon img {
             height:13px;
@@ -468,14 +475,14 @@
         <div class="map_preview preview_wiki">Wiki<span></span></div>
 
     </div>
-    <div class="compare_btn_caption">Compare maps</div>
+    <div class="compare_btn_caption" data-message="compare_maps">Compare maps</div>
 </a>
 <div class="clear"></div>
 
 
 <!-- <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a> -->
 <a href="#" class="btn" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a>
-<a href="#" class="btn btn_green" id="compare_proceed_js"><img src="img/compare.svg"/> <span data-message="compare">Compare proceed</span></a>
+<a href="#" class="btn btn_green" id="compare_proceed_js"><span data-message="compare_maps">Compare proceed</span></a>
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
 <a href="#" class="btn btn_light compare_mode_cancel_btn" id="compare_cancel_js" > <span data-message="cancel">Cancel</span></a>
 

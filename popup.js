@@ -78,8 +78,8 @@ var set_coordinates = function (coord, zoom) {
         return;
     }
 
-    // Compare link
-    document.getElementById("compare_link_js").addEventListener("click", function(){
+
+    function build_compare_link(){
         var bm_aliases = {
             'yandex': 'yandex/hybrid',
             'here': 'here/sat',
@@ -110,6 +110,17 @@ var set_coordinates = function (coord, zoom) {
 
         console.log(bm_url);
         var win = window.open(bm_url, '_blank');
+    }
+
+    // Compare link
+    document.getElementById("compare_link_js").addEventListener("click", function(){
+        build_compare_link();
+    });
+
+
+    // Compare link (green)
+    document.getElementById("compare_proceed_js").addEventListener("click", function(){
+        build_compare_link();
     });
 };
 

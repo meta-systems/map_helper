@@ -20,6 +20,12 @@
   "compare_help": {
     "message": "Выберите 2 или 3 карты"
   },
+  "compare_proceed": {
+    "message": "Сравнить карты"
+  },
+  "compare_maps": {
+    "message": "Сравнить карты"
+  },
   "settings_help": {
     "message": "Выберите карты, которые хотите отобразить"
   },
