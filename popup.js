@@ -19,7 +19,8 @@ var set_coordinates = function (coord, zoom) {
 
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
-        document.getElementById("loadmap").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
+        // document.getElementById("loadmap").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
+        document.getElementById("nakarte").href='https://nakarte.me/#m='+zoom+'/'+coord[1]+'/'+coord[0]+'&l=O/K';
 
         document.getElementById("chepetsk").href='http://xn--e1aaps0bc.net/?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
@@ -128,7 +129,8 @@ var set_coordinates = function (coord, zoom) {
 
 var url;
 
-//listen for call from content_script(browser scope)
+// для карт, у которых нет координат в урле, пробрасываем их из content_script.js
+// listen for call from content_script(browser scope)
 chrome.runtime.onMessage.addListener(function(request, sender) {
 
     var is_bing = /bing.*maps/.test(url);
@@ -355,14 +357,12 @@ chrome.tabs.query({
         }
         */
     }
-    //Loadmap
-    else if (host_clean === 'loadmap') {
-        // document.getElementById("loadmap").className = 'selected';
-        document.querySelector("#loadmap").classList.add('selected');
-    }
-    //2gis
+    // Loadmap
+    // else if (host_clean === 'loadmap') {
+    //     document.querySelector("#loadmap").classList.add('selected');
+    // }
+    // 2gis
     else if (host_clean === '2gis') {
-        // document.getElementById("2gis").className = 'selected';
         document.querySelector("#2gis").classList.add('selected');
 
         var matches = url.match(/m=([\d.]+)%2C([\d.]+)%2F([\d.]+)/);
@@ -412,6 +412,7 @@ chrome.tabs.query({
         // document.getElementById("mapy").className='selected';
         document.querySelector("#mapy").classList.add('selected');
     }
+    // opentopomap
     else if (host_clean === 'opentopomap') {
         var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
         if(map_matches !== null) {
@@ -419,15 +420,26 @@ chrome.tabs.query({
             coord[1] = map_matches[2];
             coord[0] = map_matches[3];
         }
-        // document.getElementById("topo").className='selected';
         document.querySelector("#topo").classList.add('selected');
     }
+
+    // nakarte
+    else if (host_clean === 'nakarte') {
+        // https://nakarte.me/#m=14/55.84012/30.29068&l=O/K
+        var map_matches = url.match(/#m=(\d+)\/([\d.]+)\/([\d.]+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+        }
+        document.querySelector("#nakarte").classList.add('selected');
+    }
+
+    // navitel
     else if(/maps\.navitel\.su/.test(url)) {
-        // document.getElementById("navitel").className='selected';
         document.querySelector("#navitel").classList.add('selected');
     }
     else if(/loc\.alize\.us/.test(url)) {
-        // document.getElementById("flickr").className='selected';
         document.querySelector("#flickr").classList.add('selected');
         var map_matches = url.match(/geo:([\d.]+),([\d.]+),(\d+)/);
         if(map_matches !== null) {

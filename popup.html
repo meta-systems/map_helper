@@ -422,6 +422,21 @@
         .compare_mode_cancel_btn {
             display:none;
         }
+        .providers_small a div {
+            display:inline;
+        }
+        .providers_small a {
+            width:88px;
+            text-align:left;
+            border-color:white;
+            background:white;
+        }
+        .providers_small a img {
+            height:14px;
+            margin:auto;
+            margin:0 4px;
+            display:inline;
+        }
 
     </style>
 </head>
@@ -455,12 +470,12 @@
         <a target="_blank" id="osm" href="https://www.openstreetmap.org" ><input type="checkbox" class="chbx" checked /><img src="img/osm.png"/>OSM<span>+</span></a>
         <a target="_blank" id="2gis" href="https://2gis.ru/"><input type="checkbox" class="chbx" checked /><img src="img/2gis.svg"/>2GIS<span>+</span></a>
         <a target="_blank" id="wiki"   href="http://wikimapia.org/" class=""><input type="checkbox" class="chbx" checked /><img src="img/wiki.svg"/>Wiki<span>+</span></a>
-        <a target="_blank" id="loadmap" href="http://loadmap.net/" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/loadmap.svg"/>Loadmap</a>
+        <a target="_blank" id="nakarte" href="https://nakarte.me/" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/ggc.png"/><div data-message="ggc">GGC250</div></a>
         <a target="_blank" id="navitel" href="http://maps.navitel.su/api/map.html" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/navitel.svg"/>Navitel</a>
     </div>
 
     <div class="section_label">OSM & tools</div>
-    <div class="providers">
+    <div class="providers providers_small">
         <a target="_blank" id="chepetsk" class="provider_hidden compare_disabled" href="http://xn--e1aaps0bc.net/"><input type="checkbox" class="chbx" checked /><img src="img/chepetsk.svg"/><div data-message="chepetsk">Chepetsk</div><span>+</span></a>
         <a target="_blank" id="sputnik" class="provider_hidden" href="http://maps.sputnik.ru/"><input type="checkbox" class="chbx" checked /><img src="img/sputnik.svg"/><div data-message="sputnik">Sputnik</div><span>+</span></a>
         <a target="_blank" id="topo"    class="provider_hidden" href="https://opentopomap.org/" ><input type="checkbox" class="chbx" /><img src="img/osm_topo.png"/>Topo<span>+</span></a>
@@ -550,9 +565,14 @@ https://www.waze.com/ru/editor?lon=30.28759&lat=55.84514&zoom=2
 Крутая карта для горнолыжников, но без координатов в урле
     https://www.opensnowmap.org/index.html?zoom=4&lat=38.06044&lon=-70.70005&layers=snowbase
 
-http://brouter.de/brouter-web/#map=9/56.5375/30.6931/OpenStreetMap&lonlats=30.504656,56.46965|30.515041,56.465383
+
+-->
 
 
+
+<!-- 
+    ABANDONED
+    <a target="_blank" id="loadmap" href="http://loadmap.net/" class="compare_disabled"><input type="checkbox" class="chbx" checked /><img src="img/loadmap.svg"/>Loadmap</a> 
 -->
 
 

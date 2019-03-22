@@ -5,6 +5,9 @@
   "sputnik": {
     "message": "Спутник"
   },
+  "ggc": {
+    "message": "ГГЦ 250"
+  },
   "map": {
     "message": "Карта"
   },
