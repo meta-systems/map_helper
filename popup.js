@@ -168,10 +168,12 @@ chrome.tabs.query({
         zoom = zoomya[0].slice(2); //  убираем z=
 
         if(/sat/.test(url)) {
-            document.getElementById("yandex").className='selected';
+            // document.getElementById("yandex").className='selected';
+            document.querySelector("#yandex").classList.add('selected');
         }
         else {
-            document.getElementById("yandex_map").className='selected';
+            // document.getElementById("yandex_map").className='selected';
+            document.querySelector("#yandex_map").classList.add('selected');
         }
 
     }
@@ -215,16 +217,21 @@ chrome.tabs.query({
                 }
             }
 
-           document.getElementById("google").className='selected';
+           // document.getElementById("google").className='selected';
+           document.querySelector("#google").classList.add('selected');
+
        }
        else {
-           document.getElementById("google_map").className='selected';
+           // document.getElementById("google_map").className='selected';
+           document.querySelector("#google_map").classList.add('selected');
        }
     }
     // BING
     else if(/bing.*maps/.test(url)) { // /bing.*maps||mapspreview/
 
-        document.getElementById("bing").className='selected';
+        // document.getElementById("bing").className='selected';
+        document.querySelector("#bing").classList.add('selected');
+
     }
     // BESTMAPS
     else if (host_clean === 'bestmaps'){
@@ -237,11 +244,12 @@ chrome.tabs.query({
         }
 
         if(/map\/osm\/WorldImagery/.test(url)) {
-            document.getElementById("esri").className='selected';
+            // document.getElementById("esri").className='selected';
+            document.querySelector("#esri").classList.add('selected');
         }
         else if(/map/.test(url)) {
             // document.getElementById("bestmaps").className='selected'; // ломает классы
-            document.querySelector("#bestmaps").classList.add('selected'); // не работает
+            document.querySelector("#bestmaps").classList.add('selected');
         }
     }
     else if(/openstreetmap\.by/.test(url)) {
@@ -252,7 +260,8 @@ chrome.tabs.query({
             coord[0] = map_matches[3];
         }
 
-        document.getElementById("osm_by").className='selected';
+        // document.getElementById("osm_by").className='selected';
+        document.querySelector("#osm_by").classList.add('selected');
     }
     // OSM
     else if (host_clean === 'openstreetmap'){
@@ -265,10 +274,13 @@ chrome.tabs.query({
         }
 
         if(/openstreetmap\.ru/.test(url)) {
-            document.getElementById("osm_ru").className = 'selected';
+            // document.getElementById("osm_ru").className = 'selected';
+            document.querySelector("#osm_ru").classList.add('selected');
+
         }
         else {
-            document.getElementById("osm").className = 'selected';
+            // document.getElementById("osm").className = 'selected';
+            document.querySelector("#osm").classList.add('selected');
 
             var chang_matches = url.match(/changeset\/(\d+)/);
             var achavi_url = 'http://nrenner.github.io/achavi/';
@@ -291,7 +303,9 @@ chrome.tabs.query({
         coord[0] = provider_string[1];
 
         if(/satellite/.test(url)){
-            document.getElementById("here").className='selected';
+            // document.getElementById("here").className='selected';
+            document.querySelector("#here").classList.add('selected');
+
         }
 
     }
@@ -305,20 +319,23 @@ chrome.tabs.query({
 
         zoom = zoomwiki[0].slice(2);
 
-        document.getElementById("wiki").className = 'selected';
+        // document.getElementById("wiki").className = 'selected';
+        document.querySelector("#wiki").classList.add('selected');
         /*
         if (url.match(/&m=w/ig)) {
-            document.getElementById("wikimapia_map").className = 'selected';
+            document.querySelector("#wikimapia_map").classList.add('selected');
         }
         */
     }
     //Loadmap
     else if (host_clean === 'loadmap') {
-        document.getElementById("loadmap").className = 'selected';
+        // document.getElementById("loadmap").className = 'selected';
+        document.querySelector("#loadmap").classList.add('selected');
     }
     //2gis
     else if (host_clean === '2gis') {
-        document.getElementById("2gis").className = 'selected';
+        // document.getElementById("2gis").className = 'selected';
+        document.querySelector("#2gis").classList.add('selected');
 
         var matches = url.match(/m=([\d.]+)%2C([\d.]+)%2F([\d.]+)/);
         if(matches !== null) {
@@ -340,7 +357,8 @@ chrome.tabs.query({
     }
     //chepetsk
     else if (host_clean === 'xn--e1aaps0bc') {
-        document.getElementById("chepetsk").className='selected';
+        // document.getElementById("chepetsk").className='selected';
+        document.querySelector("#chepetsk").classList.add('selected');
     }
     else if(/maps\.sputnik\.ru/.test(url)) {
         var lat_matches = url.match(/lat=([\d.]+)/);
@@ -351,7 +369,8 @@ chrome.tabs.query({
             coord[1] = lat_matches[1];
             coord[0] = lng_matches[1];
         }
-        document.getElementById("sputnik").className='selected';
+        // document.getElementById("sputnik").className='selected';
+        document.querySelector("#sputnik").classList.add('selected');
     }
     else if(/mapy\.cz/.test(url)) {
         var lat_matches = url.match(/y=([\d.]+)/);
@@ -362,7 +381,8 @@ chrome.tabs.query({
             coord[1] = lat_matches[1];
             coord[0] = lng_matches[1];
         }
-        document.getElementById("mapy").className='selected';
+        // document.getElementById("mapy").className='selected';
+        document.querySelector("#mapy").classList.add('selected');
     }
     else if (host_clean === 'opentopomap') {
         var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
@@ -371,13 +391,16 @@ chrome.tabs.query({
             coord[1] = map_matches[2];
             coord[0] = map_matches[3];
         }
-        document.getElementById("topo").className='selected';
+        // document.getElementById("topo").className='selected';
+        document.querySelector("#topo").classList.add('selected');
     }
     else if(/maps\.navitel\.su/.test(url)) {
-        document.getElementById("navitel").className='selected';
+        // document.getElementById("navitel").className='selected';
+        document.querySelector("#navitel").classList.add('selected');
     }
     else if(/loc\.alize\.us/.test(url)) {
-        document.getElementById("flickr").className='selected';
+        // document.getElementById("flickr").className='selected';
+        document.querySelector("#flickr").classList.add('selected');
         var map_matches = url.match(/geo:([\d.]+),([\d.]+),(\d+)/);
         if(map_matches !== null) {
             zoom = map_matches[3];
