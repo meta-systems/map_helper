@@ -216,6 +216,8 @@
         .preview_osm span {background-image:url(img/map_mapnik.png);}
         .preview_2gis span {background-image:url(img/map_2gis.png);}
         .preview_wiki span {background-image:url(img/map_wiki.png);}
+        .preview_topo span {background-image:url(img/map_topo.png);}
+        .preview_sputnik span {background-image:url(img/map_sputnik.png);}
 
         .compare_2 .compare_preview_link,
         .compare_3 .compare_preview_link {
@@ -414,11 +416,20 @@
         .compare_mode #compare_start_js {
             display:none;
         }
-        .compare_mode #compare_proceed_js,
+        .compare_2.compare_mode .compare_continue,
+        .compare_3.compare_mode .compare_continue {
+            pointer-events: auto;
+            background:#219653 !important;
+        }
+        .compare_mode .compare_continue{
+            pointer-events:none;
+            background:gray !important;
+        }
+        .compare_mode .compare_continue,
         .compare_mode .compare_mode_cancel_btn {
             display:inline-block;
         }
-        #compare_proceed_js,
+        .compare_continue,
         .compare_mode_cancel_btn {
             display:none;
         }
@@ -506,6 +517,8 @@
         <div class="map_preview preview_osm">OSM<span></span></div>
         <div class="map_preview preview_2gis">2GIS<span></span></div>
         <div class="map_preview preview_wiki">Wiki<span></span></div>
+        <div class="map_preview preview_topo">Topo<span></span></div>
+        <div class="map_preview preview_sputnik">Sputnik<span></span></div>
 
     </div>
     <div class="compare_btn_caption" data-message="compare_maps">Compare maps</div>
@@ -515,7 +528,7 @@
 
 <!-- <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a> -->
 <a href="#" class="btn" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a>
-<a href="#" class="btn btn_green" id="compare_proceed_js"><span data-message="compare_maps">Compare proceed</span></a>
+<a href="#" class="btn btn_green compare_continue" id="compare_proceed_js"><span data-message="compare_maps">Compare proceed</span></a>
 <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
 <a href="#" class="btn btn_light compare_mode_cancel_btn" id="compare_cancel_js" > <span data-message="cancel">Cancel</span></a>
 
@@ -565,6 +578,8 @@ https://www.waze.com/ru/editor?lon=30.28759&lat=55.84514&zoom=2
 Крутая карта для горнолыжников, но без координатов в урле
     https://www.opensnowmap.org/index.html?zoom=4&lat=38.06044&lon=-70.70005&layers=snowbase
 
+SAS GGC
+http://91.237.82.95:8088/map/genshtab.html#ggc1
 
 -->
 
