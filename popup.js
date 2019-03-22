@@ -266,12 +266,11 @@ chrome.tabs.query({
     }
     // brouter (copy of OSM BY)
     else if(/brouter\.de/.test(url)) {
-        var map_matches = url.match(/#([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/brouter-web\/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
         if(map_matches !== null) {
             zoom = map_matches[1];
             coord[1] = map_matches[2];
             coord[0] = map_matches[3];
-            alert(coord[1]);
         }
 
         document.querySelector("#brouter").classList.add('selected');
@@ -287,12 +286,10 @@ chrome.tabs.query({
         }
 
         if(/openstreetmap\.ru/.test(url)) {
-            // document.getElementById("osm_ru").className = 'selected';
             document.querySelector("#osm_ru").classList.add('selected');
 
         }
         else {
-            // document.getElementById("osm").className = 'selected';
             document.querySelector("#osm").classList.add('selected');
 
             var chang_matches = url.match(/changeset\/(\d+)/);
