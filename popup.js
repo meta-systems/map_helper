@@ -25,6 +25,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
         document.getElementById("topo").href='https://opentopomap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("brouter").href='http://brouter.de/brouter-web/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'/OpenStreetMap';
         document.getElementById("mapy").href='https://mapy.cz/?x='+coord[0]+'&y='+coord[1]+'&z='+zoom;
         document.getElementById("osm_ru").href='http://openstreetmap.ru/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("navitel").href='http://maps.navitel.su/api/map.html?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
@@ -252,6 +253,7 @@ chrome.tabs.query({
             document.querySelector("#bestmaps").classList.add('selected');
         }
     }
+    // OSM BY
     else if(/openstreetmap\.by/.test(url)) {
         var map_matches = url.match(/#([\d.]+)\/([\d.]+)\/([\d.]+)/);
         if(map_matches !== null) {
@@ -260,8 +262,19 @@ chrome.tabs.query({
             coord[0] = map_matches[3];
         }
 
-        // document.getElementById("osm_by").className='selected';
         document.querySelector("#osm_by").classList.add('selected');
+    }
+    // brouter (copy of OSM BY)
+    else if(/brouter\.de/.test(url)) {
+        var map_matches = url.match(/#([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+            alert(coord[1]);
+        }
+
+        document.querySelector("#brouter").classList.add('selected');
     }
     // OSM
     else if (host_clean === 'openstreetmap'){
