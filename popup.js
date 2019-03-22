@@ -26,6 +26,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("topo").href='https://opentopomap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("brouter").href='http://brouter.de/brouter-web/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'/OpenStreetMap';
+        document.getElementById("qwant").href='https://www.qwant.com/maps/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'';
         document.getElementById("mapy").href='https://mapy.cz/?x='+coord[0]+'&y='+coord[1]+'&z='+zoom;
         document.getElementById("osm_ru").href='http://openstreetmap.ru/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("navitel").href='http://maps.navitel.su/api/map.html?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
@@ -274,6 +275,23 @@ chrome.tabs.query({
         }
 
         document.querySelector("#brouter").classList.add('selected');
+    }
+    // qwant (copy of OSM BY)
+    else if(/qwant\.com/.test(url)) {
+        
+        // FIXME
+        // https://www.qwant.com/maps/#map=18.00/57.8163132/28.3294716
+        // https://www.qwant.com/maps/place/osm:node:4176691489@_#map=18.00/57.8163132/28.3294716
+
+        var map_matches = url.match(/maps\/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
+
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+        }
+
+        document.querySelector("#qwant").classList.add('selected');
     }
     // OSM
     else if (host_clean === 'openstreetmap'){
