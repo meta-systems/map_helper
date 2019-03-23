@@ -1,6 +1,6 @@
 ﻿chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     chrome.pageAction.setIcon({tabId: tab.id, path:"icon16-grey.png"});
-    chrome.pageAction.setTitle({tabId: tab.id,title:"Другие карты"});
+    chrome.pageAction.setTitle({tabId: tab.id,title:"Map Helper"});
 
     var url = tab.url;
     var url_parts = url.split( '/' ); // разбиваем весь урл на массив с помощью слеша
