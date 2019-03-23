@@ -1,14 +1,14 @@
 ﻿{
 	"update_url":"http://clients2.google.com/service/update2/crx",
-	"name": "Best Maps",
+	"name": "Map Helper",
 	"version": "1.2",
 	"default_locale": "en",
 	"manifest_version": 2,
 	"description": "Просмотр альтернативных карт на страницах Google Maps, Яндекс Карты и тд",
-	"homepage_url": "http://bestmaps.ru",
+	"homepage_url": "https://bestmaps.ru/chrome_extension",
 	"page_action": {
 		"default_icon": "icon.png",
-		"default_title": "bestmaps.ru",
+		"default_title": "Map Helper",
 		"default_popup": "popup.html"
 	},
 	"icons": {
