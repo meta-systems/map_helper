@@ -316,7 +316,7 @@ chrome.tabs.query({
             var achavi_url = 'http://nrenner.github.io/achavi/';
             if(chang_matches !== null) {
                 document.getElementById("achavi").href = achavi_url + '?changeset=' + chang_matches[1];
-                document.getElementById("achavi").classList.remove("provider_hidden");
+                document.getElementById("achavi").classList.remove("phidden");
                 document.getElementById("achavi").classList.add("provider_special");
             }
         }
@@ -379,7 +379,7 @@ chrome.tabs.query({
         if(matches !== null) {
             document.getElementById("achavi").href = osm_url + matches[1];
             //document.getElementById("achavi").className='selected';
-            document.getElementById("achavi").classList.remove("provider_hidden");
+            document.getElementById("achavi").classList.remove("phidden");
             document.getElementById("achavi").classList.add("provider_special");
         }
     }
@@ -457,6 +457,13 @@ function onWindowLoad() {
 
     // i18n
     var lang = chrome.i18n.getUILanguage();
+    
+    if(lang != 'ru'){
+        document.querySelectorAll('.locale_ru').forEach(function (el) {
+            el.classList.add('phidden');
+        });
+    }
+
     document.querySelectorAll('[data-message]').forEach(function (lang_el) {
         var attr_val = lang_el.getAttribute('data-message');
         var message = chrome.i18n.getMessage(attr_val);
@@ -487,13 +494,13 @@ function onWindowLoad() {
         var chbx_parent = chbx.parentElement;
         var chbx_key = chbx_parent.id;
         if(chbx.checked) {
-            chbx_parent.classList.remove("provider_hidden");
+            chbx_parent.classList.remove("phidden");
             localStorage.setItem(chbx_key, true);
         }
         else {
 
             // при удалении слоев сбрасываем информацию из режима сравнения
-            chbx_parent.classList.add("provider_hidden");
+            chbx_parent.classList.add("phidden");
             chbx_parent.classList.remove("compare_item");
             document.querySelector('#body').classList.remove('compare_1');
             document.querySelector('#body').classList.remove('compare_2');
@@ -508,13 +515,13 @@ function onWindowLoad() {
         var chbx_key = chbx_parent.id;
         var show_val = localStorage.getItem(chbx_key);
         if(show_val === 'true') {
-            chbx_parent.classList.remove("provider_hidden");
+            chbx_parent.classList.remove("phidden");
             chbx.checked = true;
         }
         else if(show_val === 'false') {
             // provider is special for this page, so show it anyway
             if(!chbx_parent.classList.contains('provider_special')) {
-                chbx_parent.classList.add("provider_hidden");
+                chbx_parent.classList.add("phidden");
             }
             chbx.checked = false;
         }
@@ -534,8 +541,8 @@ function onWindowLoad() {
                 if(providerLink.tagName !== 'A') {
                     return;
                 }
-                if(!providerLink.classList.contains('provider_hidden')
-                        && (!is_compare_mode || !providerLink.classList.contains('compare_disabled'))) {
+                if(!providerLink.classList.contains('phidden')
+                        && (!is_compare_mode || !providerLink.classList.contains('no_comp'))) {
                     section_shown = true;
                 }
 
