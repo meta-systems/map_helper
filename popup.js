@@ -662,8 +662,8 @@ _gaq.push(['_trackPageview']);
 function trackButton(e) {
     _gaq.push(['_trackEvent', e.target.id, 'clicked']);
 };
-  
-var buttons = document.querySelectorAll('button');
+
+var buttons = document.querySelectorAll('.providers a, #coord_copy, #coord_input, .link_with_icon, #settings_save_js');
 for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', trackButton);
 }
