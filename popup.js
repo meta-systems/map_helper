@@ -77,7 +77,7 @@ var set_coordinates = function (coord, zoom) {
         console.log(coord);
     }
     else {
-        // document.getElementById("body").classList.add("coordinates_hidden"); // Fixme
+        document.getElementById("body").classList.add("coordinates_hidden"); // Fixme
         document.getElementById('compare_link_js').classList.add("hidden");
         return;
     }
