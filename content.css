@@ -1,0 +1,16 @@
+﻿.icross {
+    position: absolute;
+/*    width:20px;
+    height:20px;*/
+    top:50%;
+    left:50%;
+    z-index:1000;
+    /*background: url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/cross.svg) no-repeat center center;*/
+}
+.icross img {
+    position:absolute;
+    top:-15.5px;
+    left:-15.5px;
+    /*box-shadow: 0 0 5px rgba(0,0,0,0.3);*/
+
+}

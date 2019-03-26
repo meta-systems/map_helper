@@ -74,3 +74,16 @@ chrome.runtime.sendMessage({
 	action: "coords",
     coords: content_helper()
 });
+
+
+// добавляем перекрестие на openstreetmap.org
+setTimeout(function(){
+    
+    var div=document.createElement("div"); 
+    div.classList.add('icross');
+    div.classList.add('icross_osm');
+    div.innerHTML += '<img src="chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/cross.svg" />'; 
+    document.getElementById('content').appendChild(div); 
+    // div.innerText="test123";
+
+}, 1000);
