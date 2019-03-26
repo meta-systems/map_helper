@@ -13,7 +13,9 @@
             font-family:arial;
             font-size:13px;
             padding:30px 5px 45px 25px;
+            padding:1px 3px;
             margin:0;
+            /* https://stackoverflow.com/questions/47805286/in-a-chrome-extension-how-do-i-change-the-full-background-color-of-a-popup-wind */
         }
         img {
             margin: 0;
@@ -49,9 +51,6 @@
         }
         .coordLine {
             float:left;
-        }
-        .compare_mode .coordLine {
-            display:none;
         }
         .providers {
             margin-bottom:15px;
@@ -114,6 +113,7 @@
             font-size:0 !important;
             background: #219653 url(img/ok.svg) no-repeat center center !important;
         }
+
         .compare_mode #providers_list a:hover span {
             background:#77CD9C;
             width:19px;
@@ -138,12 +138,6 @@
             float:left;
         }
         .providers span {
-            display:none;
-        }
-        .control_box {
-            margin-top:20px;
-        }
-        .edit_mode .control_box {
             display:none;
         }
         .chbx {
@@ -267,24 +261,39 @@
             color: #888;
             margin-top: 6px;
         }
+        .coord_inputP:hover {
+            background:white;
+            border-radius:4px;
+        }
         .coord_inputP {
             position:relative;
+            display:inline-block;
+            margin:5px;
         }
-        .coord_input:focus {
+        .coord_inputP:hover .coord_input:focus {
             box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
             outline:none;
         }
         .coord_input {
             padding:7px 11px;
+            padding:3px 6px;
             border-radius:4px;
             border:1px solid #ccc;
+            border:none;
+            background:none;
+            outline:none;
+        }
+        .coord_inputP:hover .copy_btn {
+            opacity:1;
         }
         .copy_btn {
-            height:18px;
+            height:14px;
             position:absolute;
-            top:7px;
+            top:3px;
             right:6px;
             cursor:pointer;
+            opacity:0.4;
+            opacity:0;
         }
         .coord_label {
             padding-bottom:5px; 
@@ -297,22 +306,19 @@
         #edit:hover {
             opacity:0.8;
         }
-        #edit {
-            right:60px;
-        }
         #about img {
             width:100%;
-        }
-        #about {
-            right:20px;
+            display: block;
         }
         #about,
         #edit {
+            float:right;
             cursor:pointer;
-            width:20px;
+            width:16px;
             opacity:0.4;
-            position:absolute;
-            bottom:20px;
+            /*position:absolute;*/
+            /*top:8px;*/
+            margin:8px 12px 0 0;
         }
         .compare_mode .compare_help {
             display:block;
@@ -338,6 +344,7 @@
             padding:20px 30px;
             display:inline-block;
             border-radius:4px;
+            margin-top:15px;
             margin-bottom:30px;
         }
         .provider_special_hidden {
@@ -354,6 +361,10 @@
             display:none;
         }
 
+        .link_with_icon:hover img {
+           filter: none;
+
+        }
         .link_with_icon:hover {
             text-decoration: underline;
         }
@@ -365,6 +376,8 @@
             height:13px;
             margin-right:4px;
             margin-top:-2px;
+            filter: grayscale(1);
+            opacity:0.8;
         }
         .btn:hover {
 
@@ -460,12 +473,51 @@
             margin-top:2px;
         }
 
+        .control_box {
+            background:#eee;
+            border-radius:2px;
+        }
+        #providers_list {
+            margin-top:20px;
+        }
+        .buttonsP {
+            margin-bottom:20px;
+        }
+        .buttonsP, #providers_list, .settings_help {
+            margin-left:20px;
+        }
+
     </style>
 </head>
 <body id="body">
 
-<img id="edit" title="Settings" src="img/settings.svg"/>
-<a id="about" title="About" href="http://bestmaps.ru/chrome_extension" target="_blank"><img src="img/info.svg"/></a>
+
+<div class="control_box">
+    
+    <a id="about" title="About" href="http://bestmaps.ru/chrome_extension" target="_blank"><img src="img/info.svg"/></a>
+    <img id="edit" title="Settings" src="img/settings.svg"/>
+
+    <div class="toolsBox coordLine">
+
+        <div class="coord_box coordinates_el">
+            <span class="coord_label" data-message="coordinates">Coord:</span>
+            
+            <div class="coord_inputP"><img class="copy_btn" src="img/copy.svg" id="coord_copy" title="Copy"/><input type="text" class="coord_input" id="coord_input" /></div>
+            
+        </div>
+
+
+        <a id="earth_kml" class="link_with_icon coordinates_el" target="_blank" href="#" title="For_Google_Earth"><img src="img/gearth.svg"/>.kml</a>
+        <a id="gpx" class="link_with_icon coordinates_el" target="_blank" href="#" title="gpx_link"><img src="img/gpx.svg"/>.gpx</a>
+        <a id="achavi"  class="link_with_icon provider_special_hidden" href="http://nrenner.github.io/achavi/" target="_blank"><img src="img/achavi.svg"/>Achavi</a>
+
+
+    </div>
+
+    
+    <div class="clear"></div>
+</div>
+    
 
 <div class="settings_help" data-message="settings_help">Please select the maps you want to display</div>
 
@@ -538,56 +590,23 @@
 
 
 <!-- <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a> -->
-<a href="#" class="btn" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a>
-<a href="#" class="btn btn_green compare_continue" id="compare_proceed_js"><span data-message="compare_maps">Compare proceed</span></a>
-<a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
-<a href="#" class="btn btn_light compare_mode_cancel_btn" id="compare_cancel_js" > <span data-message="cancel">Cancel</span></a>
 
-<div class="control_box">
-    
-    <div class="toolsBox coordLine">
-
-        <div class="coord_box coordinates_el">
-            <span class="coord_label" data-message="coordinates">Map center coordinates:</span>
-            <span class="coordTD">
-                <!-- <span id="lat" title="Широта" class="coord"></span>, &nbsp;
-                <span id="lon" title="Долгота" class="coord"></span> -->
-                
-                <div class="coord_inputP"><img class="copy_btn" src="img/copy.svg" id="coord_copy" title="Copy"/><input type="text" class="coord_input" id="coord_input" /></div>
-            </span>
-        </div>
-
-
-        <a id="earth_kml" class="link_with_icon coordinates_el" target="_blank" href="#" title="For_Google_Earth"><img src="img/gearth.svg"/>Google Earth .KML</a>
-        <a id="achavi"  class="link_with_icon provider_special_hidden" href="http://nrenner.github.io/achavi/" target="_blank"><img src="img/achavi.svg"/>Achavi</a>
-
-
-    </div>
-
-    
-    <div class="clear"></div>
+<div class="buttonsP">
+    <a href="#" class="btn" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a>
+    <a href="#" class="btn btn_green compare_continue" id="compare_proceed_js"><span data-message="compare_maps">Compare proceed</span></a>
+    <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
+    <a href="#" class="btn btn_light compare_mode_cancel_btn" id="compare_cancel_js" > <span data-message="cancel">Cancel</span></a>
 </div>
-    
+
 <!-- 
 
 
-https://demo.f4map.com/#lat=57.8170345&lon=28.3246624&zoom=17
-
-mapquest
 
 https://www.mapillary.com/app/?lat=57.80552298327913&lng=28.266883885834318&z=17.285266180288957&mapStyle=mapbox_streets&pKey=JaGhGRr3tGL2ymZ_cZbiFg&focus=map
 
 STRAVA map
 
-OSM EDIT link?
-
 https://www.waze.com/ru/livemap?zoom=17&lat=57.832189&lon=28.332044
-
-крутая карта, но нет координат в урле (только европа, удобна для гор)
-    https://www.wanderreitkarte.de/
-
-Крутая карта для горнолыжников, но без координатов в урле
-    https://www.opensnowmap.org/index.html?zoom=4&lat=38.06044&lon=-70.70005&layers=snowbase
 
 SAS GGC
 http://91.237.82.95:8088/map/genshtab.html#ggc1

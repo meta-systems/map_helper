@@ -74,9 +74,10 @@ var set_coordinates = function (coord, zoom) {
 
         document.getElementById("body").classList.remove("coordinates_hidden");
         document.getElementById('compare_start_js').classList.remove("hidden");
+        console.log(coord);
     }
     else {
-        document.getElementById("body").classList.add("coordinates_hidden");
+        // document.getElementById("body").classList.add("coordinates_hidden"); // Fixme
         document.getElementById('compare_link_js').classList.add("hidden");
         return;
     }
@@ -363,7 +364,8 @@ chrome.tabs.query({
     // }
     // 2gis
     else if (host_clean === '2gis') {
-        document.querySelector("#2gis").classList.add('selected');
+        document.getElementById("2gis").classList.add('selected');
+        // document.querySelector("#2gis").classList.add('selected'); // почему не работает?
 
         var matches = url.match(/m=([\d.]+)%2C([\d.]+)%2F([\d.]+)/);
         if(matches !== null) {
