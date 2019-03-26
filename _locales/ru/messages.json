@@ -11,6 +11,9 @@
   "map": {
     "message": "Карта"
   },
+  "photo_flickr": {
+    "message": "Фото"
+  },
   "Settings": {
     "message": "Настройки"
   },
