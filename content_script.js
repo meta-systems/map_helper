@@ -25,8 +25,10 @@ function content_helper() {
      * Loadmap: getting coords from GoogleAPI logo
      */
     var gmEl = document.getElementsByClassName("gm-style");
+    var waze = document.getElementsByClassName("wm-permalink-control__link");
     var openLayersEl = document.getElementsByClassName("olControlPermalink");
     var navitelPermalink = document.getElementById("permalink");
+
     if(gmEl.length) {
         var gmLink = gmEl[0].children[2].children[0];
         var gmUrl = gmLink.href;
@@ -44,18 +46,23 @@ function content_helper() {
             }
         });
     }
-    /*
-     * Chepetsk OpenLayers permalink
-     */
+
+    // Chepetsk OpenLayers permalink
     else if(openLayersEl.length) {
         parseLink(openLayersEl[0]);
     }
+
+    // Navitel
     else if(navitelPermalink) {
         parseLink(navitelPermalink);
     }
-    /*
-     * Bing: getting coords from LocalStorage
-     */
+
+    // waze
+    else if(waze) {
+        parseLink(waze);
+    }
+    
+    // Bing: getting coords from LocalStorage
     else {
         lat = localStorage.getItem("centerLatitude");
         lon = localStorage.getItem("centerLongitude");

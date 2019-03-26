@@ -33,6 +33,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("mapillary").href='https://www.mapillary.com/app/?lat='+coord[1]+'&lng='+coord[0]+'&z='+zoom+'';
         document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
+        document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0]+''; // 
 
 
         var jlat = parseFloat(coord[1]),
@@ -291,6 +292,22 @@ chrome.tabs.query({
         }
 
         document.querySelector("#qwant").classList.add('selected');
+    }
+    // waze
+    else if(/waze\.com/.test(url)) {
+
+
+        console.log(document.querySelector('.').getAttribute("href"));
+
+        var lat_matches = url.match(/lat=([\d.]+)/);
+        var lng_matches = url.match(/lng=([\d.]+)/);
+        var zoom_matches = url.match(/zoom=([\d.]+)/);
+        if(lat_matches && lng_matches && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = lat_matches[1];
+            coord[0] = lng_matches[1];
+        }
+        document.getElementById("waze").classList.add('selected');
     }
     // mapillary
     else if(/mapillary\.com/.test(url)) {
