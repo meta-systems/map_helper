@@ -51,7 +51,7 @@
     "message": "Яндекс"
   },
   "coordinates": {
-    "message": "Координаты карты:"
+    "message": "Координаты:"
   },
   "josm_missing": {
     "message": "JOSM не запущен!"

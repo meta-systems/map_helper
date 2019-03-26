@@ -1,27 +1,25 @@
 var set_coordinates = function (coord, zoom) {
     if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 параметра
-        // original
-
-        document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl';
-        document.getElementById("yandex_map").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=map';
-
+        
+        // SAT
         document.getElementById("google").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=h&z='+zoom;
-        document.getElementById("google_map").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=m&z='+zoom;
-
-        document.getElementById("wiki").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=ys';
-        // document.getElementById("wikimapia_map").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=m';
-
-        document.getElementById("here").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',satellite';
-
+        document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl';
         document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
-
-        document.getElementById("gis2").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+zoom;
-
+        document.getElementById("here").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',satellite';
+        document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        
+        // MAP
+        document.getElementById("google_map").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=m&z='+zoom;
+        document.getElementById("yandex_map").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=map';
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
-        //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
-        // document.getElementById("loadmap").href='http://loadmap.net/ru?qq='+coord[1]+'%20'+coord[0]+'&z='+(zoom>15?15:zoom)+'&s=-1&c=41&g=1';
+        // debug
+        // document.getElementById("osm").setAttribute('title', 'http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0]);
+
+        document.getElementById("gis2").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+Math.round(zoom); // при переходе из маппилари 2гис не понимает дробного зума
+        document.getElementById("wiki").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=ys';
         document.getElementById("nakarte").href='https://nakarte.me/#m='+zoom+'/'+coord[1]+'/'+coord[0]+'&l=O/K';
 
+        // OSM & tools
         document.getElementById("chepetsk").href='http://xn--e1aaps0bc.net/?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
         document.getElementById("topo").href='https://opentopomap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
@@ -32,10 +30,9 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("osm_ru").href='http://openstreetmap.ru/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("navitel").href='http://maps.navitel.su/api/map.html?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("flickr").href='https://loc.alize.us/#/geo:'+coord[1]+','+coord[0]+','+zoom+',/';
-
-        // bestmaps
-        document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
+        document.getElementById("mapillary").href='https://www.mapillary.com/app/?lat='+coord[1]+'&lng='+coord[0]+'&z='+zoom+'';
+
 
         var jlat = parseFloat(coord[1]),
             jlon = parseFloat(coord[0]);
@@ -62,15 +59,13 @@ var set_coordinates = function (coord, zoom) {
             });
         }
 
-        // coord
-        // document.getElementById("lat").innerText = coord[1];
-        // document.getElementById("lon").innerText = coord[0];
-
+        // coordinates
         document.getElementById("coord_input").value  = coord[1] + ', ' + coord[0];
+        document.getElementById("zoom_status").innerText  = Math.round(zoom * 100) / 100;
 
         // GE
         // FIXME: link for a new Bestmaps version will be changed
-        document.getElementById("earth_kml").href='http://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
+        document.getElementById("earth_kml").href='https://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
 
         document.getElementById("body").classList.remove("coordinates_hidden");
         document.getElementById('compare_start_js').classList.remove("hidden");
@@ -268,7 +263,7 @@ chrome.tabs.query({
 
         document.querySelector("#osm_by").classList.add('selected');
     }
-    // brouter (copy of OSM BY)
+    // brouter
     else if(/brouter\.de/.test(url)) {
         var map_matches = url.match(/brouter-web\/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
         if(map_matches !== null) {
@@ -279,7 +274,7 @@ chrome.tabs.query({
 
         document.querySelector("#brouter").classList.add('selected');
     }
-    // qwant (copy of OSM BY)
+    // qwant 
     else if(/qwant\.com/.test(url)) {
         
         // FIXME
@@ -295,6 +290,19 @@ chrome.tabs.query({
         }
 
         document.querySelector("#qwant").classList.add('selected');
+    }
+    // mapillary
+    else if(/mapillary\.com/.test(url)) {
+
+        var lat_matches = url.match(/lat=([\d.]+)/);
+        var lng_matches = url.match(/lng=([\d.]+)/);
+        var zoom_matches = url.match(/z=([\d.]+)/);
+        if(lat_matches && lng_matches && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = lat_matches[1];
+            coord[0] = lng_matches[1];
+        }
+        document.getElementById("mapillary").classList.add('selected');
     }
     // OSM
     else if (host_clean === 'openstreetmap'){
@@ -340,6 +348,7 @@ chrome.tabs.query({
         }
 
     }
+
     // WIKIMAPIA
     else if (host_clean === 'wikimapia') {
 
@@ -358,10 +367,7 @@ chrome.tabs.query({
         }
         */
     }
-    // Loadmap
-    // else if (host_clean === 'loadmap') {
-    //     document.querySelector("#loadmap").classList.add('selected');
-    // }
+
     // 2gis
     else if (host_clean === '2gis') {
         document.getElementById("gis2").classList.add('selected');
@@ -385,11 +391,14 @@ chrome.tabs.query({
             document.getElementById("achavi").classList.add("provider_special");
         }
     }
-    //chepetsk
+
+    // chepetsk
     else if (host_clean === 'xn--e1aaps0bc') {
         // document.getElementById("chepetsk").className='selected';
         document.querySelector("#chepetsk").classList.add('selected');
     }
+
+    // sputnik
     else if(/maps\.sputnik\.ru/.test(url)) {
         var lat_matches = url.match(/lat=([\d.]+)/);
         var lng_matches = url.match(/lng=([\d.]+)/);
@@ -399,9 +408,10 @@ chrome.tabs.query({
             coord[1] = lat_matches[1];
             coord[0] = lng_matches[1];
         }
-        // document.getElementById("sputnik").className='selected';
-        document.querySelector("#sputnik").classList.add('selected');
+        document.getElementById("sputnik").classList.add('selected');
     }
+
+    // mapy.cz
     else if(/mapy\.cz/.test(url)) {
         var lat_matches = url.match(/y=([\d.]+)/);
         var lng_matches = url.match(/x=([\d.]+)/);
@@ -414,6 +424,7 @@ chrome.tabs.query({
         // document.getElementById("mapy").className='selected';
         document.querySelector("#mapy").classList.add('selected');
     }
+
     // opentopomap
     else if (host_clean === 'opentopomap') {
         var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
