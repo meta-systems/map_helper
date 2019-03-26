@@ -3,26 +3,26 @@ var set_coordinates = function (coord, zoom) {
         
         // SAT
         document.getElementById("google").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=h&z='+zoom;
-        document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl';
+        document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl'; // reverse
         document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
         document.getElementById("here").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',satellite';
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         
         // MAP
         document.getElementById("google_map").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=m&z='+zoom;
-        document.getElementById("yandex_map").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=map';
+        document.getElementById("yandex_map").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=map'; // reverse
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         // debug
         // document.getElementById("osm").setAttribute('title', 'http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0]);
 
-        document.getElementById("gis2").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+Math.round(zoom); // при переходе из маппилари 2гис не понимает дробного зума
+        document.getElementById("gis2").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+Math.round(zoom); // при переходе из маппилари 2гис не понимает дробного зума, REVERSE
         document.getElementById("wiki").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=ys';
         document.getElementById("nakarte").href='https://nakarte.me/#m='+zoom+'/'+coord[1]+'/'+coord[0]+'&l=O/K';
 
         // OSM & tools
         document.getElementById("chepetsk").href='http://xn--e1aaps0bc.net/?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
-        document.getElementById("topo").href='https://opentopomap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("topo").href='https://opentopomap.org/#map='+Math.round(zoom)+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("brouter").href='http://brouter.de/brouter-web/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'/OpenStreetMap';
         document.getElementById("qwant").href='https://www.qwant.com/maps/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'';
@@ -32,6 +32,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("flickr").href='https://loc.alize.us/#/geo:'+coord[1]+','+coord[0]+','+zoom+',/';
         document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("mapillary").href='https://www.mapillary.com/app/?lat='+coord[1]+'&lng='+coord[0]+'&z='+zoom+'';
+        document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
 
 
         var jlat = parseFloat(coord[1]),
