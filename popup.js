@@ -89,7 +89,7 @@ var set_coordinates = function (coord, zoom) {
             'esri': 'osm/WorldImagery',
             'mapbox': 'osm/map',
             'yandex_map': 'yandex/map',
-            '2gis': '2gis/map',
+            'gis2': '2gis/map',
             'osm': 'osm/map',
             'topo': 'osm/opentopomap',
             'sputnik': 'osm/sputnik'

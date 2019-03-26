@@ -137,9 +137,18 @@ span.hidden {
 }
 .chbx {
     position:absolute;
-    bottom:-23px;
-    left:20px;
+    top:13px;
+    left:-30px;
     display:none;
+    width:16px;
+    height:16px;
+}
+.edit_mode .chbx {
+    display:block;
+}
+.edit_mode .providers a {
+    display:block !important;
+    margin-left:30px;
 }
 .edit_mode .phidden {
     display:inline-block !important;
@@ -193,19 +202,19 @@ a.settings_save_btn {
 }
 
 /* sat */
-.preview_yandex span {background-image:url(img/sat_yandex.png);}
-.preview_here span {background-image:url(img/sat_here.png);}
-.preview_bing span {background-image:url(img/sat_bing.png);}
-.preview_esri span {background-image:url(img/sat_esri.png);}
-.preview_mapbox span {background-image:url(img/sat_mapbox.png);}
+.preview_yandex span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_yandex.png);}
+.preview_here span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_here.png);}
+.preview_bing span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_bing.png);}
+.preview_esri span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_esri.png);}
+.preview_mapbox span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_mapbox.png);}
 
 /* map */
-.preview_yandex_map span {background-image:url(img/map_yandex.png);}
-.preview_osm span {background-image:url(img/map_mapnik.png);}
-.preview_2gis span {background-image:url(img/map_2gis.png);}
-.preview_wiki span {background-image:url(img/map_wiki.png);}
-.preview_topo span {background-image:url(img/map_topo.png);}
-.preview_sputnik span {background-image:url(img/map_sputnik.png);}
+.preview_yandex_map span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_yandex.png);}
+.preview_osm span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_mapnik.png);}
+.preview_gis2 span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_2gis.png);}
+.preview_wiki span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_wiki.png);}
+.preview_topo span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_topo.png);}
+.preview_sputnik span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_sputnik.png);}
 
 .compare_2 .compare_preview_link,
 .compare_3 .compare_preview_link {
@@ -265,9 +274,10 @@ a:hover .compare_btn_caption {
     display:inline-block;
     margin:5px;
 }
-.coord_inputP:hover .coord_input:focus {
+.coord_input:focus {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     outline:none;
+    background:white;
 }
 .coord_input {
     padding:7px 11px;
