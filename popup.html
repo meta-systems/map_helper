@@ -432,20 +432,32 @@
         .compare_mode_cancel_btn {
             display:none;
         }
-        .providers_small a div {
-            display:inline;
+        .providers_small a:hover div,
+        .providers_small a:hover {
+            text-decoration: underline;
+            color:#2498ff;
         }
         .providers_small a {
+            border:none;
+            background:none !important;
             width:88px;
             text-align:left;
             border-color:white;
             background:white;
+            padding:0;
         }
         .providers_small a img {
             height:14px;
             margin:auto;
-            margin:0 4px;
-            display:inline;
+            margin-right:5px;
+            display:inline-block;
+            position:relative;
+            top:-1px;
+        }
+
+        .providers_small a div {
+            display:inline-block;
+            margin-top:2px;
         }
 
     </style>

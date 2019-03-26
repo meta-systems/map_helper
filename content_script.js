@@ -77,13 +77,15 @@ chrome.runtime.sendMessage({
 
 
 // добавляем перекрестие на openstreetmap.org
-setTimeout(function(){
+// setTimeout(function(){
     
-    var div=document.createElement("div"); 
-    div.classList.add('icross');
-    div.classList.add('icross_osm');
-    div.innerHTML += '<img src="chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/cross.svg" />'; 
-    document.getElementById('content').appendChild(div); 
-    // div.innerText="test123";
+//     var div=document.createElement("div"); 
+//     div.classList.add('icross');
+//     div.classList.add('icross_osm');
+//     div.innerHTML += '<img src="chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/cross.svg" />'; 
 
-}, 1000);
+//     // OSM
+//     document.getElementById('content').appendChild(div); 
+//     // div.innerText="test123";
+
+// }, 1000);
