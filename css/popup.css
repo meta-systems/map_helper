@@ -106,7 +106,7 @@ span.hidden {
     right:-12px !important;
     display:block !important;
     font-size:0 !important;
-    background: #219653 url(img/ok.svg) no-repeat center center !important;
+    background: #219653 url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/ok.svg) no-repeat center center !important;
 }
 
 .compare_mode #providers_list a:hover span {
