@@ -15,7 +15,7 @@ var set_coordinates = function (coord, zoom) {
 
         document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
 
-        document.getElementById("2gis").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+zoom;
+        document.getElementById("gis2").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+zoom;
 
         document.getElementById("osm").href='http://www.openstreetmap.org/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         //document.getElementById("topo").href='http://maps.vlasenko.net/?lon='+coord[0]+'&lat='+coord[1];
@@ -364,8 +364,8 @@ chrome.tabs.query({
     // }
     // 2gis
     else if (host_clean === '2gis') {
-        document.getElementById("2gis").classList.add('selected');
-        // document.querySelector("#2gis").classList.add('selected'); // почему не работает?
+        document.getElementById("gis2").classList.add('selected');
+        // document.querySelector("#2gis").classList.add('selected'); // не работает из-за двойки
 
         var matches = url.match(/m=([\d.]+)%2C([\d.]+)%2F([\d.]+)/);
         if(matches !== null) {
@@ -461,8 +461,9 @@ function onWindowLoad() {
     var lang = chrome.i18n.getUILanguage();
     
     if(lang != 'ru'){
-        document.querySelectorAll('.locale_ru').forEach(function (el) {
-            el.classList.add('phidden');
+        document.querySelectorAll('.locale_ru input').forEach(function (el) {
+            el.parentNode.classList.add('phidden');
+            el.checked = false;
         });
     }
 
