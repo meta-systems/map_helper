@@ -4,7 +4,11 @@ function content_helper() {
     var lat, lon, zoom;
 
     var parseLink = function (linkParent) {
-        var olLink = linkParent.firstElementChild.href;
+        var fChild = linkParent.firstElementChild;
+        if(!fChild) {
+            return;
+        }
+        var olLink = fChild.href;
         var q_str = olLink.split('?')[1];
 
         q_str.split('&').forEach(function (value) {
