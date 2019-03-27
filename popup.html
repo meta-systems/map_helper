@@ -19,7 +19,7 @@
     <div class="toolsBox coordLine">
 
         <div class="coord_box coordinates_el">
-            <span class="coord_label" data-message="coordinates">Coord:</span>
+            <span class="coord_label" data-msg="coordinates">Coord:</span>
             
             <div class="coord_inputP"><img class="copy_btn" src="img/copy.svg" id="coord_copy" title="Copy"/><input type="text" class="coord_input" id="coord_input" /></div>
             
@@ -34,52 +34,52 @@
 </div>
     
 
-<div class="settings_help" data-message="settings_help">Please select the maps you want to display</div>
+<div class="settings_help" data-msg="settings_help">Please select the maps you want to display</div>
 
 <div id="providers_list"> 
 
-<div class="section_label" data-message="sattelite">Sattelite</div>
+<div class="section_label" data-msg="sattelite">Sattelite</div>
 <div class="providers">
-    <a target="_blank" id="google" href="https://www.google.ru/maps" class="no_comp"><input type="checkbox" class="chbx" checked data-id="google" /><img src="img/google.svg"/>Google<span></span></a>
-    <a target="_blank" id="yandex" href="https://yandex.ru/maps/"><input type="checkbox" class="chbx" checked /><img src="img/yandex.svg"/><div data-message="yandex">Yandex</div><span></span></a>
-    <a target="_blank" id="here"   href="https://wego.here.com/"><input type="checkbox" class="chbx" checked /><img src="img/here.svg"/>Here<span></span></a>
-    <a target="_blank" id="bing"   href="https://bing.com/maps"><input type="checkbox" class="chbx" checked /><img src="img/bing.svg"/>Bing<span></span></a>
-    <a target="_blank" id="esri"   href="https://bestmaps.ru/map/osm/WorldImagery"><input type="checkbox" class="chbx" checked /><img src="img/esri.svg"/>ESRI<span></span></a>
-    <!-- <a target="_blank" id="mapbox" href="https://bestmaps.ru/map/osm/MapboxSat"><input type="checkbox" class="chbx" checked /><img src="img/mapbox.svg"/>Mapbox<span>+</span></a> -->
+    <a target="_blank" id="google" href="https://www.google.ru/maps" class="no_comp"><input type="checkbox"  checked data-id="google" /><img src="img/google.svg"/>Google<span></span></a>
+    <a target="_blank" id="yandex" href="https://yandex.ru/maps/" class="lnk"><input type="checkbox" checked /><img src="img/yandex.svg"/><div data-msg="yandex">Yandex</div><span></span></a>
+    <a target="_blank" id="here"   href="https://wego.here.com/" class="lnk"><input type="checkbox" checked /><img src="img/here.svg"/>Here<span></span></a>
+    <a target="_blank" id="bing"   href="https://bing.com/maps" class="lnk"><input type="checkbox" checked /><img src="img/bing.svg"/>Bing<span></span></a>
+    <a target="_blank" id="esri"   href="https://bestmaps.ru/map/osm/WorldImagery" class="lnk"><input type="checkbox"  checked /><img src="img/esri.svg"/>ESRI<span></span></a>
+    <!-- <a target="_blank" id="mapbox" href="https://bestmaps.ru/map/osm/MapboxSat"><input type="checkbox"  checked /><img src="img/mapbox.svg"/>Mapbox<span>+</span></a> -->
 </div>
     
-<div class="section_label" data-message="map">Map</div>
+<div class="section_label" data-msg="map">Map</div>
 <div class="providers">
-    <a target="_blank" id="google_map" href="https://www.google.ru/maps" class="no_comp"><input type="checkbox" class="chbx" checked /><img src="img/google.svg"/>Google<span></span></a>
-    <a target="_blank" id="yandex_map" href="https://yandex.ru/maps/"><input type="checkbox" class="chbx" checked /><img src="img/yandex.svg"/><div data-message="yandex">Yandex</div><span></span></a>
-    <a target="_blank" id="osm" href="https://www.openstreetmap.org" ><input type="checkbox" class="chbx" checked /><img src="img/osm.png"/>OSM<span></span></a>
-    <a target="_blank" id="gis2" href="https://2gis.ru/"><input type="checkbox" class="chbx" checked /><img src="img/2gis.svg"/>2GIS<span></span><b><c>Russia</c></b></a>
-    <a target="_blank" id="wiki" href="http://wikimapia.org/" class=""><input type="checkbox" class="chbx" checked /><img src="img/wiki.svg"/>Wiki<span></span></a>
-    <a target="_blank" id="nakarte" href="https://nakarte.me/" class="no_comp locale_ru"><input type="checkbox" class="chbx" checked /><img src="img/ggc.png"/><div data-message="ggc">GGC250</div><span></span><b>Russia</b></a>
+    <a target="_blank" id="google_map" href="https://www.google.ru/maps" class="lnk no_comp"><input type="checkbox"  checked /><img src="img/google.svg"/>Google<span></span></a>
+    <a target="_blank" id="yandex_map" href="https://yandex.ru/maps/" class="lnk"><input type="checkbox" checked /><img src="img/yandex.svg"/><div data-msg="yandex">Yandex</div><span></span></a>
+    <a target="_blank" id="osm"        href="https://www.openstreetmap.org" class="lnk"><input type="checkbox" checked /><img src="img/osm.png"/>OSM<span></span></a>
+    <a target="_blank" id="gis2"       href="https://2gis.ru/" class="lnk"><input type="checkbox"  checked /><img src="img/2gis.svg"/>2GIS<span></span><b><c>Russia</c></b></a>
+    <a target="_blank" id="wiki"       href="http://wikimapia.org/"  class="lnk"><input type="checkbox"  checked /><img src="img/wiki.svg"/>Wiki<span></span></a>
+    <a target="_blank" id="nakarte"    href="https://nakarte.me/" class="lnk no_comp locale_ru"><input type="checkbox"  checked /><img src="img/ggc.png"/><div data-msg="ggc">GGC250</div><span></span><b>Russia</b></a>
 </div>
 
 <div class="section_label">OSM & tools</div>
 <div class="providers providers_small">
-    <a target="_blank" id="waze"  class="no_comp" href="https://www.waze.com/ru/livemap"><input type="checkbox" class="chbx" /><img src="img/waze.svg"/>Waze<span></span></a>
-    <a target="_blank" id="strava"  class="no_comp" href="https://www.strava.com/heatmap"><input type="checkbox" class="chbx" /><img src="img/strava.png"/>Strava<span></span></a>
-    <a target="_blank" id="qwant"   class="no_comp" href="https://www.qwant.com/maps/" ><input type="checkbox" class="chbx" /><img src="img/qwant.svg"/>Qwant<span></span><b>Vector</b></a>
-    <a target="_blank" id="mapillary"  class="no_comp" href="https://www.mapillary.com/app/"><input type="checkbox" class="chbx" /><img src="img/mapillary.svg"/>Mapillary<span></span></a>
-    <a target="_blank" id="topo"    class="" href="https://opentopomap.org/" ><input type="checkbox" class="chbx" /><img src="img/osm_topo.png"/>Topo<span></span><b>Outdoor</b></a>
-    <a target="_blank" id="sputnik" class="" href="http://maps.sputnik.ru/"><input type="checkbox" class="chbx" /><img src="img/sputnik.svg"/><div data-message="sputnik">Sputnik</div><span></span><b><c>Not updated</c></b></a>
-    <a target="_blank" id="brouter" class="no_comp" href="http://brouter.de/brouter-web/" ><input type="checkbox" class="chbx" /><img src="img/brouter.png"/>Brouter<span></span></a>
-    <a target="_blank" id="flickr"  class="no_comp" href="https://loc.alize.us/" ><input type="checkbox" class="chbx" /><img src="img/flickr.svg"/><div data-message="photo_flickr">Photo</div><span></span></a>
-    <a target="_blank" id="navitel"  class="no_comp locale_ru" href="http://maps.navitel.su/api/map.html"><input type="checkbox" class="chbx" /><img src="img/navitel.svg"/>Navitel<span></span></a>
-    <a target="_blank" id="josm"    class="no_comp" href="#" ><input type="checkbox" class="chbx" /><img src="img/josm.svg"/>JOSM<span></span><b><c>Edit in JOSM</c></b></a>
+    <a target="_blank" id="waze"    class="lnk no_comp" href="https://www.waze.com/ru/livemap"><input type="checkbox" checked /><img src="img/waze.svg"/>Waze<span></span></a>
+    <a target="_blank" id="strava"  class="lnk no_comp" href="https://www.strava.com/heatmap"><input type="checkbox" checked /><img src="img/strava.png"/>Strava<span></span></a>
+    <a target="_blank" id="qwant"   class="lnk no_comp" href="https://www.qwant.com/maps/" ><input type="checkbox" checked /><img src="img/qwant.svg"/>Qwant<span></span><b>Vector</b></a>
+    <a target="_blank" id="mapillary" class="lnk no_comp" href="https://www.mapillary.com/app/"><input type="checkbox" checked /><img src="img/mapillary.svg"/>Mapillary<span></span></a>
+    <a target="_blank" id="topo"    class="lnk" href="https://opentopomap.org/" ><input type="checkbox" checked /><img src="img/osm_topo.png"/>Topo<span></span><b>Outdoor</b></a>
+    <a target="_blank" id="sputnik" class="lnk" href="http://maps.sputnik.ru/"><input type="checkbox" checked /><img src="img/sputnik.svg"/><div data-msg="sputnik">Sputnik</div><span></span><b><c>Not updated</c></b></a>
+    <a target="_blank" id="brouter" class="lnk no_comp" href="http://brouter.de/brouter-web/" ><input type="checkbox"  /><img src="img/brouter.png"/>Brouter<span></span></a>
+    <a target="_blank" id="flickr"  class="lnk no_comp" href="https://loc.alize.us/" ><input type="checkbox"  /><img src="img/flickr.svg"/><div data-msg="photo_flickr">Photo</div><span></span></a>
+    <a target="_blank" id="navitel" class="lnk no_comp locale_ru" href="http://maps.navitel.su/api/map.html"><input type="checkbox"  /><img src="img/navitel.svg"/>Navitel<span></span></a>
+    <a target="_blank" id="josm"    class="lnk no_comp" href="#" ><input type="checkbox"  /><img src="img/josm.svg"/>JOSM<span></span><b><c>Edit in JOSM</c></b></a>
 
-    <!-- <a target="_blank" id="mapq"    class="phidden" href="https://www.mapquest.com/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapquest</a> -->
+    <!-- <a target="_blank" id="mapq"    class="phidden" href="https://www.mapquest.com/" ><input type="checkbox"  /><img src="img/mapy.png"/>Mapquest</a> -->
 </div>
 <div class="section_label">Local projects</div>
 <div class="providers providers_small">
-    <a target="_blank" id="osm_ru"  class="phidden no_comp" href="http://openstreetmap.ru/" ><input type="checkbox" class="chbx" /><img src="img/osm_ru.png"/>OSM RU<span></span><b><c>Russia</c></b></a>
-    <a target="_blank" id="chepetsk" class="phidden no_comp" href="http://xn--e1aaps0bc.net/"><input type="checkbox" class="chbx" /><img src="img/chepetsk.svg"/><div data-message="chepetsk">Chepetsk</div><span></span><b><c>Post-Soviet</c></b></a>
-    <a target="_blank" id="bestmaps" class="phidden no_comp" href="https://bestmaps.ru/map" ><input type="checkbox" class="chbx" /><img src="img/bestmaps.svg"/>BestMaps<span></span><b><c>Russia</c></b></a>
-    <a target="_blank" id="osm_by"  class="phidden no_comp" href="http://openstreetmap.by/" ><input type="checkbox" class="chbx" /><img src="img/osm_by.png"/>OSM BY<span></span><b><c>Belarus Vector</c></b></a>
-    <a target="_blank" id="mapy"    class="phidden no_comp" href="https://mapy.cz/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapy<span></span><b><c>Czech Republic</c></b></a>
+    <a target="_blank" id="osm_ru"  class="lnk phidden no_comp" href="http://openstreetmap.ru/" ><input type="checkbox"  /><img src="img/osm_ru.png"/>OSM RU<span></span><b><c>Russia</c></b></a>
+    <a target="_blank" id="chepetsk" class="lnk phidden no_comp" href="http://xn--e1aaps0bc.net/"><input type="checkbox"  /><img src="img/chepetsk.svg"/><div data-msg="chepetsk">Chepetsk</div><span></span><b><c>Post-Soviet</c></b></a>
+    <a target="_blank" id="bestmaps" class="lnk phidden no_comp" href="https://bestmaps.ru/map" ><input type="checkbox"  /><img src="img/bestmaps.svg"/>BestMaps<span></span><b><c>Russia</c></b></a>
+    <a target="_blank" id="osm_by"  class="lnk phidden no_comp" href="http://openstreetmap.by/" ><input type="checkbox"  /><img src="img/osm_by.png"/>OSM BY<span></span><b><c>Belarus Vector</c></b></a>
+    <a target="_blank" id="mapy"    class="lnk phidden no_comp" href="https://mapy.cz/" ><input type="checkbox"  /><img src="img/mapy.png"/>Mapy<span></span><b><c>Czech Republic</c></b></a>
 
 
 </div>
@@ -87,7 +87,7 @@
 
 
 <a href="#" class="compare_preview_link" id="compare_link_js">
-    <div class="compare_help" data-message="compare_help">Please select 2 or 3 maps</div>
+    <div class="compare_help" data-msg="compare_help">Please select 2 or 3 maps</div>
     <div class="map_preview_box">
 
         <div class="map_preview preview_yandex">Yandex<span></span></div>
@@ -103,18 +103,18 @@
         <div class="map_preview preview_sputnik">Sputnik<span></span></div>
 
     </div>
-    <div class="compare_btn_caption" data-message="compare_maps">Compare maps</div>
+    <div class="compare_btn_caption" data-msg="compare_maps">Compare maps</div>
 </a>
 <div class="clear"></div>
 
 
-<!-- <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a> -->
+<!-- <a href="#" class="menu_item" id="compare_start_js"><img src="img/compare.svg"/> <span data-msg="compare">Compare</span></a> -->
 
 <div class="buttonsP">
-    <a href="#" class="btn" id="compare_start_js"><img src="img/compare.svg"/> <span data-message="compare">Compare</span></a>
-    <a href="#" class="btn btn_green compare_continue" id="compare_proceed_js"><span data-message="compare_maps">Compare proceed</span></a>
-    <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-message="save_settings">Save settings</a>
-    <a href="#" class="btn btn_light compare_mode_cancel_btn" id="compare_cancel_js" > <span data-message="cancel">Cancel</span></a>
+    <a href="#" class="btn" id="compare_start_js"><img src="img/compare.svg"/> <span data-msg="compare">Compare</span></a>
+    <a href="#" class="btn btn_green compare_continue" id="compare_proceed_js"><span data-msg="compare_maps">Compare proceed</span></a>
+    <a href="#" class="btn btn_green settings_save_btn" id="settings_save_js" data-msg="save_settings">Save settings</a>
+    <a href="#" class="btn btn_light compare_mode_cancel_btn" id="compare_cancel_js" > <span data-msg="cancel">Cancel</span></a>
 </div>
 
 <!-- 
@@ -136,7 +136,7 @@ http://91.237.82.95:8088/map/genshtab.html#ggc1
 
 <!-- 
     ABANDONED
-    <a target="_blank" id="loadmap" href="http://loadmap.net/" class="no_comp"><input type="checkbox" class="chbx" checked /><img src="img/loadmap.svg"/>Loadmap</a> 
+    <a target="_blank" id="loadmap" href="http://loadmap.net/" class="no_comp"><input type="checkbox"  checked /><img src="img/loadmap.svg"/>Loadmap</a> 
 -->
 
 

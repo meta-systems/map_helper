@@ -494,8 +494,8 @@ function onWindowLoad() {
         });
     }
 
-    document.querySelectorAll('[data-message]').forEach(function (lang_el) {
-        var attr_val = lang_el.getAttribute('data-message');
+    document.querySelectorAll('[data-msg]').forEach(function (lang_el) {
+        var attr_val = lang_el.getAttribute('data-msg');
         var message = chrome.i18n.getMessage(attr_val);
         if(message) {
             lang_el.innerText = message;
