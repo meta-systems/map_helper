@@ -95,6 +95,12 @@ span.hidden {
     margin:0 13px 17px 0;
     position:relative;
 }
+.compare_mode .providers a {
+    display:none;
+}
+.compare_mode .providers a.comp {
+    display:inline-block;
+}
 .compare_mode .no_comp {
     opacity:0.5;
     pointer-events: none;
