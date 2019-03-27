@@ -688,9 +688,11 @@ function onWindowLoad() {
         file: "content_script.js"
     }, function() {
         // If you try and inject into an extensions page or the webstore/NTP you'll get an error
+        /*
         if (chrome.runtime.lastError) {
             console.error(chrome.runtime.lastError.message);
         }
+        */
     });
 
 }
