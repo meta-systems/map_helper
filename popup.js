@@ -464,6 +464,18 @@ chrome.tabs.query({
         document.querySelector("#nakarte").classList.add('selected');
     }
 
+    else if(/rosreestr\.ru/.test(url)) {
+        // pkk5.rosreestr.ru/#x=3147486.520932528&y=7927544.820504406&z=18
+        var x_matches = url.match(/x=([\d.]+)/);
+        var y_matches = url.match(/y=([\d.]+)/);
+        var zoom_matches = url.match(/z=([\d.]+)/);
+        if(x_matches && y_matches && zoom_matches) {
+            //zoom = zoom_matches[1];
+            //coord[1] = x_matches[1];
+            //coord[0] = y_matches[1];
+        }
+    }
+
     // navitel
     else if(/maps\.navitel\.su/.test(url)) {
         document.querySelector("#navitel").classList.add('selected');

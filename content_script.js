@@ -33,7 +33,7 @@ function content_helper() {
     var openLayersEl = document.getElementsByClassName("olControlPermalink");
     var navitelPermalink = document.getElementById("permalink");
 
-    if(gmEl.length) {
+    if(gmEl.length && gmEl[0].children.length > 1 && gmEl[0].children[2].children.length > 0) {
         var gmLink = gmEl[0].children[2].children[0];
         var gmUrl = gmLink.href;
         var q_str = gmUrl.split('?')[1];
