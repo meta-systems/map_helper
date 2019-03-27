@@ -155,7 +155,7 @@ span.hidden {
 .providers span {
     display:none;
 }
-.lnk input {
+.providers a input {
     position:absolute;
     top:18px;
     left:12px;
@@ -163,7 +163,7 @@ span.hidden {
     width:16px;
     height:16px;
 }
-.edit_mode .lnk input {
+.edit_mode .providers a input {
     display:block;
 }
 .edit_mode .providers {
