@@ -253,6 +253,7 @@ a.settings_save_btn {
 .edit_mode .providers a b c {
     line-height:normal;
     display:inline-block;
+    vertical-align:middle;
 }
 .edit_mode .providers a b {
     display:block;
@@ -260,8 +261,9 @@ a.settings_save_btn {
     top:7px;
     left:230px;
     font-weight:normal;
-    font-size:18px;
+    font-size:16px;
     height:45px;
+    width:80px;
     line-height:45px;
     vertical-align: middle;
 }
@@ -300,8 +302,12 @@ a.settings_save_btn {
 .edit_mode #topo span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_topo.png);}
 .edit_mode #sputnik span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_sputnik.png);}
 .edit_mode #osm_by span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_osm_by.png);}
+.edit_mode #mapy span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_mapy.png);}
+.edit_mode #navitel span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_navitel.png);}
+.edit_mode #flickr span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_alize.png);}
+.edit_mode #josm span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_josm.png);}
+.edit_mode #brouter span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_brouter.png);}
 
-/*.edit_mode #topo span,*/
 
 
 
