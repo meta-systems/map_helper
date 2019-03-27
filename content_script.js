@@ -62,8 +62,8 @@ function content_helper() {
     }
 
     // waze
-    else if(waze) {
-        parseLink(waze);
+    else if(waze.length) {
+        parseLink(waze[0]);
     }
     
     // Bing: getting coords from LocalStorage
