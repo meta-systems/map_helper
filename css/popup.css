@@ -25,6 +25,7 @@ a.selected {
 }
 .hidden,
 a.hidden,
+s.hidden,
 div.hidden,
 span.hidden {
     display: none;
@@ -95,19 +96,17 @@ span.hidden {
     margin:0 13px 17px 0;
     position:relative;
 }
-.compare_mode .no_comp {
-    opacity:0.5;
-    pointer-events: none;
+.compare_mode .providers a {
     display:none;
 }
-.compare_mode .no_comp img {
-    filter: grayscale(1);
+.compare_mode .providers a.comp {
+    display:inline-block;
 }
 .compare_mode .compare_item {
     padding:3px 0px !important;
     border:4px solid #219653 !important;
 }
-.compare_mode .compare_item span {
+.compare_mode .compare_item s {
     width:22px !important;
     height:22px !important;
     border-radius:15px;
@@ -119,7 +118,7 @@ span.hidden {
     background: #219653 url(/img/ok.svg) no-repeat center center !important;
 }
 
-.compare_mode #providers_list a:hover span {
+.compare_mode #providers_list a:hover s {
     background:#77CD9C;
     width:19px;
     height:19px;
@@ -148,11 +147,11 @@ span.hidden {
     width:320px;
     float:left;
 }
-.providers span:before {
+.providers s:before {
     content:'+'
 
 }
-.providers span {
+.providers s {
     display:none;
 }
 .providers a input {
@@ -173,7 +172,7 @@ span.hidden {
     grid-gap:1px;
 }
 
-.phidden:not(:hover) span {
+.phidden:not(:hover) s {
     opacity:0.4;
 }
 
@@ -273,7 +272,7 @@ a.settings_save_btn {
     margin-bottom:35px;
     margin-top:35px;
 }
-.edit_mode a span {
+.edit_mode a s {
     display:inline-block;
     width:110px;
     height:54px;
@@ -288,44 +287,44 @@ a.settings_save_btn {
 
 
 /* settings preview */
-.edit_mode #osm span, 
-.edit_mode #osm_ru span, 
-.edit_mode #bestmaps span 
+.edit_mode #osm s, 
+.edit_mode #osm_ru s, 
+.edit_mode #bestmaps s 
 {background-image:url(/maps/edit_osm.png);}
-.edit_mode #google span{background-image:url(/maps/edit_google.png);}
-.edit_mode #google_map span{background-image:url(/maps/edit_google_map.png);}
-.edit_mode #nakarte span{background-image:url(/maps/edit_ggc.png);}
-.edit_mode #yandex_map span {background-image:url(/maps/edit_yandex_map.png);}
-.edit_mode #gis2 span {background-image:url(/maps/edit_2gis.png);}
-.edit_mode #wiki span {background-image:url(/maps/edit_wiki.png);}
-.edit_mode #chepetsk span {background-image:url(/maps/edit_chepetsk.png);}
-.edit_mode #waze span {background-image:url(/maps/edit_waze.png);}
-.edit_mode #strava span {background-image:url(/maps/edit_strava.png);}
-.edit_mode #qwant span {background-image:url(/maps/edit_qwant.png);}
-.edit_mode #mapillary span {background-image:url(/maps/edit_mapillary.png);}
-.edit_mode #topo span {background-image:url(/maps/edit_topo.png);}
-.edit_mode #sputnik span {background-image:url(/maps/edit_sputnik.png);}
-.edit_mode #osm_by span {background-image:url(/maps/edit_osm_by.png);}
-.edit_mode #mapy span {background-image:url(/maps/edit_mapy.png);}
-.edit_mode #navitel span {background-image:url(/maps/edit_navitel.png);}
-.edit_mode #flickr span {background-image:url(/maps/edit_alize.png);}
-.edit_mode #josm span {background-image:url(/maps/edit_josm.png);}
-.edit_mode #brouter span {background-image:url(/maps/edit_brouter.png);}
+.edit_mode #google s{background-image:url(/maps/edit_google.png);}
+.edit_mode #google_map s{background-image:url(/maps/edit_google_map.png);}
+.edit_mode #nakarte s{background-image:url(/maps/edit_ggc.png);}
+.edit_mode #yandex_map s {background-image:url(/maps/edit_yandex_map.png);}
+.edit_mode #gis2 s {background-image:url(/maps/edit_2gis.png);}
+.edit_mode #wiki s {background-image:url(/maps/edit_wiki.png);}
+.edit_mode #chepetsk s {background-image:url(/maps/edit_chepetsk.png);}
+.edit_mode #waze s {background-image:url(/maps/edit_waze.png);}
+.edit_mode #strava s {background-image:url(/maps/edit_strava.png);}
+.edit_mode #qwant s {background-image:url(/maps/edit_qwant.png);}
+.edit_mode #mapillary s {background-image:url(/maps/edit_mapillary.png);}
+.edit_mode #topo s {background-image:url(/maps/edit_topo.png);}
+.edit_mode #sputnik s {background-image:url(/maps/edit_sputnik.png);}
+.edit_mode #osm_by s {background-image:url(/maps/edit_osm_by.png);}
+.edit_mode #mapy s {background-image:url(/maps/edit_mapy.png);}
+.edit_mode #navitel s {background-image:url(/maps/edit_navitel.png);}
+.edit_mode #flickr s {background-image:url(/maps/edit_alize.png);}
+.edit_mode #josm s {background-image:url(/maps/edit_josm.png);}
+.edit_mode #brouter s {background-image:url(/maps/edit_brouter.png);}
 
 
 
 
 
 /* sat */
-.edit_mode #yandex span,
+.edit_mode #yandex s,
 .preview_yandex span {background-image:url(/maps/sat_yandex.png);}
-.edit_mode #here span,
+.edit_mode #here s,
 .preview_here span {background-image:url(/maps/sat_here.png);}
-.edit_mode #bing span,
+.edit_mode #bing s,
 .preview_bing span {background-image:url(/maps/sat_bing.png);}
-.edit_mode #esri span,
+.edit_mode #esri s,
 .preview_esri span {background-image:url(/maps/sat_esri.png);}
-.edit_mode #mapbox span,
+.edit_mode #mapbox s,
 .preview_mapbox span {background-image:url(/maps/sat_mapbox.png);}
 
 /* map */
