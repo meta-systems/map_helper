@@ -298,9 +298,11 @@ a.settings_save_btn {
 .edit_mode #qwant span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_qwant.png);}
 .edit_mode #mapillary span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_mapillary.png);}
 .edit_mode #topo span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_topo.png);}
+.edit_mode #sputnik span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_sputnik.png);}
+.edit_mode #osm_by span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_osm_by.png);}
 
 /*.edit_mode #topo span,*/
-/*.edit_mode #sputnik span,*/
+
 
 
 
