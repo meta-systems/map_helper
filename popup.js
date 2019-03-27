@@ -279,12 +279,11 @@ chrome.tabs.query({
     }
     // qwant 
     else if(/qwant\.com/.test(url)) {
-        
-        // FIXME
+
         // https://www.qwant.com/maps/#map=18.00/57.8163132/28.3294716
         // https://www.qwant.com/maps/place/osm:node:4176691489@_#map=18.00/57.8163132/28.3294716
 
-        var map_matches = url.match(/maps\/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
 
         if(map_matches !== null) {
             zoom = map_matches[1];
