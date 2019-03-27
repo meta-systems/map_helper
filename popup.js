@@ -539,7 +539,7 @@ function onWindowLoad() {
         }
     };
 
-    var chbx_all = document.querySelectorAll('.chbx');
+    var chbx_all = document.querySelectorAll('.providers input');
     chbx_all.forEach(function (chbx) {
         var chbx_parent = chbx.parentElement;
         var chbx_key = chbx_parent.id;
