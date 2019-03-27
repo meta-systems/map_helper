@@ -147,6 +147,10 @@ span.hidden {
     width:320px;
     float:left;
 }
+.providers span:before {
+    content:'+'
+
+}
 .providers span {
     display:none;
 }
@@ -291,6 +295,9 @@ a.settings_save_btn {
 .edit_mode #chepetsk span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_chepetsk.png);}
 .edit_mode #waze span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_waze.png);}
 .edit_mode #strava span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_strava.png);}
+.edit_mode #qwant span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_qwant.png);}
+.edit_mode #mapillary span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_mapillary.png);}
+.edit_mode #topo span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_topo.png);}
 
 /*.edit_mode #topo span,*/
 /*.edit_mode #sputnik span,*/
