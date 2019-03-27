@@ -5,7 +5,7 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("google").href='https://google.com/maps/?ll='+coord[1]+','+coord[0]+'&spn=2.414984,2.568054&t=h&z='+zoom;
         document.getElementById("yandex").href='http://maps.yandex.ru/?ll='+coord[0]+'%2C'+coord[1]+'&z='+zoom+'&l=sat%2Cskl'; // reverse
         document.getElementById("bing").href='http://www.bing.com/maps/?v=2&cp='+coord[1]+'~'+coord[0]+'&lvl='+zoom+'&sty=h';
-        document.getElementById("here").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+zoom+',satellite';
+        document.getElementById("here").href='https://wego.here.com/'+coord[1]+','+coord[0]+','+Math.round(zoom)+',satellite';
         document.getElementById("esri").href='http://bestmaps.ru/map/osm/WorldImagery/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         
         // MAP
@@ -292,6 +292,19 @@ chrome.tabs.query({
         }
 
         document.querySelector("#qwant").classList.add('selected');
+    }
+    // strava 
+    else if(/strava\.com/.test(url)) {
+        
+        var map_matches = url.match(/heatmap#([\d.]+)\/([\d.]+)\/([\d.]+)/);
+
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[0] = map_matches[2];
+            coord[1] = map_matches[3];
+        }
+
+        document.querySelector("#strava").classList.add('selected');
     }
     // waze
     else if(/waze\.com/.test(url)) {
