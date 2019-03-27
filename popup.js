@@ -51,6 +51,10 @@ var set_coordinates = function (coord, zoom) {
             ];
             document.getElementById("josm").href='http://127.0.0.1:8111/load_and_zoom?' + jsom_params.join('&');
             document.getElementById("josm").addEventListener('click', function(e){
+                if(document.getElementById("body").classList.contains('edit_mode')) {
+                    return false;
+                }
+
                 fetch(this.href)
                     .then(function(response) {
                         window.close();
