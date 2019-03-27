@@ -50,7 +50,12 @@ span.hidden {
 .providers {
     margin-bottom:15px;
 }
-/*.edit_mode .providers a.phidden:hover span {
+
+
+/* 
+    всплывающий плюсик в режиме редактирования
+
+.edit_mode .providers a.phidden:hover span {
     background:#77CD9C;
     width:19px;
     height:19px;
@@ -69,6 +74,9 @@ span.hidden {
     background:#f8f8f8b0;
     border-color:#cacaca;
     text-decoration:none;
+}
+.providers a {
+
 }
 .providers a {
     padding:6px 2px;
@@ -202,19 +210,19 @@ a.settings_save_btn {
 }
 
 /* sat */
-.preview_yandex span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_yandex.png);}
-.preview_here span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_here.png);}
-.preview_bing span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_bing.png);}
-.preview_esri span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_esri.png);}
-.preview_mapbox span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/sat_mapbox.png);}
+.preview_yandex span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_yandex.png);}
+.preview_here span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_here.png);}
+.preview_bing span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_bing.png);}
+.preview_esri span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_esri.png);}
+.preview_mapbox span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_mapbox.png);}
 
 /* map */
-.preview_yandex_map span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_yandex.png);}
-.preview_osm span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_mapnik.png);}
-.preview_gis2 span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_2gis.png);}
-.preview_wiki span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_wiki.png);}
-.preview_topo span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_topo.png);}
-.preview_sputnik span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/img/map_sputnik.png);}
+.preview_yandex_map span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/map_yandex.png);}
+.preview_osm span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/map_mapnik.png);}
+.preview_gis2 span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/map_2gis.png);}
+.preview_wiki span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/map_wiki.png);}
+.preview_topo span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/map_topo.png);}
+.preview_sputnik span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/map_sputnik.png);}
 
 .compare_2 .compare_preview_link,
 .compare_3 .compare_preview_link {
