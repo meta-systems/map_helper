@@ -126,6 +126,28 @@ var set_coordinates = function (coord, zoom) {
     });
 };
 
+var getZoomFromMeters = function(meters) {
+    if (meters < 533) {
+        return 17;
+    } else if (meters < 1066) {
+        return 16;
+    } else if (meters < 2132) {
+        return 15;
+    } else if (meters < 4267) {
+        return 14;
+    } else if (meters < 8539) {
+        return 13;
+    } else if (meters < 17074) {
+        return 12;
+    } else if (meters < 34153) {
+        return 11;
+    } else if (meters < 68230) {
+        return 10;
+    } else {
+        return 9;
+    }
+};
+
 var url;
 
 // для карт, у которых нет координат в урле, пробрасываем их из content_script.js
@@ -182,52 +204,22 @@ chrome.tabs.query({
     }
     // GOOGLE
     else if(/(google.*maps)/.test(url)) {   //ищем гугл И мапс применяя метод test
-
-        coord[1] = coordarray[0];
-        coord[0] = coordarray[1];
-
-        if (zoommpercent = url.match(/[0-9]{0,2}\.[0-9]{2}z/ig)){ //если зум в процентах-это карта -- ищем 123456m
-
-            zoom = zoommpercent[0].slice(0, -4);
-
+        var map_matches = url.match(/([\d.]+),([\d.]+),([\d.]+)z/);
+        if(map_matches !== null) {
+            zoom = map_matches[3];
+            coord[1] = map_matches[1];
+            coord[0] = map_matches[2];
+            document.querySelector("#google_map").classList.add('selected');
         }
 
-       if (zoommeters = url.match(/([0-9]{2,8}m)/ig)){  //если зум в метрах-это спутинк -- ищем 123456m
-
-            var meters = zoommeters[0].slice(0, -1); //режем м
-
-            zoom = getzoom(meters);// функция для преобразования M -> Zoom (ну убирай в подвал)
-
-            function getzoom(meters) {
-                if (meters < 533) {
-                    return 17;
-                } else if (meters < 1066) {
-                    return 16;
-                } else if (meters < 2132) {
-                    return 15;
-                } else if (meters < 4267) {
-                    return 14;
-                } else if (meters < 8539) {
-                    return 13;
-                } else if (meters < 17074) {
-                    return 12;
-                } else if (meters < 34153) {
-                    return 11;
-                } else if (meters < 68230) {
-                    return 10;
-                } else {
-                    return 9;
-                }
-            }
-
-           // document.getElementById("google").className='selected';
-           document.querySelector("#google").classList.add('selected');
-
-       }
-       else {
-           // document.getElementById("google_map").className='selected';
-           document.querySelector("#google_map").classList.add('selected');
-       }
+        var sat_matches = url.match(/([\d.]+),([\d.]+),([\d.]+)m/);
+        if(sat_matches !== null) {
+            var meters = sat_matches[3];
+            coord[1] = sat_matches[1];
+            coord[0] = sat_matches[2];
+            zoom = getZoomFromMeters(meters);// функция для преобразования M -> Zoom
+            document.querySelector("#google").classList.add('selected');
+        }
     }
     // BING
     else if(/bing.*maps/.test(url)) { // /bing.*maps||mapspreview/
