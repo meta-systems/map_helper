@@ -64,6 +64,7 @@ var set_coordinates = function (coord, zoom) {
         // coordinates
         document.getElementById("coord_input").value  = coord[1] + ', ' + coord[0];
         document.getElementById("zoom_status").innerText  = Math.round(zoom * 100) / 100;
+        document.getElementById("zoom_status").classList.add("zoom_visible");
 
         // GE
         // FIXME: link for a new Bestmaps version will be changed
