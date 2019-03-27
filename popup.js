@@ -162,7 +162,8 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     var is_loadmap = /loadmap\.net/.test(url);
     var is_chepetsk = /xn--e1aaps0bc\.net/.test(url);
     var is_navitel = /maps\.navitel\.su/.test(url);
-    if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap || is_chepetsk || is_navitel)) {
+    var is_waze = /waze\.com/.test(url);
+    if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap || is_chepetsk || is_navitel || is_waze)) {
         set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
     }
 
@@ -304,18 +305,6 @@ chrome.tabs.query({
     }
     // waze
     else if(/waze\.com/.test(url)) {
-
-
-        console.log(document.querySelector('.').getAttribute("href"));
-
-        var lat_matches = url.match(/lat=([\d.]+)/);
-        var lng_matches = url.match(/lng=([\d.]+)/);
-        var zoom_matches = url.match(/zoom=([\d.]+)/);
-        if(lat_matches && lng_matches && zoom_matches) {
-            zoom = zoom_matches[1];
-            coord[1] = lat_matches[1];
-            coord[0] = lng_matches[1];
-        }
         document.getElementById("waze").classList.add('selected');
     }
     // mapillary

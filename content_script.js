@@ -29,7 +29,7 @@ function content_helper() {
      * Loadmap: getting coords from GoogleAPI logo
      */
     var gmEl = document.getElementsByClassName("gm-style");
-    var waze = document.getElementsByClassName("wm-permalink-control__link");
+    var waze = document.getElementsByClassName("wm-permalink-control");
     var openLayersEl = document.getElementsByClassName("olControlPermalink");
     var navitelPermalink = document.getElementById("permalink");
 
