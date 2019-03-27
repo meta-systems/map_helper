@@ -435,7 +435,7 @@ a:hover .compare_btn_caption {
     width:100%;
     display: block;
 }
-span.zoom_visible {
+#zoom_status.zoom_visible {
     display:block;
 }
 #zoom_status{
