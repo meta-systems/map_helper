@@ -141,6 +141,7 @@ span.hidden {
 }
 .section_label {
     margin-bottom:10px;
+    font-weight: bold;
 }
 
 .compare_mode #providers_list {
@@ -287,10 +288,13 @@ a.settings_save_btn {
 
 
 /* settings preview */
+.edit_mode #osm span, 
+.edit_mode #osm_ru span, 
+.edit_mode #bestmaps span 
+{background-image:url(/maps/edit_osm.png);}
 .edit_mode #google span{background-image:url(/maps/edit_google.png);}
 .edit_mode #google_map span{background-image:url(/maps/edit_google_map.png);}
 .edit_mode #nakarte span{background-image:url(/maps/edit_ggc.png);}
-.edit_mode #osm span {background-image:url(/maps/edit_osm.png);}
 .edit_mode #yandex_map span {background-image:url(/maps/edit_yandex_map.png);}
 .edit_mode #gis2 span {background-image:url(/maps/edit_2gis.png);}
 .edit_mode #wiki span {background-image:url(/maps/edit_wiki.png);}
