@@ -19,17 +19,17 @@
     "background": {
 		"scripts": ["bg.js"]
 	},
-	"permissions": [ "tabs", "http://*/*", "https://*/*", "storage" ],
+	"permissions": [
+		"activeTab",
+		"storage",
+		"downloads",
+		"<all_urls>"
+	],
 	"content_scripts": [
 		{
 			"matches": ["http://*/*", "https://*/*"],
-			"js": ["content_script.js"],
-			"css": ["css/content.css"]
+			"js": ["content_script.js"]
 		}
 	],
-	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-	"web_accessible_resources": [
-        "content.css",
-        "img/cross.svg"
-    ]
+	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }
