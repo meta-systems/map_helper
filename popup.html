@@ -5,7 +5,7 @@
     
     <link rel="stylesheet" media="screen" href="chrome-extension://plagppklljkoeblkoknfpmljklplpdol/css/popup.css" />
 </head>
-<body id="body">
+<body id="body" class="edit_mode">
 
 
 <div class="control_box">
@@ -59,26 +59,26 @@
     <a target="_blank" id="osm" href="https://www.openstreetmap.org" ><input type="checkbox" class="chbx" checked /><img src="img/osm.png"/>OSM<span>+</span></a>
     <a target="_blank" id="gis2" href="https://2gis.ru/"><input type="checkbox" class="chbx" checked /><img src="img/2gis.svg"/>2GIS<span>+</span></a>
     <a target="_blank" id="wiki" href="http://wikimapia.org/" class=""><input type="checkbox" class="chbx" checked /><img src="img/wiki.svg"/>Wiki<span>+</span></a>
-    <a target="_blank" id="nakarte" href="https://nakarte.me/" class="no_comp locale_ru"><input type="checkbox" class="chbx" checked /><img src="img/ggc.png"/><div data-message="ggc">GGC250</div></a>
+    <a target="_blank" id="nakarte" href="https://nakarte.me/" class="no_comp locale_ru"><input type="checkbox" class="chbx" checked /><img src="img/ggc.png"/><div data-message="ggc">GGC250</div><span>+</span><b>Russia</b></a>
 </div>
 
 <div class="section_label">OSM & tools</div>
 <div class="providers providers_small">
-    <a target="_blank" id="waze"  class="phidden no_comp" href="https://www.waze.com/ru/livemap"><input type="checkbox" class="chbx" /><img src="img/waze.svg"/>Waze</a>
-    <a target="_blank" id="strava"  class="phidden no_comp" href="https://www.strava.com/heatmap"><input type="checkbox" class="chbx" /><img src="img/strava.png"/>Strava</a>
-    <a target="_blank" id="qwant"   class="phidden no_comp" href="https://www.qwant.com/maps/" ><input type="checkbox" class="chbx" /><img src="img/qwant.svg"/>Qwant</a>
+    <a target="_blank" id="waze"  class="phidden no_comp" href="https://www.waze.com/ru/livemap"><input type="checkbox" class="chbx" /><img src="img/waze.svg"/>Waze<span></span></a>
+    <a target="_blank" id="strava"  class="phidden no_comp" href="https://www.strava.com/heatmap"><input type="checkbox" class="chbx" /><img src="img/strava.png"/>Strava<span></span></a>
+    <a target="_blank" id="qwant"   class="phidden no_comp" href="https://www.qwant.com/maps/" ><input type="checkbox" class="chbx" /><img src="img/qwant.svg"/>Qwant<b>Vector</b></a>
     <a target="_blank" id="mapillary"  class="phidden no_comp" href="https://www.mapillary.com/app/"><input type="checkbox" class="chbx" /><img src="img/mapillary.svg"/>Mapillary</a>
-    <a target="_blank" id="topo"    class="phidden" href="https://opentopomap.org/" ><input type="checkbox" class="chbx" /><img src="img/osm_topo.png"/>Topo<span>+</span></a>
-    <a target="_blank" id="sputnik" class="phidden" href="http://maps.sputnik.ru/"><input type="checkbox" class="chbx" /><img src="img/sputnik.svg"/><div data-message="sputnik">Sputnik</div><span>+</span></a>
+    <a target="_blank" id="topo"    class="phidden" href="https://opentopomap.org/" ><input type="checkbox" class="chbx" /><img src="img/osm_topo.png"/>Topo<span>+</span><b>Outdoor</b></a>
+    <a target="_blank" id="sputnik" class="phidden" href="http://maps.sputnik.ru/"><input type="checkbox" class="chbx" /><img src="img/sputnik.svg"/><div data-message="sputnik">Sputnik</div><span>+</span><b><c>Not updated</c></b></a>
     <a target="_blank" id="osm_ru"  class="phidden no_comp" href="http://openstreetmap.ru/" ><input type="checkbox" class="chbx" /><img src="img/osm_ru.png"/>OSM RU</a>
-    <a target="_blank" id="osm_by"  class="phidden no_comp" href="http://openstreetmap.by/" ><input type="checkbox" class="chbx" /><img src="img/osm_by.png"/>OSM BY</a>
-    <a target="_blank" id="chepetsk" class="phidden no_comp" href="http://xn--e1aaps0bc.net/"><input type="checkbox" class="chbx" /><img src="img/chepetsk.svg"/><div data-message="chepetsk">Chepetsk</div><span>+</span></a>
+    <a target="_blank" id="osm_by"  class="phidden no_comp" href="http://openstreetmap.by/" ><input type="checkbox" class="chbx" /><img src="img/osm_by.png"/>OSM BY<b><c>Belarus Vector</c></b></a>
+    <a target="_blank" id="chepetsk" class="phidden no_comp" href="http://xn--e1aaps0bc.net/"><input type="checkbox" class="chbx" /><img src="img/chepetsk.svg"/><div data-message="chepetsk">Chepetsk</div><span>+</span><b><c>Post-Soviet</c></b></a>
     <a target="_blank" id="bestmaps" class="phidden no_comp" href="https://bestmaps.ru/map" ><input type="checkbox" class="chbx" /><img src="img/bestmaps.svg"/>BestMaps<span>+</span></a>
     <a target="_blank" id="brouter" class="phidden no_comp" href="http://brouter.de/brouter-web/" ><input type="checkbox" class="chbx" /><img src="img/brouter.png"/>Brouter</a>
     <a target="_blank" id="mapy"    class="phidden no_comp" href="https://mapy.cz/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapy<span>+</span></a>
     <a target="_blank" id="flickr"  class="phidden no_comp" href="https://loc.alize.us/" ><input type="checkbox" class="chbx" /><img src="img/flickr.svg"/><div data-message="photo_flickr">Photo</div><span>+</span></a>
     <a target="_blank" id="navitel"  class="phidden no_comp locale_ru" href="http://maps.navitel.su/api/map.html"><input type="checkbox" class="chbx" /><img src="img/navitel.svg"/>Navitel</a>
-    <a target="_blank" id="josm"    class="phidden no_comp" href="#" ><input type="checkbox" class="chbx" /><img src="img/josm.svg"/>JOSM</a>
+    <a target="_blank" id="josm"    class="phidden no_comp" href="#" ><input type="checkbox" class="chbx" /><img src="img/josm.svg"/>JOSM<b><c>Edit in JOSM</c></b></a>
 
     <!-- <a target="_blank" id="mapq"    class="phidden" href="https://www.mapquest.com/" ><input type="checkbox" class="chbx" /><img src="img/mapy.png"/>Mapquest</a> -->
 </div>

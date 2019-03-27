@@ -32,6 +32,10 @@ span.hidden {
 .section_hidden {
     display: none;
 }
+.edit_mode {
+    width:660px;
+    /*background:#eee;*/
+}
 .edit_mode .section_hidden {
     display: block;
 }
@@ -47,6 +51,7 @@ span.hidden {
 .coordLine {
     float:left;
 }
+
 .providers {
     margin-bottom:15px;
 }
@@ -74,9 +79,6 @@ span.hidden {
     background:#f8f8f8b0;
     border-color:#cacaca;
     text-decoration:none;
-}
-.providers a {
-
 }
 .providers a {
     padding:6px 2px;
@@ -132,6 +134,11 @@ span.hidden {
     text-align:center;
     display:block;
 }
+.edit_mode .section_label {
+    font-size:18px;
+    color:black;
+    margin-top:30px;
+}
 .section_label {
     margin-bottom:10px;
 }
@@ -145,8 +152,8 @@ span.hidden {
 }
 .chbx {
     position:absolute;
-    top:13px;
-    left:-30px;
+    top:18px;
+    left:12px;
     display:none;
     width:16px;
     height:16px;
@@ -154,9 +161,35 @@ span.hidden {
 .edit_mode .chbx {
     display:block;
 }
+.edit_mode .providers {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    box-sizing: border-box;
+    grid-gap:1px;
+}
+
+.phidden:not(:hover) span {
+    opacity:0.4;
+}
+
 .edit_mode .providers a {
     display:block !important;
-    margin-left:30px;
+    background:white;
+    margin:0;
+    border:none;
+    border-radius:0;
+    padding-left:45px;
+
+    width:auto;
+    text-align:left;
+    box-shadow:0 0 0 1px #bbb;
+}
+.edit_mode .providers a img {
+    margin:0 0 5px 5px;
+}
+
+.edit_mode .providers a:hover {
+    background:#f8f8f8;
 }
 .edit_mode .phidden {
     display:inline-block !important;
@@ -209,11 +242,71 @@ a.settings_save_btn {
 
 }
 
+.providers a b {
+    display:none;
+}
+
+.edit_mode .providers a b c {
+    line-height:normal;
+    display:inline-block;
+}
+.edit_mode .providers a b {
+    display:block;
+    position:absolute;
+    top:7px;
+    left:230px;
+    font-weight:normal;
+    font-size:18px;
+    height:45px;
+    line-height:45px;
+    vertical-align: middle;
+}
+
+.edit_mode .buttonsP {
+    margin-bottom:35px;
+    margin-top:35px;
+}
+.edit_mode a span {
+    display:inline-block;
+    width:110px;
+    height:54px;
+    font-size:0;
+    float:left;
+    position:absolute;
+    top:2px;
+    left:104px;
+    background-position:center;
+    background-size: cover;
+}
+
+
+/* settings preview */
+.edit_mode #google span{background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_google.png);}
+.edit_mode #google_map span{background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_google_map.png);}
+.edit_mode #nakarte span{background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_ggc.png);}
+.edit_mode #osm span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_osm.png);}
+.edit_mode #yandex_map span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_yandex_map.png);}
+.edit_mode #gis2 span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_2gis.png);}
+.edit_mode #wiki span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_wiki.png);}
+.edit_mode #chepetsk span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_chepetsk.png);}
+.edit_mode #waze span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_waze.png);}
+.edit_mode #strava span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/edit_strava.png);}
+
+/*.edit_mode #topo span,*/
+/*.edit_mode #sputnik span,*/
+
+
+
 /* sat */
+.edit_mode #yandex span,
 .preview_yandex span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_yandex.png);}
+.edit_mode #here span,
 .preview_here span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_here.png);}
+.edit_mode #bing span,
 .preview_bing span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_bing.png);}
+.edit_mode #esri span,
 .preview_esri span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_esri.png);}
+.edit_mode #mapbox span,
 .preview_mapbox span {background-image:url(chrome-extension://plagppklljkoeblkoknfpmljklplpdol/maps/sat_mapbox.png);}
 
 /* map */
@@ -465,12 +558,12 @@ a.provider_special {
 .compare_mode_cancel_btn {
     display:none;
 }
-body:not(.compare_mode) .providers_small a:hover div,
-body:not(.compare_mode) .providers_small a:hover {
+body:not(.compare_mode):not(.edit_mode) .providers_small a:hover div,
+body:not(.compare_mode):not(.edit_mode) .providers_small a:hover {
     text-decoration: underline;
     color:#2498ff;
 }
-body:not(.compare_mode) .providers_small a {
+body:not(.compare_mode):not(.edit_mode) .providers_small a {
     border:none;
     background:none !important;
     width:88px;
@@ -479,7 +572,7 @@ body:not(.compare_mode) .providers_small a {
     background:white;
     padding:0;
 }
-body:not(.compare_mode) .providers_small a img {
+body:not(.compare_mode):not(.edit_mode) .providers_small a img {
     height:14px;
     margin:auto;
     margin-right:5px;
@@ -488,7 +581,7 @@ body:not(.compare_mode) .providers_small a img {
     top:-1px;
 }
 
-body:not(.compare_mode) .providers_small a div {
+body:not(.compare_mode):not(.edit_mode) .providers_small a div {
     display:inline-block;
     margin-top:2px;
 }
