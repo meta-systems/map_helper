@@ -130,6 +130,9 @@ var set_coordinates = function (coord, zoom) {
     });
 };
 
+/**
+ * Zoom from google meters
+ */
 var getZoomFromMeters = function(meters) {
     if (meters < 533) {
         return 17;
@@ -150,6 +153,16 @@ var getZoomFromMeters = function(meters) {
     } else {
         return 9;
     }
+};
+
+/**
+ * @see https://gist.github.com/onderaltintas/6649521
+ */
+var meters2degress = function(x,y) {
+    var lon = x *  180 / 20037508.34 ;
+    //thanks magichim @ github for the correction
+    var lat = Math.atan(Math.exp(y * Math.PI / 20037508.34)) * 360 / Math.PI - 90;
+    return [lon, lat]
 };
 
 var url;
@@ -470,9 +483,8 @@ chrome.tabs.query({
         var y_matches = url.match(/y=([\d.]+)/);
         var zoom_matches = url.match(/z=([\d.]+)/);
         if(x_matches && y_matches && zoom_matches) {
-            //zoom = zoom_matches[1];
-            //coord[1] = x_matches[1];
-            //coord[0] = y_matches[1];
+            coord = meters2degress(x_matches[1], y_matches[1]);
+            zoom = zoom_matches[1];
         }
     }
 
