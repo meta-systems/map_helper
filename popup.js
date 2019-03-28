@@ -233,7 +233,7 @@ chrome.tabs.query({
     }
     // GOOGLE
     else if(/(google.*maps)/.test(url)) {   //ищем гугл И мапс применяя метод test
-        var map_matches = url.match(/([\d.]+),([\d.]+),([\d.]+)z/);
+        var map_matches = url.match(/(-?[\d.]+),(-?[\d.]+),([\d.]+)z/);
         if(map_matches !== null) {
             zoom = map_matches[3];
             coord[1] = map_matches[1];
@@ -241,7 +241,7 @@ chrome.tabs.query({
             document.querySelector("#google_map").classList.add('selected');
         }
 
-        var sat_matches = url.match(/([\d.]+),([\d.]+),([\d.]+)m/);
+        var sat_matches = url.match(/(-?[\d.]+),(-?[\d.]+),([\d.]+)m/);
         if(sat_matches !== null) {
             var meters = sat_matches[3];
             coord[1] = sat_matches[1];
@@ -260,7 +260,7 @@ chrome.tabs.query({
     // BESTMAPS
     else if (host_clean === 'bestmaps'){
 
-        var matches = url.match(/\/(\d+)\/([\d.]+)\/([\d.]+)/);
+        var matches = url.match(/\/(\d+)\/(-?[\d.]+)\/(-?[\d.]+)/);
         if(matches !== null) {
             zoom = matches[1];
             coord[1] = matches[2];
@@ -278,7 +278,7 @@ chrome.tabs.query({
     }
     // brouter
     else if(/brouter\.de/.test(url)) {
-        var map_matches = url.match(/brouter-web\/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/brouter-web\/#map=([\d.]+)\/(-?[\d.]+)\/(-?[\d.]+)/);
         if(map_matches !== null) {
             zoom = map_matches[1];
             coord[1] = map_matches[2];
@@ -293,7 +293,7 @@ chrome.tabs.query({
         // https://www.qwant.com/maps/#map=18.00/57.8163132/28.3294716
         // https://www.qwant.com/maps/place/osm:node:4176691489@_#map=18.00/57.8163132/28.3294716
 
-        var map_matches = url.match(/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/#map=([\d.]+)\/(-?[\d.]+)\/(-?[\d.]+)/);
 
         if(map_matches !== null) {
             zoom = map_matches[1];
@@ -306,7 +306,7 @@ chrome.tabs.query({
     // strava 
     else if(/strava\.com/.test(url)) {
         
-        var map_matches = url.match(/heatmap#([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/heatmap#([\d.]+)\/(-?[\d.]+)\/(-?[\d.]+)/);
 
         if(map_matches !== null) {
             zoom = map_matches[1];
@@ -323,8 +323,8 @@ chrome.tabs.query({
     // mapillary
     else if(/mapillary\.com/.test(url)) {
 
-        var lat_matches = url.match(/lat=([\d.]+)/);
-        var lng_matches = url.match(/lng=([\d.]+)/);
+        var lat_matches = url.match(/lat=(-?[\d.]+)/);
+        var lng_matches = url.match(/lng=(-?[\d.]+)/);
         var zoom_matches = url.match(/z=([\d.]+)/);
         if(lat_matches && lng_matches && zoom_matches) {
             zoom = zoom_matches[1];
@@ -335,7 +335,7 @@ chrome.tabs.query({
     }
     // OSM BY
     else if(/openstreetmap\.by/.test(url)) {
-        var map_matches = url.match(/#([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/#([\d.]+)\/(-?[\d.]+)\/(-?[\d.]+)/);
         if(map_matches !== null) {
             zoom = map_matches[1];
             coord[1] = map_matches[2];
@@ -346,10 +346,7 @@ chrome.tabs.query({
     }
     // OSM
     else if (host_clean === 'openstreetmap'){
-        // FIXME
-        // -0.15335
-        var map_matches = url.match(/map=(\d+)\/([\d.]+)\/[\-]+([\d.]+)/);
-        // console.log(map_matches);
+        var map_matches = url.match(/map=(\d+)\/(-?[\d.]+)\/(-?[\d.]+)/);
         if(map_matches !== null) {
             zoom = map_matches[1];
             coord[1] = map_matches[2];
@@ -415,7 +412,7 @@ chrome.tabs.query({
         document.getElementById("gis2").classList.add('selected');
         // document.querySelector("#2gis").classList.add('selected'); // не работает из-за двойки
 
-        var matches = url.match(/m=([\d.]+)%2C([\d.]+)%2F([\d.]+)/);
+        var matches = url.match(/m=(-?[\d.]+)%2C(-?[\d.]+)%2F([\d.]+)/);
         if(matches !== null) {
             zoom = matches[3];
             coord[1] = matches[2];
@@ -442,8 +439,8 @@ chrome.tabs.query({
 
     // sputnik
     else if(/maps\.sputnik\.ru/.test(url)) {
-        var lat_matches = url.match(/lat=([\d.]+)/);
-        var lng_matches = url.match(/lng=([\d.]+)/);
+        var lat_matches = url.match(/lat=(-?[\d.]+)/);
+        var lng_matches = url.match(/lng=(-?[\d.]+)/);
         var zoom_matches = url.match(/zoom=([\d.]+)/);
         if(lat_matches && lng_matches && zoom_matches) {
             zoom = zoom_matches[1];
@@ -455,8 +452,8 @@ chrome.tabs.query({
 
     // mapy.cz
     else if(/mapy\.cz/.test(url)) {
-        var lat_matches = url.match(/y=([\d.]+)/);
-        var lng_matches = url.match(/x=([\d.]+)/);
+        var lat_matches = url.match(/y=(-?[\d.]+)/);
+        var lng_matches = url.match(/x=(-?[\d.]+)/);
         var zoom_matches = url.match(/z=([\d.]+)/);
         if(lat_matches && lng_matches && zoom_matches) {
             zoom = zoom_matches[1];
@@ -469,7 +466,7 @@ chrome.tabs.query({
 
     // opentopomap
     else if (host_clean === 'opentopomap') {
-        var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/map=(\d+)\/(-?[\d.]+)\/(-?[\d.]+)/);
         if(map_matches !== null) {
             zoom = map_matches[1];
             coord[1] = map_matches[2];
@@ -481,7 +478,7 @@ chrome.tabs.query({
     // nakarte
     else if (host_clean === 'nakarte') {
         // https://nakarte.me/#m=14/55.84012/30.29068&l=O/K
-        var map_matches = url.match(/#m=(\d+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/#m=(\d+)\/(-?[\d.]+)\/(-?[\d.]+)/);
         if(map_matches !== null) {
             zoom = map_matches[1];
             coord[1] = map_matches[2];
@@ -492,8 +489,8 @@ chrome.tabs.query({
 
     else if(/rosreestr\.ru/.test(url)) {
         // pkk5.rosreestr.ru/#x=3147486.520932528&y=7927544.820504406&z=18
-        var x_matches = url.match(/x=([\d.]+)/);
-        var y_matches = url.match(/y=([\d.]+)/);
+        var x_matches = url.match(/x=(-?[\d.]+)/);
+        var y_matches = url.match(/y=(-?[\d.]+)/);
         var zoom_matches = url.match(/z=([\d.]+)/);
         if(x_matches && y_matches && zoom_matches) {
             coord = meters2degress(x_matches[1], y_matches[1]);
@@ -507,7 +504,7 @@ chrome.tabs.query({
     }
     else if(/loc\.alize\.us/.test(url)) {
         document.querySelector("#flickr").classList.add('selected');
-        var map_matches = url.match(/geo:([\d.]+),([\d.]+),(\d+)/);
+        var map_matches = url.match(/geo:(-?[\d.]+),(-?[\d.]+),(\d+)/);
         if(map_matches !== null) {
             zoom = map_matches[3];
             coord[1] = map_matches[1];
