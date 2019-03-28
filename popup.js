@@ -348,7 +348,7 @@ chrome.tabs.query({
     else if (host_clean === 'openstreetmap'){
         // FIXME
         // -0.15335
-        var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
+        var map_matches = url.match(/map=(\d+)\/([\d.]+)\/[\-]+([\d.]+)/);
         // console.log(map_matches);
         if(map_matches !== null) {
             zoom = map_matches[1];
