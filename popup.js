@@ -68,7 +68,6 @@ var set_coordinates = function (coord, zoom) {
                     });
             });
         }
-
         // coordinates
         document.getElementById("coord_input").value  = coord[1] + ', ' + coord[0];
         document.getElementById("zoom_status").innerText  = Math.round(zoom * 100) / 100;
@@ -277,17 +276,6 @@ chrome.tabs.query({
             document.querySelector("#bestmaps").classList.add('selected');
         }
     }
-    // OSM BY
-    else if(/openstreetmap\.by/.test(url)) {
-        var map_matches = url.match(/#([\d.]+)\/([\d.]+)\/([\d.]+)/);
-        if(map_matches !== null) {
-            zoom = map_matches[1];
-            coord[1] = map_matches[2];
-            coord[0] = map_matches[3];
-        }
-
-        document.querySelector("#osm_by").classList.add('selected');
-    }
     // brouter
     else if(/brouter\.de/.test(url)) {
         var map_matches = url.match(/brouter-web\/#map=([\d.]+)\/([\d.]+)\/([\d.]+)/);
@@ -345,10 +333,23 @@ chrome.tabs.query({
         }
         document.getElementById("mapillary").classList.add('selected');
     }
+    // OSM BY
+    else if(/openstreetmap\.by/.test(url)) {
+        var map_matches = url.match(/#([\d.]+)\/([\d.]+)\/([\d.]+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+        }
+
+        document.querySelector("#osm_by").classList.add('selected');
+    }
     // OSM
     else if (host_clean === 'openstreetmap'){
-
+        // FIXME
+        // -0.15335
         var map_matches = url.match(/map=(\d+)\/([\d.]+)\/([\d.]+)/);
+        // console.log(map_matches);
         if(map_matches !== null) {
             zoom = map_matches[1];
             coord[1] = map_matches[2];
@@ -513,7 +514,6 @@ chrome.tabs.query({
             coord[0] = map_matches[2];
         }
     }
-
     set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
 });
