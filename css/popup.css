@@ -310,6 +310,7 @@ a.settings_save_btn {
 .edit_mode #flickr s {background-image:url(/maps/edit_alize.png);}
 .edit_mode #josm s {background-image:url(/maps/edit_josm.png);}
 .edit_mode #brouter s {background-image:url(/maps/edit_brouter.png);}
+.edit_mode #kadastr s {background-image:url(/maps/edit_rr.png);}
 
 
 
@@ -349,7 +350,7 @@ a.settings_save_btn {
     border:1px solid #E0E0E0;
     border-radius:4px;
     text-align:center;
-    margin-top:25px;
+    margin-top:45px;
     width:160px;
     display: none;
     pointer-events:none;
