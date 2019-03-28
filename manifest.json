@@ -27,7 +27,13 @@
 	],
 	"content_scripts": [
 		{
-			"matches": ["http://*/*", "https://*/*"],
+			"matches": [
+              "*://www.bing.com/maps*",
+              "*://loadmap.net/*",
+              "*://xn--e1aaps0bc.net/*",
+              "*://maps.navitel.su/*",
+              "*://www.waze.com/*"
+            ],
 			"js": ["content_script.js"]
 		}
 	],
