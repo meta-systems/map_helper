@@ -169,11 +169,12 @@ var meters2degress = function(x,y) {
     return [lon, lat]
 };
 var degrees2meters = function(lon,lat) {
-    var x = lon * 20037508.34 / 180;
-    var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
-    y = y * 20037508.34 / 180;
-    //FIXME: y is wrong
-    return [x, y]
+    // var x = lon * 20037508.34 / 180;
+    // var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
+    // y = y * 20037508.34 / 180;
+    // return [x, y];
+    var transformer = proj4('EPSG:4326','EPSG:3857');
+    return transformer.forward([parseFloat(lon), parseFloat(lat)]);
 };
 
 var url;
