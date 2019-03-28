@@ -33,7 +33,11 @@ var set_coordinates = function (coord, zoom) {
         document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("mapillary").href='https://www.mapillary.com/app/?lat='+coord[1]+'&lng='+coord[0]+'&z='+zoom+'';
         document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
-        document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0]+''; // 
+        document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0]+''; //
+
+        // Cadastre
+        var meters_xy = degrees2meters(coord[0], coord[1]);
+        document.getElementById("kadastr").href='https://pkk5.rosreestr.ru/#x='+meters_xy[0]+'&y='+meters_xy[1]+'&z='+zoom+'&app=search&opened=1';
 
 
         var jlat = parseFloat(coord[1]),
@@ -163,6 +167,13 @@ var meters2degress = function(x,y) {
     //thanks magichim @ github for the correction
     var lat = Math.atan(Math.exp(y * Math.PI / 20037508.34)) * 360 / Math.PI - 90;
     return [lon, lat]
+};
+var degrees2meters = function(lon,lat) {
+    var x = lon * 20037508.34 / 180;
+    var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
+    y = y * 20037508.34 / 180;
+    //FIXME: y is wrong
+    return [x, y]
 };
 
 var url;
