@@ -464,6 +464,9 @@ a:hover .compare_btn_caption {
     padding-top:51px;
     color:#8d8d8d;
     line-height:1.4em;
+
+    padding-left:20px;
+    padding-right:20px;
 }
 .compare_2 .compare_help,
 .compare_3 .compare_help {
