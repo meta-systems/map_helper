@@ -137,7 +137,13 @@ var set_coordinates = function (coord, zoom) {
  * Zoom from google meters
  */
 var getZoomFromMeters = function(meters) {
-    if (meters < 533) {
+    if (meters < 50) {
+        return 20;
+    } else if (meters < 100) {
+        return 19;
+    } else if (meters < 200) {
+        return 18;
+    } else if (meters < 533) {
         return 17;
     } else if (meters < 1066) {
         return 16;
