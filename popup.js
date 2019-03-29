@@ -139,9 +139,9 @@ var set_coordinates = function (coord, zoom) {
 var getZoomFromMeters = function(meters) {
     if (meters < 50) {
         return 20;
-    } else if (meters < 100) {
-        return 19;
     } else if (meters < 200) {
+        return 19;
+    } else if (meters < 350) {
         return 18;
     } else if (meters < 533) {
         return 17;
@@ -247,7 +247,7 @@ chrome.tabs.query({
             document.querySelector("#google_map").classList.add('selected');
         }
 
-        var sat_matches = url.match(/(-?[\d.]+),(-?[\d.]+),([\d.]+)m/);
+        var sat_matches = url.match(/(-?[\d.]+),(-?[\d.]+),([\d.]+)(m|a)/);
         if(sat_matches !== null) {
             var meters = sat_matches[3];
             coord[1] = sat_matches[1];
