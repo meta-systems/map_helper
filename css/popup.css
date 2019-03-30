@@ -157,7 +157,7 @@ span.hidden {
 .providers a input {
     position:absolute;
     top:18px;
-    left:12px;
+    left:15px;
     display:none;
     width:16px;
     height:16px;
@@ -182,14 +182,16 @@ span.hidden {
     margin:0;
     border:none;
     border-radius:0;
-    padding-left:45px;
 
     width:auto;
     text-align:left;
     box-shadow:0 0 0 1px #bbb;
+    padding-left:37px;
+    padding-right:200px;
+    text-align:center;
 }
 .edit_mode .providers a img {
-    margin:0 0 5px 5px;
+    
 }
 
 .edit_mode .providers a:hover {
@@ -259,11 +261,11 @@ a.settings_save_btn {
     display:block;
     position:absolute;
     top:7px;
-    left:230px;
+    right:5px;
     font-weight:normal;
     font-size:16px;
     height:45px;
-    width:80px;
+    width:75px;
     line-height:45px;
     vertical-align: middle;
 }
@@ -280,7 +282,7 @@ a.settings_save_btn {
     float:left;
     position:absolute;
     top:2px;
-    left:104px;
+    left:125px;
     background-position:center;
     background-size: cover;
 }
@@ -291,7 +293,7 @@ a.settings_save_btn {
 .edit_mode #osm_ru s, 
 .edit_mode #bestmaps s 
 {background-image:url(/maps/edit_osm.png);}
-.edit_mode #google s{background-image:url(/maps/edit_google.png);}
+.edit_mode #google s{background-image:url(/maps/sat_google.png);}
 .edit_mode #google_map s{background-image:url(/maps/edit_google_map.png);}
 .edit_mode #nakarte s{background-image:url(/maps/edit_ggc.png);}
 .edit_mode #yandex_map s {background-image:url(/maps/edit_yandex_map.png);}

@@ -82,7 +82,7 @@ var set_coordinates = function (coord, zoom) {
         console.log(coord);
     }
     else {
-        document.getElementById("body").classList.add("coordinates_hidden"); // Fixme
+        document.getElementById("body").classList.add("coordinates_hidden");
         document.getElementById('compare_link_js').classList.add("hidden");
         return;
     }
@@ -517,6 +517,20 @@ chrome.tabs.query({
             coord[0] = map_matches[2];
         }
     }
+    if(coord && coord.length == 2){
+        console.log('FOUND, write coordinates to localStorage');
+        localStorage.setItem('lat', coord[1]);
+        localStorage.setItem('lon', coord[0]);
+        localStorage.setItem('zoom', zoom);
+    } else {
+        console.log('coordinates not found, get from localStorage');
+        console.log(localStorage.getItem('lat'));
+        coord[1] = localStorage.getItem('lat');
+        coord[0] = localStorage.getItem('lon');
+        zoom = localStorage.getItem('zoom');
+    }
+    console.log(coord);
+    
     set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
 });
