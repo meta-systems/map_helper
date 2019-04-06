@@ -1,4 +1,15 @@
-var set_coordinates = function (coord, zoom) {
+var set_coordinates = function (coord, zoom, mode) {
+    
+
+    console.log(mode);
+    if(mode == 'from_localstorage'){
+        document.getElementById('body').classList.add('coord_localstorage');
+    }
+    if(mode == 'from_content_script'){
+        document.getElementById('body').classList.remove('coord_localstorage');
+    }
+
+
     if(zoom && coord && coord.length == 2){  // переменные не заменят элементы пока не заполнятся все 3 параметра
         
         // SAT
@@ -82,7 +93,7 @@ var set_coordinates = function (coord, zoom) {
 
         document.getElementById("body").classList.remove("coordinates_hidden");
         document.getElementById('compare_start_js').classList.remove("hidden");
-        console.log(coord);
+        
     }
     else {
         document.getElementById("body").classList.add("coordinates_hidden");
@@ -197,7 +208,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     var is_navitel = /maps\.navitel\.su/.test(url);
     var is_waze = /waze\.com/.test(url);
     if(request.coords.lat && request.coords.lon && (is_bing || is_loadmap || is_chepetsk || is_navitel || is_waze)) {
-        set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom);
+        set_coordinates([request.coords.lon, request.coords.lat], request.coords.zoom, 'from_content_script');
     }
 
 });
@@ -207,11 +218,17 @@ chrome.tabs.query({
     'lastFocusedWindow': true
 }, function (tabs) {
 
-    url = tabs[0].url;
-    var url_parts = url.split( '/' );
-    var host = url_parts[2];
-    var host_parts = host.split( '.' );
-    var host_clean = host_parts[host_parts.length-2];
+    url = '';
+
+    if(tabs[0].hasOwnProperty('url')){
+        
+        url = tabs[0].url;
+        var url_parts = url.split( '/' );
+        var host = url_parts[2];
+        var host_parts = host.split( '.' );
+        var host_clean = host_parts[host_parts.length-2];
+
+    }
 
     var coord = new Array();
     var zoom;
@@ -535,20 +552,24 @@ chrome.tabs.query({
         }
     }
     if(coord && coord.length == 2){
-        console.log('FOUND, write coordinates to localStorage');
+
+        // console.log('FOUND, write coordinates to localStorage');
         localStorage.setItem('lat', coord[1]);
         localStorage.setItem('lon', coord[0]);
         localStorage.setItem('zoom', zoom);
+
+        set_coordinates(coord, zoom, 'from_tab');
     } else {
-        console.log('coordinates not found, get from localStorage');
-        console.log(localStorage.getItem('lat'));
+
+        // console.log('coordinates not found, get from localStorage');
         coord[1] = localStorage.getItem('lat');
         coord[0] = localStorage.getItem('lon');
         zoom = localStorage.getItem('zoom');
+        
+        set_coordinates(coord, zoom, 'from_localstorage');
     }
-    console.log(coord);
+    // console.log(coord);
     
-    set_coordinates(coord, zoom);
     //chrome.tabs.create({url: '}, function(){});
 });
 
