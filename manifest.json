@@ -1,11 +1,11 @@
 ﻿{
 	"update_url":"http://clients2.google.com/service/update2/crx",
 	"name": "Map Helper",
-	"version": "1.3.1",
+	"version": "1.4",
 	"default_locale": "en",
 	"manifest_version": 2,
 	"description": "A Chrome extension making the work with maps much easier",
-	"homepage_url": "https://bestmaps.ru/map-helper/index.html",
+	"homepage_url": "https://bestmaps.ru/map-helper",
 	"page_action": {
 		"default_icon": "icon.png",
 		"default_title": "Map Helper",

@@ -17,24 +17,27 @@ var set_coordinates = function (coord, zoom) {
 
         document.getElementById("gis2").href='https://beta.2gis.ru/?m='+coord[0]+'%2C'+coord[1]+'%2F'+Math.round(zoom); // при переходе из маппилари 2гис не понимает дробного зума, REVERSE
         document.getElementById("wiki").href='http://wikimapia.org/#lang=ru&lat='+coord[1]+'&lon='+coord[0]+'&z='+zoom+'&m=ys';
-        document.getElementById("nakarte").href='https://nakarte.me/#m='+zoom+'/'+coord[1]+'/'+coord[0]+'&l=O/K';
+        document.getElementById("nakarte").href='https://nakarte.me/#m='+zoom+'/'+coord[1]+'/'+coord[0]+'&l=T/J/F/K';
 
         // OSM & tools
         document.getElementById("chepetsk").href='http://xn--e1aaps0bc.net/?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
         document.getElementById("topo").href='https://opentopomap.org/#map='+Math.round(zoom)+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
-        document.getElementById("brouter").href='http://brouter.de/brouter-web/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'/OpenStreetMap';
-        document.getElementById("qwant").href='https://www.qwant.com/maps/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'';
+        document.getElementById("qwant").href='https://www.qwant.com/maps/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("mapy").href='https://mapy.cz/?x='+coord[0]+'&y='+coord[1]+'&z='+zoom;
         document.getElementById("osm_ru").href='http://openstreetmap.ru/#map='+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("navitel").href='http://maps.navitel.su/api/map.html?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("flickr").href='https://loc.alize.us/#/geo:'+coord[1]+','+coord[0]+','+zoom+',/';
         document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
-        document.getElementById("mapillary").href='https://www.mapillary.com/app/?lat='+coord[1]+'&lng='+coord[0]+'&z='+zoom+'';
+        document.getElementById("mapillary").href='https://www.mapillary.com/app/?lat='+coord[1]+'&lng='+coord[0]+'&z='+zoom;
         document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
-        document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0]+''; //
+        document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0]; //
 
+        // Routing
+        document.getElementById("brouter").href='http://brouter.de/brouter-web/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'/OpenStreetMap';
+        document.getElementById("openroute").href='https://maps.openrouteservice.org/directions?n1='+coord[1]+'&n2='+coord[0]+'&n3='+zoom;
+        
         // Cadastre
         var meters_xy = degrees2meters(coord[0], coord[1]);
         document.getElementById("kadastr").href='https://pkk5.rosreestr.ru/#x='+meters_xy[0]+'&y='+meters_xy[1]+'&z='+zoom+'&app=search&opened=1';
@@ -323,11 +326,11 @@ chrome.tabs.query({
         document.querySelector("#strava").classList.add('selected');
     }
     // waze
-    else if(/waze\.com/.test(url)) {
+    else if(host_clean === 'waze') {
         document.getElementById("waze").classList.add('selected');
     }
     // mapillary
-    else if(/mapillary\.com/.test(url)) {
+    else if(host_clean === 'mapillary') {
 
         var lat_matches = url.match(/lat=(-?[\d.]+)/);
         var lng_matches = url.match(/lng=(-?[\d.]+)/);
@@ -338,6 +341,20 @@ chrome.tabs.query({
             coord[0] = lng_matches[1];
         }
         document.getElementById("mapillary").classList.add('selected');
+    }
+    // Open Route Service
+    else if(host_clean === 'openrouteservice') {
+
+
+        var lat_matches = url.match(/n1=(-?[\d.]+)/);
+        var lng_matches = url.match(/n2=(-?[\d.]+)/);
+        var zoom_matches = url.match(/n3=([\d.]+)/);
+        if(lat_matches && lng_matches && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = lat_matches[1];
+            coord[0] = lng_matches[1];
+        }
+        document.getElementById("openroute").classList.add('selected');
     }
     // OSM BY
     else if(/openstreetmap\.by/.test(url)) {
