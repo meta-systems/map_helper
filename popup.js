@@ -88,8 +88,7 @@ var set_coordinates = function (coord, zoom, mode) {
         document.getElementById("zoom_status").classList.add("zoom_visible");
 
         // GE
-        // FIXME: link for a new Bestmaps version will be changed
-        document.getElementById("earth_kml").href='https://bestmaps.ru/test/kml_generate/index.php?lat='+coord[1]+'&lon='+coord[0];
+        document.getElementById("earth_kml").href='https://bestmaps.ru/tools/kml?lat='+coord[1]+'&lon='+coord[0];
 
         document.getElementById("body").classList.remove("coordinates_hidden");
         document.getElementById('compare_start_js').classList.remove("hidden");
