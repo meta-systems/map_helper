@@ -33,6 +33,7 @@ var set_coordinates = function (coord, zoom, mode) {
         // OSM & tools
         document.getElementById("chepetsk").href='http://xn--e1aaps0bc.net/?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
+        document.getElementById("umap").href='https://umap.openstreetmap.fr/en/map/new/#'+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("topo").href='https://opentopomap.org/#map='+Math.round(zoom)+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("qwant").href='https://www.qwant.com/maps/#map='+zoom+'/'+coord[1]+'/'+coord[0];
@@ -383,6 +384,17 @@ chrome.tabs.query({
 
         document.querySelector("#osm_by").classList.add('selected');
     }
+    // UMAP
+    else if(/umap\.openstreetmap\.fr/.test(url)) {
+        var map_matches = url.match(/#([\d.]+)\/(-?[\d.]+)\/(-?[\d.]+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[1];
+            coord[1] = map_matches[2];
+            coord[0] = map_matches[3];
+        }
+
+        document.querySelector("#umap").classList.add('selected');
+    }
     // OSM
     else if (host_clean === 'openstreetmap'){
         var map_matches = url.match(/map=(\d+)\/(-?[\d.]+)\/(-?[\d.]+)/);
@@ -394,7 +406,6 @@ chrome.tabs.query({
 
         if(/openstreetmap\.ru/.test(url)) {
             document.querySelector("#osm_ru").classList.add('selected');
-
         }
         else {
             document.querySelector("#osm").classList.add('selected');
