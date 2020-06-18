@@ -50,8 +50,8 @@ var set_coordinates = function (coord, zoom, mode) {
         document.getElementById("openroute").href='https://maps.openrouteservice.org/directions?n1='+coord[1]+'&n2='+coord[0]+'&n3='+zoom;
         
         // Cadastre
-        var meters_xy = degrees2meters(coord[0], coord[1]);
-        document.getElementById("kadastr").href='https://pkk5.rosreestr.ru/#x='+meters_xy[0]+'&y='+meters_xy[1]+'&z='+zoom+'&app=search&opened=1';
+        //var meters_xy = degrees2meters(coord[0], coord[1]);
+        document.getElementById("kadastr").href='https://pkk.rosreestr.ru/#/search/'+coord[1]+','+coord[0]+'/'+zoom+'/@d98mbov9';
 
 
         var jlat = parseFloat(coord[1]),
@@ -527,14 +527,14 @@ chrome.tabs.query({
     }
 
     else if(/rosreestr\.ru/.test(url)) {
-        // pkk5.rosreestr.ru/#x=3147486.520932528&y=7927544.820504406&z=18
-        var x_matches = url.match(/x=(-?[\d.]+)/);
-        var y_matches = url.match(/y=(-?[\d.]+)/);
-        var zoom_matches = url.match(/z=([\d.]+)/);
-        if(x_matches && y_matches && zoom_matches) {
-            coord = meters2degress(x_matches[1], y_matches[1]);
-            zoom = zoom_matches[1];
+        // pkk.rosreestr.ru/#/search/57.808248724343784,28.270000239485455/17/@d98mbov9
+        var map_matches = url.match(/\/search\/(-?[\d.]+),(-?[\d.]+)\/(\d+)/);
+        if(map_matches !== null) {
+            zoom = map_matches[3];
+            coord[1] = map_matches[1];
+            coord[0] = map_matches[2];
         }
+        document.querySelector("#kadastr").classList.add('selected');
     }
 
     // navitel

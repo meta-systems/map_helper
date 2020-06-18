@@ -16,6 +16,7 @@
             || /maps\.sputnik\.ru/.test(url)
             || /mapy\.cz/.test(url)
             || /loc\.alize\.us/.test(url)
+            || /rosreestr\.ru/.test(url)
         ) {
             chrome.pageAction.setIcon({tabId: tab.id, path: "icon16.png"});
         }
