@@ -248,11 +248,9 @@ chrome.tabs.query({
         zoom = zoomya[0].slice(2); //  убираем z=
 
         if(/sat/.test(url)) {
-            // document.getElementById("yandex").className='selected';
             document.querySelector("#yandex").classList.add('selected');
         }
         else {
-            // document.getElementById("yandex_map").className='selected';
             document.querySelector("#yandex_map").classList.add('selected');
         }
 
@@ -279,7 +277,6 @@ chrome.tabs.query({
     // BING
     else if(/bing.*maps/.test(url)) { // /bing.*maps||mapspreview/
 
-        // document.getElementById("bing").className='selected';
         document.querySelector("#bing").classList.add('selected');
 
     }
@@ -294,11 +291,9 @@ chrome.tabs.query({
         }
 
         if(/map\/osm\/WorldImagery/.test(url)) {
-            // document.getElementById("esri").className='selected';
             document.querySelector("#esri").classList.add('selected');
         }
         else if(/map/.test(url)) {
-            // document.getElementById("bestmaps").className='selected'; // ломает классы
             document.querySelector("#bestmaps").classList.add('selected');
         }
     }
@@ -431,9 +426,7 @@ chrome.tabs.query({
         coord[0] = provider_string[1];
 
         if(/satellite/.test(url)){
-            // document.getElementById("here").className='selected';
             document.querySelector("#here").classList.add('selected');
-
         }
 
     }
@@ -448,13 +441,7 @@ chrome.tabs.query({
 
         zoom = zoomwiki[0].slice(2);
 
-        // document.getElementById("wiki").className = 'selected';
         document.querySelector("#wiki").classList.add('selected');
-        /*
-        if (url.match(/&m=w/ig)) {
-            document.querySelector("#wikimapia_map").classList.add('selected');
-        }
-        */
     }
 
     // 2gis
@@ -475,7 +462,6 @@ chrome.tabs.query({
         var osm_url = 'https://www.openstreetmap.org/changeset/';
         if(matches !== null) {
             document.getElementById("achavi").href = osm_url + matches[1];
-            //document.getElementById("achavi").className='selected';
             document.getElementById("achavi").classList.remove("phidden");
             document.getElementById("achavi").classList.add("provider_special");
         }
@@ -483,7 +469,6 @@ chrome.tabs.query({
 
     // chepetsk
     else if (host_clean === 'xn--e1aaps0bc') {
-        // document.getElementById("chepetsk").className='selected';
         document.querySelector("#chepetsk").classList.add('selected');
     }
 
@@ -510,7 +495,6 @@ chrome.tabs.query({
             coord[1] = lat_matches[1];
             coord[0] = lng_matches[1];
         }
-        // document.getElementById("mapy").className='selected';
         document.querySelector("#mapy").classList.add('selected');
     }
 

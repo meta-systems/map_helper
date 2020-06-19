@@ -9,7 +9,8 @@
         var host_parts = host.split('.'); // разбиваем домен на состовные части точкой
         var host_clean = host_parts[host_parts.length - 2]; // берем основной домен (yandex, google, bestmaps)
 
-        if (['bestmaps', 'openstreetmap', 'here', 'wikimapia', 'loadmap', '2gis', 'brouter', 'qwant', 'mapillary', 'waze', 'strava', 'nakarte', 'xn--e1aaps0bc', 'opentopomap', 'navitel'].indexOf(host_clean) != -1
+        if (['bestmaps', 'openstreetmap', 'here', 'wikimapia', 'loadmap', '2gis', 'brouter', 'qwant', 'mapillary', 'waze',
+                'strava', 'nakarte', 'xn--e1aaps0bc', 'opentopomap', 'navitel'].indexOf(host_clean) != -1
             || /(google.*maps)/.test(url)
             || /(yandex.*maps)/.test(url)
             || /bing.*maps/.test(url)
@@ -24,28 +25,3 @@
     chrome.pageAction.show(tab.id);
 
 });
-
-
-// chrome.browserAction.onClicked.addListener(function(tab) {
-//   chrome.tabs.executeScript({
-//     code: 'var div=document.createElement("div"); document.body.appendChild(div); div.innerText="test123";'
-//   });
-// });
-
-
-/* 
- chrome.tabs.onCreated.addListener(function(tab) {
- // console.log(tab.id);
- chrome.pageAction.setIcon({tabId: tab.id,path:"icon.png"});
- chrome.pageAction.setTitle({tabId: tab.id,title:"Альтернативные карты"});
- chrome.pageAction.show(tab.id);
- });
-
- if(/bestmaps|openstreetmap|here|wikimapia/.test(url)||
- /google|maps/.test(url)||
- /yandex|maps/.test(url)||
- /bing|mapspreview/.test(url)
- )
-
- */
-
