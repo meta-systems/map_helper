@@ -34,6 +34,7 @@ var set_coordinates = function (coord, zoom, mode) {
         document.getElementById("chepetsk").href='http://xn--e1aaps0bc.net/?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("sputnik").href='http://maps.sputnik.ru/?lat='+coord[1]+'&lng='+coord[0]+'&zoom='+zoom;
         document.getElementById("umap").href='https://umap.openstreetmap.fr/en/map/new/#'+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("cellmap").href='https://www.cellmapper.net/map?zoom='+zoom+'&latitude='+coord[1]+'&longitude='+coord[0];
         document.getElementById("topo").href='https://opentopomap.org/#map='+Math.round(zoom)+'/'+coord[1]+'/'+coord[0];
         document.getElementById("osm_by").href='http://openstreetmap.by/#'+zoom+'/'+coord[1]+'/'+coord[0];
         document.getElementById("qwant").href='https://www.qwant.com/maps/#map='+zoom+'/'+coord[1]+'/'+coord[0];
@@ -483,6 +484,19 @@ chrome.tabs.query({
             coord[0] = lng_matches[1];
         }
         document.getElementById("sputnik").classList.add('selected');
+    }
+
+    // cellmapper
+    else if(/cellmapper\.net/.test(url)) {
+        var lat_matches = url.match(/latitude=(-?[\d.]+)/);
+        var lng_matches = url.match(/longitude=(-?[\d.]+)/);
+        var zoom_matches = url.match(/zoom=([\d.]+)/);
+        if(lat_matches && lng_matches && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = lat_matches[1];
+            coord[0] = lng_matches[1];
+        }
+        document.querySelector("#cellmap").classList.add('selected');
     }
 
     // mapy.cz
