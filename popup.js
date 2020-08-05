@@ -47,6 +47,13 @@ var set_coordinates = function (coord, zoom, mode) {
         document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
         document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0]; //
 
+        //airbnb
+        let ne_lat = parseFloat(coord[1]) + 0.0005,
+            ne_lng = parseFloat(coord[0]) + 0.0005,
+            sw_lat = parseFloat(coord[1]) - 0.0005,
+            sw_lng = parseFloat(coord[0]) - 0.0005;
+        document.getElementById("airbnb").href='https://www.airbnb.com/s/homes?tab_id=home_tab&refinement_paths%5B%5D=%2Fhomes&source=structured_search_input_header&ne_lat='+ne_lat+'&ne_lng='+ne_lng+'&sw_lat='+sw_lat+'&sw_lng='+sw_lng+'&zoom='+zoom+'&search_by_map=true';
+
         // Routing
         document.getElementById("brouter").href='http://brouter.de/brouter-web/#map='+zoom+'/'+coord[1]+'/'+coord[0]+'/OpenStreetMap';
         document.getElementById("openroute").href='https://maps.openrouteservice.org/directions?n1='+coord[1]+'&n2='+coord[0]+'&n3='+zoom;
@@ -484,6 +491,21 @@ chrome.tabs.query({
             coord[0] = lng_matches[1];
         }
         document.getElementById("sputnik").classList.add('selected');
+    }
+
+    // airbnb
+    else if(/airbnb/.test(url)) {
+        var ne_lat = url.match(/ne_lat=(-?[\d.]+)/);
+        var sw_lat = url.match(/sw_lat=(-?[\d.]+)/);
+        var ne_lng = url.match(/ne_lng=(-?[\d.]+)/);
+        var sw_lng = url.match(/sw_lng=(-?[\d.]+)/);
+        var zoom_matches = url.match(/zoom=([\d.]+)/);
+        if(ne_lat && sw_lat && ne_lng && sw_lng && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = (parseFloat(ne_lat[1]) + parseFloat(sw_lat[1])) / 2;
+            coord[0] = (parseFloat(ne_lng[1]) + parseFloat(sw_lng[1])) / 2;
+        }
+        document.querySelector("#airbnb").classList.add('selected');
     }
 
     // cellmapper
