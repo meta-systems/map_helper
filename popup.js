@@ -1,12 +1,13 @@
 var set_coordinates = function (coord, zoom, mode) {
     
 
-    console.log(mode);
     if(mode == 'from_localstorage'){
         document.getElementById('body').classList.add('coord_localstorage');
+        console.log(mode+': coordinates are obtained from tab');
     }
     if(mode == 'from_content_script'){
         document.getElementById('body').classList.remove('coord_localstorage');
+        console.log(mode+': coordinates are obtained from localstorage');
     }
 
 
@@ -47,6 +48,7 @@ var set_coordinates = function (coord, zoom, mode) {
         document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
         document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("antiborschevik").href='https://antiborschevik.info/map/'+zoom+'/'+coord[1]+'/'+coord[0];
+        document.getElementById("wikimap").href='https://wikimap.wiki/?base=map&lat='+coord[1]+'&lon='+coord[0]+'&showAll=true&wiki=enwiki&zoom='+zoom;
 
         //airbnb
         let ne_lat = parseFloat(coord[1]) + 0.0005,
@@ -362,6 +364,19 @@ chrome.tabs.query({
             coord[0] = lng_matches[1];
         }
         document.getElementById("mapillary").classList.add('selected');
+    }
+    // wikimap
+    else if(host_clean === 'wikimap') {
+        var lat_matches = url.match(/lat=(-?[\d.]+)/);
+        var lng_matches = url.match(/lon=(-?[\d.]+)/);
+        var zoom_matches = url.match(/zoom=([\d.]+)/);
+        if(lat_matches && lng_matches && zoom_matches) {
+            zoom = zoom_matches[1];
+            coord[1] = lat_matches[1];
+            coord[0] = lng_matches[1];
+            console.log('lat: '+ lat_matches[1]);
+        }
+        document.getElementById("wikimap").classList.add('selected');
     }
     // Open Route Service
     else if(host_clean === 'openrouteservice') {
