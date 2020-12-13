@@ -10,7 +10,7 @@
         var host_clean = host_parts[host_parts.length - 2]; // берем основной домен (yandex, google, bestmaps)
 
         if (['bestmaps', 'openstreetmap', 'here', 'wikimapia', 'loadmap', '2gis', 'brouter', 'qwant', 'mapillary', 'waze',
-                'strava', 'nakarte', 'xn--e1aaps0bc', 'opentopomap', 'navitel'].indexOf(host_clean) != -1
+                'strava', 'nakarte', 'xn--e1aaps0bc', 'opentopomap', 'navitel', 'airbnb', 'cellmapper', 'antiborschevik'].indexOf(host_clean) != -1
             || /(google.*maps)/.test(url)
             || /(yandex.*maps)/.test(url)
             || /bing.*maps/.test(url)

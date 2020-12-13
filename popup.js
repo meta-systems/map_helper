@@ -45,7 +45,8 @@ var set_coordinates = function (coord, zoom, mode) {
         document.getElementById("bestmaps").href='http://bestmaps.ru/map/osm/map/'+zoom+'/' + coord[1]+'/'+coord[0]+'/';
         document.getElementById("mapillary").href='https://www.mapillary.com/app/?lat='+coord[1]+'&lng='+coord[0]+'&z='+zoom;
         document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
-        document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0]; //
+        document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
+        document.getElementById("antiborschevik").href='https://antiborschevik.info/map/'+zoom+'/'+coord[1]+'/'+coord[0];
 
         //airbnb
         let ne_lat = parseFloat(coord[1]) + 0.0005,
