@@ -1,6 +1,5 @@
 var set_coordinates = function (coord, zoom, mode) {
     
-
     if(mode == 'from_localstorage'){
         document.getElementById('body').classList.add('coord_localstorage');
         console.log(mode+': coordinates are obtained from tab');
@@ -48,7 +47,7 @@ var set_coordinates = function (coord, zoom, mode) {
         document.getElementById("strava").href='https://www.strava.com/heatmap#'+zoom+'/'+coord[0]+'/'+coord[1]+'/hot/all'; // reverse coordinates
         document.getElementById("waze").href='https://www.waze.com/ru/livemap?zoom='+zoom+'&lat='+coord[1]+'&lon='+coord[0];
         document.getElementById("antiborschevik").href='https://antiborschevik.info/map/'+zoom+'/'+coord[1]+'/'+coord[0];
-        document.getElementById("wikimap").href='https://wikimap.wiki/?base=map&lat='+coord[1]+'&lon='+coord[0]+'&showAll=true&wiki=enwiki&zoom='+zoom;
+        // document.getElementById("wikimap").href='https://wikimap.wiki/?base=map&lat='+coord[1]+'&lon='+coord[0]+'&showAll=true&wiki=enwiki&zoom='+zoom;
 
         //airbnb
         let ne_lat = parseFloat(coord[1]) + 0.0005,
